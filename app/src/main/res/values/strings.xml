@@ -393,4 +393,26 @@
     <string name="development_team">Equipo de Desarrollo</string>
     <string name="special_thanks">Agradecimientos Especiales</string>
     
+    <!-- ============================ -->
+    <!-- STRINGS FALTANTES PARA GAME_OVER -->
+    <!-- ============================ -->
+    
+    <!-- Game Over Activity -->
+    <string name="game_over_title">¡Juego Terminado!</string>
+    <string name="final_position">Posición Final</string>
+    <string name="personal_best">Récord Personal</string>
+    <string name="game_statistics">Estadísticas del Juego</string>
+    <string name="role_statistics">Estadísticas por Rol</string>
+    <string name="achievements">Logros</string>
+    <string name="best_moments">Mejores Momentos</string>
+    <string name="play_again">Jugar de Nuevo</string>
+    <string name="main_menu">Menú Principal</string>
+    <string name="trophy_description">Trofeo de clasificación</string>
+    
+    <!-- Additional missing strings -->
+    <string name="current_score">Puntuación Actual</string>
+    <string name="connection_status">Estado de Conexión</string>
+    <string name="connected">Conectado</string>
+    <string name="disconnected">Desconectado</string>
+    
 </resources>

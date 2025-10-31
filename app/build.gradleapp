@@ -32,8 +32,8 @@ android {
         pickFirst '**/libjsc.so'
     }
     
-    // CONFIGURACIÓN CRÍTICA PARA TERMUX - EVITAR AAPT2
-    useLegacyResources = true
+    // ⬇️⬇️⬇️ ELIMINA ESTA LÍNEA ⬇️⬇️⬇️
+    // useLegacyResources = true
 }
 
 dependencies {

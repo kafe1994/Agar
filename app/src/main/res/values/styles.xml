@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Estilo base para texto general -->
+    <style name="Text">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
     <!-- Tema principal para Enhanced Agar Game -->
     <style name="Theme.EnhancedAgarGame" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Colores principales -->

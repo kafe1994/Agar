@@ -216,4 +216,44 @@
     <color name="black">#000000</color>                   <!-- Negro -->
     <color name="semi_transparent_black">#80000000</color> <!-- Negro semi-transparente -->
     
+    <!-- ============================ -->
+    <!-- COLORES FALTANTES PARA COMPILACIÓN -->
+    <!-- ============================ -->
+    
+    <!-- Colores alias para compatibilidad -->
+    <color name="primary">#4FC3F7</color>                  <!-- Alias de primary_color -->
+    <color name="accent">#FF9800</color>                   <!-- Alias de accent_color -->
+    <color name="success">#4CAF50</color>                  <!-- Verde para éxito -->
+    
+    <!-- Colores de HUD y controles -->
+    <color name="hud_background">#80000000</color>         <!-- Fondo HUD semi-transparente -->
+    <color name="hud_text_primary">#FFFFFF</color>          <!-- Texto principal HUD -->
+    <color name="hud_text_secondary">#B3B3B3</color>       <!-- Texto secundario HUD -->
+    
+    <!-- Colores de botones de control -->
+    <color name="control_button_tint">#FFFFFF</color>       <!-- Tinte botones de control -->
+    <color name="control_button_background">#4FC3F7</color> <!-- Fondo botones de control -->
+    <color name="split_button_tint">#FFFFFF</color>         <!-- Tinte botón dividir -->
+    <color name="split_button_background">#FF9800</color>   <!-- Fondo botón dividir -->
+    <color name="boost_button_tint">#FFFFFF</color>         <!-- Tinte botón impulso -->
+    <color name="boost_button_background">#F44336</color>   <!-- Fondo botón impulso -->
+    
+    <!-- Colores de conexión y estado -->
+    <color name="connection_connected">#4CAF50</color>      <!-- Conexión establecida -->
+    
+    <!-- Colores de overlays y diálogos -->
+    <color name="game_overlay_background">#80000000</color> <!-- Overlay del juego -->
+    <color name="dialog_background">#424242</color>         <!-- Fondo de diálogo -->
+    <color name="dialog_title_color">#FFFFFF</color>        <!-- Título de diálogo -->
+    <color name="dialog_content_color">#B3B3B3</color>      <!-- Contenido de diálogo -->
+    <color name="button_background">#4FC3F7</color>         <!-- Fondo de botón -->
+    <color name="button_text_color">#FFFFFF</color>         <!-- Texto de botón -->
+    <color name="button_secondary_background">#757575</color> <!-- Fondo botón secundario -->
+    <color name="button_secondary_text_color">#FFFFFF</color> <!-- Texto botón secundario -->
+    <color name="pause_overlay_background">#80000000</color> <!-- Overlay de pausa -->
+    <color name="pause_text_color">#FFFFFF</color>          <!-- Texto de pausa -->
+    
+    <!-- Colores adicionales -->
+    <color name="fab_elevation">#1976D2</color>             <!-- Elevación FAB -->
+    
 </resources>
