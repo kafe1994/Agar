@@ -213,27 +213,4 @@
     <dimen name="card_elevation">4dp</dimen>
     
     <!-- Dimensiones de texto de estado -->
-    <dimen name="status_text_size">14sp</dimen>
-    
-    <!-- Dimensiones de controles -->
-    <dimen name="control_margin">16dp</dimen>
-    <dimen name="control_button_margin">8dp</dimen>
-    
-    <!-- Dimensiones de conexión -->
-    <dimen name="connection_margin">12dp</dimen>
-    <dimen name="connection_indicator_size">12sp</dimen>
-    
-    <!-- Dimensiones de diálogos -->
-    <dimen name="dialog_elevation">8dp</dimen>
-    <dimen name="dialog_padding">16dp</dimen>
-    <dimen name="dialog_title_size">18sp</dimen>
-    <dimen name="dialog_content_size">14sp</dimen>
-    <dimen name="dialog_content_margin">8dp</dimen>
-    
-    <!-- Dimensiones de botones -->
-    <dimen name="button_text_size">16sp</dimen>
-    
-    <!-- Dimensiones de FAB -->
-    <dimen name="fab_elevation">8dp</dimen>
-    
-</resources>
+    <dimen name="status_text_size">14sp</
