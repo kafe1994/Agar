@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.gaming.enhancedagar.app-mergeDebugResources-21:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "outputFile": "com.gaming.enhancedagar.app-mergeDebugResources-32:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
-                    "source": "/data/data/com.termux/files/home/.gradle/caches/transforms-3/0555afe7a3fc4a97a7bd0f649bfa212d/transformed/material-1.4.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",
+                    "source": "/data/data/com.termux/files/home/.gradle/caches/transforms-3/701b069b7b78b993a733c841335db154/transformed/material-1.10.0/res/values-ldrtl-v17/values-ldrtl-v17.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

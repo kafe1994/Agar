@@ -4,45 +4,50 @@ ADDED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xm
 INJECTED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:2:1-119:12
 INJECTED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:2:1-119:12
 INJECTED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:2:1-119:12
-MERGED from [com.google.android.material:material:1.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0555afe7a3fc4a97a7bd0f649bfa212d/transformed/material-1.4.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1845a60f58924165f5499918fd9059fb/transformed/constraintlayout-2.1.0/AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.appcompat:appcompat:1.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/efff579d4c776f1b21eeac6e0a2e03e1/transformed/appcompat-1.4.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.material:material:1.10.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/701b069b7b78b993a733c841335db154/transformed/material-1.10.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ce1c2092282740288ae3e47d0c878440/transformed/constraintlayout-2.1.4/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/78932a911740b7ac05eed309d7f76d66/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat:1.6.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/94d78e3a323c68b34e6f460571fffb81/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c45d4aa5d9f6c56b3ed933cbd4127558/transformed/jetified-emoji2-views-helper-1.2.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0e3da09a20b15816c008bd46efbb2aa4/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:17:1-35:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/aacea5b59e289af2ada495ff182ff953/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment:1.3.6] /data/data/com.termux/files/home/.gradle/caches/transforms-3/08a4cd97c4d99f4696a30ef1d7c55901/transformed/fragment-1.3.6/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.activity:activity:1.2.4] /data/data/com.termux/files/home/.gradle/caches/transforms-3/aeb954e199c1820253e405d3876665ac/transformed/jetified-activity-1.2.4/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.appcompat:appcompat-resources:1.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/a1418623f41788888843261665c5aea3/transformed/jetified-appcompat-resources-1.4.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c71c3116e36038499df19c5c21eabf62/transformed/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/d482a822748a478211095abf4179b9b1/transformed/jetified-emoji2-views-helper-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:17:1-37:12
+MERGED from [androidx.activity:activity:1.8.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c84b010095d395fe72c757cae3936a01/transformed/jetified-activity-1.8.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f76148abf9f8bba1e9e70e72118646c0/transformed/drawerlayout-1.1.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/73d089603dcb190c5bcd62df89c17f23/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/086bca7f12f17959feaabb2e7b1bef30/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.transition:transition:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/5916359499ad67ae3b808f079be01318/transformed/transition-1.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f5b654f4fbbacf8b30b409c5714af35a/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/362109c78c60c1a44df2a136dd95e445/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.viewpager:viewpager:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/472f00503ab39cb85c6c4c8cdf11fd16/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/aa46d133e92a7309b485bf4136da5627/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/039863bfdea83cb9271ea9faa0caa896/transformed/lifecycle-livedata-core-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9899c78c16f3c8341d66a21ae13fd617/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/29346b91c74248167953a8785df7e1ec/transformed/jetified-lifecycle-livedata-core-ktx-2.7.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9f3e8e333a647167f180a4d659b178b3/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/e90af1616cfd3bd078723205c85ed968/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ff059418557980fc16e94af63f5d4bb0/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/38c22faabeaee0db21bc43788fd3e465/transformed/lifecycle-viewmodel-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ab4f69afbd484e126bd0fc460b827ba2/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/71ef2d1c9759134427d59d3b3cee3fcc/transformed/jetified-lifecycle-livedata-ktx-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/86a2bfee4842501b046ca0a5fcb5fd01/transformed/jetified-lifecycle-viewmodel-ktx-2.7.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/806ae602238d28a2b3e5d4e58c67fc42/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/e84772a1ca9a9205fc74092791f364d5/transformed/jetified-core-ktx-1.12.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/472f00503ab39cb85c6c4c8cdf11fd16/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/a2b826fc45b3a79bade61eee9e367079/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.customview:customview:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/3e9bb707691baa715cbbd6842b1497ef/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.core:core:1.8.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1afafc8cc181c3c4f72fbcc1499f6f3e/transformed/core-1.8.0/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.customview:customview:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/27042f30305cf5336a693b35a93aa635/transformed/customview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:17:1-30:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1339778e96e80c66de3476f9b72d5797/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/23c9d4666c9e3000aa0e015d5cc493e0/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.savedstate:savedstate:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/46d618286330a4bcf6ef8b70bdbccb1e/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c5afb33ed2e58dbec9a6e61bb29ae28d/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.cardview:cardview:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/481e3e44ca730cdc6b38e96354c7f0f1/transformed/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/66041837e2bba2ffca7038b2716b7722/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/234dc3fabeb26270431bb1f191f19a01/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:17:1-37:12
-MERGED from [androidx.startup:startup-runtime:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ea0c91155269cd9206ee6dc178fe6fa1/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:17:1-33:12
-MERGED from [androidx.tracing:tracing:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9d5d15a7c0d8dd52847342af4145d061/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0764ba18e33d217158cb6b56155034d2/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ced373e788b1c7444bbf2de532f2b5b1/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c4282d28a9fe1f361f067f5073fc1082/transformed/lifecycle-runtime-2.4.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.arch.core:core-runtime:2.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ef854476622e19f8c281af29b5ae0666/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/68fef2741ee4ae06fd2987eb77efa4e7/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/66041837e2bba2ffca7038b2716b7722/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/228d7627c19f0b20d677bf47de3e9aa3/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9d5d15a7c0d8dd52847342af4145d061/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/bee20f0616e7d0ce2aad567aeaeec5fa/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/915aa1c122f4fcbd8e41565b74575338/transformed/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/4463b3d1da87248148633bfbd5674891/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0b2a4e8cae80953ce910c37e8937d354/transformed/print-1.0.0/AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.annotation:annotation-experimental:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/a253e06d4110991777ac0908a33808ae/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/72ce406e89784f9f35246fe3f80a6902/transformed/jetified-annotation-experimental-1.3.0/AndroidManifest.xml:17:1-22:12
 	package
 		ADDED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:4:5-38
 		INJECTED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml
@@ -139,20 +144,22 @@ ADDED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xm
 application
 ADDED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:50:5-100:19
 INJECTED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:50:5-100:19
-MERGED from [com.google.android.material:material:1.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0555afe7a3fc4a97a7bd0f649bfa212d/transformed/material-1.4.0/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.material:material:1.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0555afe7a3fc4a97a7bd0f649bfa212d/transformed/material-1.4.0/AndroidManifest.xml:22:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1845a60f58924165f5499918fd9059fb/transformed/constraintlayout-2.1.0/AndroidManifest.xml:9:5-20
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1845a60f58924165f5499918fd9059fb/transformed/constraintlayout-2.1.0/AndroidManifest.xml:9:5-20
-MERGED from [androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:25:5-35:19
-MERGED from [androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:25:5-35:19
-MERGED from [androidx.core:core:1.8.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1afafc8cc181c3c4f72fbcc1499f6f3e/transformed/core-1.8.0/AndroidManifest.xml:24:5-89
-MERGED from [androidx.core:core:1.8.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1afafc8cc181c3c4f72fbcc1499f6f3e/transformed/core-1.8.0/AndroidManifest.xml:24:5-89
+MERGED from [com.google.android.material:material:1.10.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/701b069b7b78b993a733c841335db154/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.10.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/701b069b7b78b993a733c841335db154/transformed/material-1.10.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ce1c2092282740288ae3e47d0c878440/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ce1c2092282740288ae3e47d0c878440/transformed/constraintlayout-2.1.4/AndroidManifest.xml:9:5-20
+MERGED from [androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0e3da09a20b15816c008bd46efbb2aa4/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0e3da09a20b15816c008bd46efbb2aa4/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9899c78c16f3c8341d66a21ae13fd617/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9899c78c16f3c8341d66a21ae13fd617/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:28:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/66041837e2bba2ffca7038b2716b7722/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/66041837e2bba2ffca7038b2716b7722/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/234dc3fabeb26270431bb1f191f19a01/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:25:5-35:19
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/234dc3fabeb26270431bb1f191f19a01/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:25:5-35:19
-MERGED from [androidx.startup:startup-runtime:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ea0c91155269cd9206ee6dc178fe6fa1/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
-MERGED from [androidx.startup:startup-runtime:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ea0c91155269cd9206ee6dc178fe6fa1/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/228d7627c19f0b20d677bf47de3e9aa3/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/228d7627c19f0b20d677bf47de3e9aa3/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
 	android:extractNativeLibs
 		INJECTED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml
 	android:requestLegacyExternalStorage
@@ -160,7 +167,7 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] /data/data/com.termux/files
 	android:preserveLegacyExternalStorage
 		ADDED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:58:9-53
 	android:appComponentFactory
-		ADDED from [androidx.core:core:1.8.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1afafc8cc181c3c4f72fbcc1499f6f3e/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
+		ADDED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
 	android:label
 		ADDED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:53:9-41
 	android:hardwareAccelerated
@@ -261,26 +268,26 @@ uses-sdk
 INJECTED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml
 INJECTED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml
-MERGED from [com.google.android.material:material:1.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0555afe7a3fc4a97a7bd0f649bfa212d/transformed/material-1.4.0/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0555afe7a3fc4a97a7bd0f649bfa212d/transformed/material-1.4.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1845a60f58924165f5499918fd9059fb/transformed/constraintlayout-2.1.0/AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.constraintlayout:constraintlayout:2.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1845a60f58924165f5499918fd9059fb/transformed/constraintlayout-2.1.0/AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.appcompat:appcompat:1.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/efff579d4c776f1b21eeac6e0a2e03e1/transformed/appcompat-1.4.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat:1.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/efff579d4c776f1b21eeac6e0a2e03e1/transformed/appcompat-1.4.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.material:material:1.10.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/701b069b7b78b993a733c841335db154/transformed/material-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.10.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/701b069b7b78b993a733c841335db154/transformed/material-1.10.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ce1c2092282740288ae3e47d0c878440/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ce1c2092282740288ae3e47d0c878440/transformed/constraintlayout-2.1.4/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/78932a911740b7ac05eed309d7f76d66/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/78932a911740b7ac05eed309d7f76d66/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/94d78e3a323c68b34e6f460571fffb81/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/94d78e3a323c68b34e6f460571fffb81/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c45d4aa5d9f6c56b3ed933cbd4127558/transformed/jetified-emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c45d4aa5d9f6c56b3ed933cbd4127558/transformed/jetified-emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0e3da09a20b15816c008bd46efbb2aa4/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0e3da09a20b15816c008bd46efbb2aa4/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:21:5-44
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/aacea5b59e289af2ada495ff182ff953/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/aacea5b59e289af2ada495ff182ff953/transformed/jetified-viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.3.6] /data/data/com.termux/files/home/.gradle/caches/transforms-3/08a4cd97c4d99f4696a30ef1d7c55901/transformed/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment:1.3.6] /data/data/com.termux/files/home/.gradle/caches/transforms-3/08a4cd97c4d99f4696a30ef1d7c55901/transformed/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.2.4] /data/data/com.termux/files/home/.gradle/caches/transforms-3/aeb954e199c1820253e405d3876665ac/transformed/jetified-activity-1.2.4/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.activity:activity:1.2.4] /data/data/com.termux/files/home/.gradle/caches/transforms-3/aeb954e199c1820253e405d3876665ac/transformed/jetified-activity-1.2.4/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat-resources:1.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/a1418623f41788888843261665c5aea3/transformed/jetified-appcompat-resources-1.4.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.appcompat:appcompat-resources:1.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/a1418623f41788888843261665c5aea3/transformed/jetified-appcompat-resources-1.4.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c71c3116e36038499df19c5c21eabf62/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c71c3116e36038499df19c5c21eabf62/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/d482a822748a478211095abf4179b9b1/transformed/jetified-emoji2-views-helper-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/d482a822748a478211095abf4179b9b1/transformed/jetified-emoji2-views-helper-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.activity:activity:1.8.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c84b010095d395fe72c757cae3936a01/transformed/jetified-activity-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.8.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c84b010095d395fe72c757cae3936a01/transformed/jetified-activity-1.8.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f76148abf9f8bba1e9e70e72118646c0/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f76148abf9f8bba1e9e70e72118646c0/transformed/drawerlayout-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/73d089603dcb190c5bcd62df89c17f23/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/73d089603dcb190c5bcd62df89c17f23/transformed/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/086bca7f12f17959feaabb2e7b1bef30/transformed/dynamicanimation-1.0.0/AndroidManifest.xml:20:5-44
@@ -291,81 +298,155 @@ MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /data/data/c
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f5b654f4fbbacf8b30b409c5714af35a/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/362109c78c60c1a44df2a136dd95e445/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/362109c78c60c1a44df2a136dd95e445/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager:viewpager:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/472f00503ab39cb85c6c4c8cdf11fd16/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.viewpager:viewpager:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/472f00503ab39cb85c6c4c8cdf11fd16/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/aa46d133e92a7309b485bf4136da5627/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/aa46d133e92a7309b485bf4136da5627/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/039863bfdea83cb9271ea9faa0caa896/transformed/lifecycle-livedata-core-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/039863bfdea83cb9271ea9faa0caa896/transformed/lifecycle-livedata-core-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9899c78c16f3c8341d66a21ae13fd617/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9899c78c16f3c8341d66a21ae13fd617/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/29346b91c74248167953a8785df7e1ec/transformed/jetified-lifecycle-livedata-core-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/29346b91c74248167953a8785df7e1ec/transformed/jetified-lifecycle-livedata-core-ktx-2.7.0/AndroidManifest.xml:5:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9f3e8e333a647167f180a4d659b178b3/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9f3e8e333a647167f180a4d659b178b3/transformed/legacy-support-core-utils-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/e90af1616cfd3bd078723205c85ed968/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.loader:loader:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/e90af1616cfd3bd078723205c85ed968/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ff059418557980fc16e94af63f5d4bb0/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ff059418557980fc16e94af63f5d4bb0/transformed/lifecycle-livedata-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/38c22faabeaee0db21bc43788fd3e465/transformed/lifecycle-viewmodel-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/38c22faabeaee0db21bc43788fd3e465/transformed/lifecycle-viewmodel-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ab4f69afbd484e126bd0fc460b827ba2/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ab4f69afbd484e126bd0fc460b827ba2/transformed/lifecycle-runtime-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/71ef2d1c9759134427d59d3b3cee3fcc/transformed/jetified-lifecycle-livedata-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-ktx:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/71ef2d1c9759134427d59d3b3cee3fcc/transformed/jetified-lifecycle-livedata-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/86a2bfee4842501b046ca0a5fcb5fd01/transformed/jetified-lifecycle-viewmodel-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/86a2bfee4842501b046ca0a5fcb5fd01/transformed/jetified-lifecycle-viewmodel-ktx-2.7.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/806ae602238d28a2b3e5d4e58c67fc42/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/806ae602238d28a2b3e5d4e58c67fc42/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/e84772a1ca9a9205fc74092791f364d5/transformed/jetified-core-ktx-1.12.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/e84772a1ca9a9205fc74092791f364d5/transformed/jetified-core-ktx-1.12.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/472f00503ab39cb85c6c4c8cdf11fd16/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/472f00503ab39cb85c6c4c8cdf11fd16/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/a2b826fc45b3a79bade61eee9e367079/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/a2b826fc45b3a79bade61eee9e367079/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.customview:customview:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/3e9bb707691baa715cbbd6842b1497ef/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.customview:customview:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/3e9bb707691baa715cbbd6842b1497ef/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.core:core:1.8.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1afafc8cc181c3c4f72fbcc1499f6f3e/transformed/core-1.8.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.core:core:1.8.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1afafc8cc181c3c4f72fbcc1499f6f3e/transformed/core-1.8.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/27042f30305cf5336a693b35a93aa635/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/27042f30305cf5336a693b35a93aa635/transformed/customview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1339778e96e80c66de3476f9b72d5797/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1339778e96e80c66de3476f9b72d5797/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/23c9d4666c9e3000aa0e015d5cc493e0/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/23c9d4666c9e3000aa0e015d5cc493e0/transformed/jetified-lifecycle-viewmodel-savedstate-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/46d618286330a4bcf6ef8b70bdbccb1e/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.savedstate:savedstate:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/46d618286330a4bcf6ef8b70bdbccb1e/transformed/jetified-savedstate-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c5afb33ed2e58dbec9a6e61bb29ae28d/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c5afb33ed2e58dbec9a6e61bb29ae28d/transformed/lifecycle-viewmodel-2.3.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.cardview:cardview:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/481e3e44ca730cdc6b38e96354c7f0f1/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/481e3e44ca730cdc6b38e96354c7f0f1/transformed/cardview-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/66041837e2bba2ffca7038b2716b7722/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/66041837e2bba2ffca7038b2716b7722/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/234dc3fabeb26270431bb1f191f19a01/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/234dc3fabeb26270431bb1f191f19a01/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.startup:startup-runtime:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ea0c91155269cd9206ee6dc178fe6fa1/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.startup:startup-runtime:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ea0c91155269cd9206ee6dc178fe6fa1/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:21:5-23:41
-MERGED from [androidx.tracing:tracing:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9d5d15a7c0d8dd52847342af4145d061/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.tracing:tracing:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9d5d15a7c0d8dd52847342af4145d061/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0764ba18e33d217158cb6b56155034d2/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0764ba18e33d217158cb6b56155034d2/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ced373e788b1c7444bbf2de532f2b5b1/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ced373e788b1c7444bbf2de532f2b5b1/transformed/lifecycle-livedata-core-2.3.1/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c4282d28a9fe1f361f067f5073fc1082/transformed/lifecycle-runtime-2.4.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c4282d28a9fe1f361f067f5073fc1082/transformed/lifecycle-runtime-2.4.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.arch.core:core-runtime:2.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ef854476622e19f8c281af29b5ae0666/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.arch.core:core-runtime:2.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ef854476622e19f8c281af29b5ae0666/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.interpolator:interpolator:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/68fef2741ee4ae06fd2987eb77efa4e7/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/68fef2741ee4ae06fd2987eb77efa4e7/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/66041837e2bba2ffca7038b2716b7722/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/66041837e2bba2ffca7038b2716b7722/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/228d7627c19f0b20d677bf47de3e9aa3/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/228d7627c19f0b20d677bf47de3e9aa3/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9d5d15a7c0d8dd52847342af4145d061/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9d5d15a7c0d8dd52847342af4145d061/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/bee20f0616e7d0ce2aad567aeaeec5fa/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/bee20f0616e7d0ce2aad567aeaeec5fa/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/915aa1c122f4fcbd8e41565b74575338/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/915aa1c122f4fcbd8e41565b74575338/transformed/documentfile-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/4463b3d1da87248148633bfbd5674891/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/4463b3d1da87248148633bfbd5674891/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0b2a4e8cae80953ce910c37e8937d354/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0b2a4e8cae80953ce910c37e8937d354/transformed/print-1.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.annotation:annotation-experimental:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/a253e06d4110991777ac0908a33808ae/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.annotation:annotation-experimental:1.1.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/a253e06d4110991777ac0908a33808ae/transformed/jetified-annotation-experimental-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/72ce406e89784f9f35246fe3f80a6902/transformed/jetified-annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/72ce406e89784f9f35246fe3f80a6902/transformed/jetified-annotation-experimental-1.3.0/AndroidManifest.xml:20:5-44
 	android:targetSdkVersion
 		INJECTED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from /data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml
 provider#androidx.startup.InitializationProvider
-ADDED from [androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/234dc3fabeb26270431bb1f191f19a01/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:26:9-34:20
-MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/234dc3fabeb26270431bb1f191f19a01/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:26:9-34:20
-MERGED from [androidx.startup:startup-runtime:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ea0c91155269cd9206ee6dc178fe6fa1/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:26:9-30:34
-MERGED from [androidx.startup:startup-runtime:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/ea0c91155269cd9206ee6dc178fe6fa1/transformed/jetified-startup-runtime-1.0.0/AndroidManifest.xml:26:9-30:34
+ADDED from [androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0e3da09a20b15816c008bd46efbb2aa4/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9899c78c16f3c8341d66a21ae13fd617/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9899c78c16f3c8341d66a21ae13fd617/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/228d7627c19f0b20d677bf47de3e9aa3/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /data/data/com.termux/files/home/.gradle/caches/transforms-3/228d7627c19f0b20d677bf47de3e9aa3/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
 	tools:node
-		ADDED from [androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:30:13-31
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0e3da09a20b15816c008bd46efbb2aa4/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:28:13-31
 	android:authorities
-		ADDED from [androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0e3da09a20b15816c008bd46efbb2aa4/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
 	android:exported
-		ADDED from [androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0e3da09a20b15816c008bd46efbb2aa4/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
 	android:name
-		ADDED from [androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0e3da09a20b15816c008bd46efbb2aa4/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
 meta-data#androidx.emoji2.text.EmojiCompatInitializer
-ADDED from [androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+ADDED from [androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0e3da09a20b15816c008bd46efbb2aa4/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
 	android:value
-		ADDED from [androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0e3da09a20b15816c008bd46efbb2aa4/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
 	android:name
-		ADDED from [androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/0e3da09a20b15816c008bd46efbb2aa4/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
 meta-data#androidx.lifecycle.ProcessLifecycleInitializer
-ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/234dc3fabeb26270431bb1f191f19a01/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9899c78c16f3c8341d66a21ae13fd617/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
 	android:value
-		ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/234dc3fabeb26270431bb1f191f19a01/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9899c78c16f3c8341d66a21ae13fd617/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
 	android:name
-		ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/234dc3fabeb26270431bb1f191f19a01/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+		ADDED from [androidx.lifecycle:lifecycle-process:2.7.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/9899c78c16f3c8341d66a21ae13fd617/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+permission#com.gaming.enhancedagar.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+uses-permission#com.gaming.enhancedagar.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.12.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/c62ea2ad0a6f9c4d9cb4f5c748ac1b67/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92

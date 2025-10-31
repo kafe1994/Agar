@@ -1,24 +1,8 @@
-# Configuración optimizada para Termux
+# Configuración simplificada para Enhanced Agar Game en Termux
+org.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m
+org.gradle.parallel=true
+org.gradle.configureondemand=true
+org.gradle.daemon=true
+org.gradle.caching=true
 android.useAndroidX=true
 android.enableJetifier=true
-
-# Configuración de memoria para dispositivos móviles
-org.gradle.jvmargs=-Xmx1536m -XX:MaxMetaspaceSize=384m
-
-# Optimizaciones para Termux
-org.gradle.daemon=false
-org.gradle.parallel=false
-org.gradle.configureondemand=false
-
-# Deshabilitar características que causan problemas en Termux
-android.enableResourceShrinker=false
-android.enableAapt2=false
-
-# Usar versiones más antiguas para mejor compatibilidad
-android.enableJetifier=false
-
-# Configuración de caching para dispositivos con almacenamiento limitado
-org.gradle.caching=false
-
-# Configuración de versión mínima requerida
-android.suppressUnsupportedOptionWarnings=true

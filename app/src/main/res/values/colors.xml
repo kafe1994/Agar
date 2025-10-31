@@ -202,4 +202,18 @@
     <color name="glow_green">#4CAF50</color>              <!-- Brillo verde -->
     <color name="glow_red">#F44336</color>                <!-- Brillo rojo -->
     
+    <!-- ============================ -->
+    <!-- COLORES PARA TEMAS - CRÍTICOS PARA COMPILACIÓN -->
+    <!-- ============================ -->
+    
+    <!-- Tema principal (alias para compatibilidad) -->
+    <color name="primary_color">#4FC3F7</color>            <!-- Azul claro para tema principal -->
+    <color name="primary_dark">#29B6F6</color>            <!-- Azul oscuro para tema principal -->
+    <color name="accent_color">#FF9800</color>            <!-- Naranja para acento -->
+    <color name="background_color">#303030</color>         <!-- Fondo principal -->
+    <color name="game_background">#1A1A1A</color>          <!-- Fondo del juego -->
+    <color name="white">#FFFFFF</color>                   <!-- Blanco -->
+    <color name="black">#000000</color>                   <!-- Negro -->
+    <color name="semi_transparent_black">#80000000</color> <!-- Negro semi-transparente -->
+    
 </resources>

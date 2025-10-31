@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.gaming.enhancedagar.app-mergeDebugResources-21:/values-v16/values-v16.xml",
+            "outputFile": "com.gaming.enhancedagar.app-mergeDebugResources-32:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/data/data/com.termux/files/home/.gradle/caches/transforms-3/1afafc8cc181c3c4f72fbcc1499f6f3e/transformed/core-1.8.0/res/values-v16/values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
-                    }
-                },
-                {
-                    "source": "/data/data/com.termux/files/home/.gradle/caches/transforms-3/efff579d4c776f1b21eeac6e0a2e03e1/transformed/appcompat-1.4.0/res/values-v16/values-v16.xml",
+                    "source": "/data/data/com.termux/files/home/.gradle/caches/transforms-3/94d78e3a323c68b34e6f460571fffb81/transformed/appcompat-1.6.1/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -30,6 +20,16 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
+                    }
+                },
+                {
+                    "source": "/data/data/com.termux/files/home/.gradle/caches/transforms-3/53f26e806f2980d0a653973d03d54beb/transformed/core-1.12.0/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
                     }
                 }
             ]
