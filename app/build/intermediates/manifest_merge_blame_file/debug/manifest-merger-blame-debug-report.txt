@@ -1,0 +1,237 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.gaming.enhancedagar"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="34" />
+10
+11    <!-- Permisos de red para funcionalidad online -->
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:7:5-67
+12-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:7:22-64
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:8:5-79
+13-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:8:22-76
+14    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+14-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:9:5-76
+14-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:9:22-73
+15
+16    <!-- Permisos de almacenamiento -->
+17    <uses-permission
+17-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:12:5-13:38
+18        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+18-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:12:22-78
+19        android:maxSdkVersion="28" />
+19-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:13:9-35
+20    <uses-permission
+20-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:14:5-15:38
+21        android:name="android.permission.READ_EXTERNAL_STORAGE"
+21-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:14:22-77
+22        android:maxSdkVersion="32" />
+22-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:15:9-35
+23    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+23-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:16:5-17:40
+23-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:16:22-79
+24
+25    <!-- Permisos de audio -->
+26    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+26-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:20:5-71
+26-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:20:22-68
+27    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+27-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:21:5-80
+27-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:21:22-77
+28
+29    <!-- Permisos de vibración -->
+30    <uses-permission android:name="android.permission.VIBRATE" />
+30-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:24:5-66
+30-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:24:22-63
+31
+32    <!-- Permisos de ubicación (opcional para features geográficas) -->
+33    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+33-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:27:5-79
+33-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:27:22-76
+34    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+34-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:28:5-81
+34-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:28:22-78
+35
+36    <!-- Permisos para mantener la pantalla encendida durante gameplay -->
+37    <uses-permission android:name="android.permission.WAKE_LOCK" />
+37-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:31:5-68
+37-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:31:22-65
+38
+39    <!-- Permisos para ejecutar en segundo plano -->
+40    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+40-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:34:5-77
+40-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:34:22-74
+41
+42    <!-- Configuración de hardware -->
+43    <uses-feature
+43-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:37:5-39:35
+44        android:name="android.hardware.touchscreen"
+44-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:38:9-52
+45        android:required="true" />
+45-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:39:9-32
+46    <uses-feature
+46-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:40:5-42:36
+47        android:name="android.hardware.touchscreen.multitouch"
+47-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:41:9-63
+48        android:required="false" />
+48-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:42:9-33
+49    <uses-feature
+49-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:43:5-45:36
+50        android:name="android.hardware.accelerometer"
+50-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:44:9-54
+51        android:required="false" />
+51-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:45:9-33
+52    <uses-feature
+52-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:46:5-48:36
+53        android:name="android.hardware.gyroscope"
+53-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:47:9-50
+54        android:required="false" />
+54-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:48:9-33
+55
+56    <!-- Configuración de orientación específica para tablets -->
+57    <supports-screens
+57-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:103:5-108:37
+58        android:anyDensity="true"
+58-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:108:9-34
+59        android:largeScreens="true"
+59-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:106:9-36
+60        android:normalScreens="true"
+60-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:105:9-37
+61        android:smallScreens="true"
+61-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:104:9-36
+62        android:xlargeScreens="true" />
+62-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:107:9-37
+63
+64    <!-- Configuración de características del dispositivo -->
+65    <uses-feature
+65-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:111:5-113:36
+66        android:name="android.hardware.screen.landscape"
+66-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:112:9-57
+67        android:required="false" />
+67-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:113:9-33
+68    <uses-feature
+68-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:115:5-117:36
+69        android:name="android.hardware.screen.portrait"
+69-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:116:9-56
+70        android:required="false" />
+70-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:117:9-33
+71
+72    <application
+72-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:50:5-100:19
+73        android:allowBackup="true"
+73-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:51:9-35
+74        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+74-->[androidx.core:core:1.8.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/1afafc8cc181c3c4f72fbcc1499f6f3e/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
+75        android:debuggable="true"
+76        android:extractNativeLibs="true"
+77        android:hardwareAccelerated="true"
+77-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:55:9-43
+78        android:icon="@mipmap/ic_launcher"
+78-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:52:9-43
+79        android:label="@string/app_name"
+79-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:53:9-41
+80        android:largeHeap="true"
+80-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:56:9-33
+81        android:preserveLegacyExternalStorage="true"
+81-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:58:9-53
+82        android:requestLegacyExternalStorage="true"
+82-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:57:9-52
+83        android:theme="@style/Theme.EnhancedAgarGame" >
+83-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:54:9-54
+84
+85        <!-- Activity del menú principal (Launcher) -->
+86        <activity
+86-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:62:9-72:20
+87            android:name="com.gaming.enhancedagar.ui.MainMenuActivity"
+87-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:63:13-48
+88            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|navigation|uiMode"
+88-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:67:13-105
+89            android:exported="true"
+89-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:64:13-36
+90            android:screenOrientation="portrait"
+90-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:66:13-49
+91            android:theme="@style/Theme.EnhancedAgarGame" >
+91-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:65:13-58
+92            <intent-filter>
+92-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:68:13-71:29
+93                <action android:name="android.intent.action.MAIN" />
+93-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:69:17-69
+93-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:69:25-66
+94
+95                <category android:name="android.intent.category.LAUNCHER" />
+95-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:70:17-77
+95-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:70:27-74
+96            </intent-filter>
+97        </activity>
+98
+99        <!-- Activity principal del juego -->
+100        <activity
+100-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:75:9-80:108
+101            android:name="com.gaming.enhancedagar.MainActivity"
+101-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:76:13-41
+102            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|navigation|uiMode"
+102-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:80:13-105
+103            android:exported="false"
+103-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:77:13-37
+104            android:screenOrientation="portrait"
+104-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:79:13-49
+105            android:theme="@style/Theme.EnhancedAgarGame" />
+105-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:78:13-58
+106
+107        <!-- Activity de game over -->
+108        <activity
+108-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:83:9-88:65
+109            android:name="com.gaming.enhancedagar.ui.GameOverActivity"
+109-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:84:13-48
+110            android:exported="false"
+110-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:85:13-37
+111            android:parentActivityName="com.gaming.enhancedagar.ui.MainMenuActivity"
+111-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:88:13-62
+112            android:screenOrientation="portrait"
+112-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:87:13-49
+113            android:theme="@style/Theme.EnhancedAgarGame" />
+113-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:86:13-58
+114
+115        <!-- Activity de configuración -->
+116        <activity
+116-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:91:9-96:65
+117            android:name="com.gaming.enhancedagar.ui.SettingsActivity"
+117-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:92:13-48
+118            android:exported="false"
+118-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:93:13-37
+119            android:parentActivityName="com.gaming.enhancedagar.ui.MainMenuActivity"
+119-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:96:13-62
+120            android:screenOrientation="portrait"
+120-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:95:13-49
+121            android:theme="@style/Theme.EnhancedAgarGame" />
+121-->/data/data/com.termux/files/home/agar/app/src/main/AndroidManifest.xml:94:13-58
+122
+123        <provider
+123-->[androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+124            android:name="androidx.startup.InitializationProvider"
+124-->[androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:27:13-67
+125            android:authorities="com.gaming.enhancedagar.androidx-startup"
+125-->[androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:28:13-68
+126            android:exported="false" >
+126-->[androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:29:13-37
+127            <meta-data
+127-->[androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+128                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+128-->[androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
+129                android:value="androidx.startup" />
+129-->[androidx.emoji2:emoji2:1.0.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/f43d938ab423eee0ecd495b6be766fad/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
+130            <meta-data
+130-->[androidx.lifecycle:lifecycle-process:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/234dc3fabeb26270431bb1f191f19a01/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+131                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+131-->[androidx.lifecycle:lifecycle-process:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/234dc3fabeb26270431bb1f191f19a01/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+132                android:value="androidx.startup" />
+132-->[androidx.lifecycle:lifecycle-process:2.4.0] /data/data/com.termux/files/home/.gradle/caches/transforms-3/234dc3fabeb26270431bb1f191f19a01/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+133        </provider>
+134    </application>
+135
+136</manifest>

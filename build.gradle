@@ -1,0 +1,19 @@
+// Top-level build file for Enhanced Agar Game
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.2'
+    }
+}
+
+// allprojects sin repositorios - los toma de settings.gradle
+allprojects {
+    
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

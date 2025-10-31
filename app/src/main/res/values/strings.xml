@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Información básica de la aplicación -->
+    <string name="app_name">Enhanced Agar Game</string>
+    <string name="app_version">1.2.3</string>
+    <string name="build_date">2025-11-01</string>
+    <string name="app_description">Una versión mejorada del clásico juego Agar.io</string>
+    
+    <!-- Nombres de actividades -->
+    <string name="main_activity_title">Enhanced Agar</string>
+    <string name="menu_activity_title">Menú Principal</string>
+    <string name="settings_activity_title">Configuración</string>
+    <string name="profile_activity_title">Perfil del Jugador</string>
+    <string name="leaderboard_activity_title">Tabla de Clasificación</string>
+    <string name="credits_activity_title">Créditos</string>
+    
+    <!-- Botones principales -->
+    <string name="btn_play">Jugar</string>
+    <string name="btn_menu">Menú</string>
+    <string name="btn_settings">Configuración</string>
+    <string name="btn_profile">Perfil</string>
+    <string name="btn_leaderboard">Clasificación</string>
+    <string name="btn_credits">Créditos</string>
+    <string name="btn_back">Volver</string>
+    <string name="btn_exit">Salir</string>
+    <string name="btn_save">Guardar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_ok">Aceptar</string>
+    <string name="btn_retry">Reintentar</string>
+    <string name="btn_resume">Continuar</string>
+    <string name="btn_pause">Pausar</string>
+    <string name="btn_restart">Reiniciar</string>
+    <string name="btn_join">Unirse</string>
+    <string name="btn_create">Crear</string>
+    <string name="btn_search">Buscar</string>
+    
+    <!-- Botones de configuración -->
+    <string name="btn_audio_config">Configurar Audio</string>
+    <string name="btn_graphic_config">Gráficos</string>
+    <string name="btn_control_config">Controles</string>
+    <string name="btn_network_config">Red</string>
+    <string name="btn_language_config">Idioma</string>
+    <string name="btn_apply">Aplicar</string>
+    <string name="btn_reset">Restablecer</string>
+    
+    <!-- Textos de UI comunes -->
+    <string name="title">Título</string>
+    <string name="subtitle">Subtítulo</string>
+    <string name="username">Nombre de Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="email">Email</string>
+    <string name="score">Puntuación</string>
+    <string name="level">Nivel</string>
+    <string name="experience">Experiencia</string>
+    <string name="achievements">Logros</string>
+    <string name="settings">Configuración</string>
+    <string name="about">Acerca de</string>
+    <string name="help">Ayuda</string>
+    <string name="loading">Cargando...</string>
+    <string name="connecting">Conectando...</string>
+    <string name="waiting">Esperando...</string>
+    <string name="searching">Buscando...</string>
+    
+    <!-- Textos del juego -->
+    <string name="game_mode_single">Modo Individual</string>
+    <string name="game_mode_multiplayer">Multijugador</string>
+    <string name="game_mode_teams">Equipos</string>
+    <string name="game_mode_experimental">Experimental</string>
+    
+    <string name="server_status_online">En Línea</string>
+    <string name="server_status_offline">Fuera de Línea</string>
+    <string name="server_status_maintenance">Mantenimiento</string>
+    
+    <string name="lives_left">Vidas Restantes</string>
+    <string name="players_alive">Jugadores Vivos</string>
+    <string name="time_remaining">Tiempo Restante</string>
+    <string name="game_paused">Juego Pausado</string>
+    <string name="game_over">¡Juego Terminado!</string>
+    <string name="you_won">¡Ganaste!</string>
+    <string name="you_lost">Perdiste</string>
+    
+    <string name="current_mass">Masa Actual</string>
+    <string name="current_speed">Velocidad Actual</string>
+    <string name="leader_position">Posición Líder</string>
+    <string name="your_position">Tu Posición</string>
+    <string name="mass_consumed">Masa Consumida</string>
+    <string name="time_played">Tiempo Jugado</string>
+    
+    <!-- Roles y habilidades -->
+    <string name="role_cell">Célula</string>
+    <string name="role_bacteria">Bacteria</string>
+    <string name="role_virus">Virus</string>
+    <string name="role_parasite">Parásito</string>
+    <string name="role_antivirus">Antivirus</string>
+    <string name="role_cell_divider">Divisor de Células</string>
+    <string name="role_mass_transfer">Transferidor de Masa</string>
+    
+    <string name="ability_split">Dividir</string>
+    <string name="ability_eject_mass">Expulsar Masa</string>
+    <string name="ability_boost">Impulso</string>
+    <string name="ability_invisible">Invisible</string>
+    <string name="ability_protect">Proteger</string>
+    <string name="ability_heal">Curar</string>
+    <string name="ability_slow">Ralentizar</string>
+    <string name="ability_clone">Clonar</string>
+    <string name="ability_genetic_modifier">Modificador Genético</string>
+    <string name="ability_teleport">Teletransportar</string>
+    <string name="ability_shield">Escudo</string>
+    <string name="ability_emp">Pulso Electromagnético</string>
+    
+    <string name="ability_description_split">Divide tu célula en dos partes más pequeñas</string>
+    <string name="ability_description_eject">Expulsa una pequeña masa para escapar o para que otra célula la consuma</string>
+    <string name="ability_description_boost">Aumenta temporalmente tu velocidad a costa de masa</string>
+    <string name="ability_description_invisible">Vuelvete invisible por un corto período de tiempo</string>
+    <string name="ability_description_protect">Activa un escudo protector temporal</string>
+    <string name="ability_description_heal">Recupera masa perdida</string>
+    <string name="ability_description_slow">Ralentiza a todos los enemigos cercanos</string>
+    <string name="ability_description_clone">Crea una copia temporal de tu célula</string>
+    <string name="ability_description_genetic">Modifica las propiedades de tu célula</string>
+    <string name="ability_description_teleport">Teletransporta a una ubicación aleatoria</string>
+    <string name="ability_description_shield">Crea un escudo que absorbe daño</string>
+    <string name="ability_description_emp">Pulso que afecta temporalmente a todos los jugadores</string>
+    
+    <!-- Configuraciones de audio -->
+    <string name="audio_settings">Configuración de Audio</string>
+    <string name="master_volume">Volumen Maestro</string>
+    <string name="music_volume">Volumen de Música</string>
+    <string name="sfx_volume">Efectos de Sonido</string>
+    <string name="voice_volume">Volumen de Voz</string>
+    <string name="mute_audio">Silenciar Audio</string>
+    <string name="audio_disabled">Audio Deshabilitado</string>
+    <string name="audio_enabled">Audio Habilitado</string>
+    
+    <!-- Configuraciones de gráficos -->
+    <string name="graphics_settings">Configuración de Gráficos</string>
+    <string name="quality">Calidad</string>
+    <string name="quality_low">Baja</string>
+    <string name="quality_medium">Media</string>
+    <string name="quality_high">Alta</string>
+    <string name="quality_ultra">Ultra</string>
+    
+    <string name="frame_rate">Tasa de FPS</string>
+    <string name="frame_rate_30">30 FPS</string>
+    <string name="frame_rate_60">60 FPS</string>
+    <string name="frame_rate_120">120 FPS</string>
+    
+    <string name="render_distance">Distancia de Renderizado</string>
+    <string name="render_distance_near">Cercana</string>
+    <string name="render_distance_normal">Normal</string>
+    <string name="render_distance_far">Lejana</string>
+    
+    <string name="particles">Partículas</string>
+    <string name="anti_aliasing">Antialiasing</string>
+    <string name="vsync">VSync</string>
+    <string name="fullscreen">Pantalla Completa</string>
+    <string name="show_fps">Mostrar FPS</string>
+    <string name="show_latency">Mostrar Latencia</string>
+    
+    <!-- Configuraciones de controles -->
+    <string name="control_settings">Configuración de Controles</string>
+    <string name="touch_sensitivity">Sensibilidad Táctil</string>
+    <string name="invert_controls">Invertir Controles</string>
+    <string name="gesture_controls">Controles por Gestos</string>
+    <string name="virtual_d_pad">Pad Virtual</string>
+    <string name="gyroscope_enabled">Gyroscope Habilitado</string>
+    <string name="accelerometer_enabled">Acelerómetro Habilitado</string>
+    
+    <!-- Configuraciones de red -->
+    <string name="network_settings">Configuración de Red</string>
+    <string name="server_address">Dirección del Servidor</string>
+    <string name="port">Puerto</string>
+    <string name="connection_timeout">Tiempo de Espera de Conexión</string>
+    <string name="auto_reconnect">Reconectar Automáticamente</string>
+    <string name="bandwidth_limit">Límite de Ancho de Banda</string>
+    <string name="show_network_stats">Mostrar Estadísticas de Red</string>
+    
+    <!-- Configuraciones de idioma y localización -->
+    <string name="language_settings">Configuración de Idioma</string>
+    <string name="language_english">English</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+    <string name="language_chinese">中文</string>
+    <string name="language_japanese">日本語</string>
+    <string name="language_korean">한국어</string>
+    <string name="language_portuguese">Português</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_italian">Italiano</string>
+    
+    <!-- Configuraciones generales -->
+    <string name="general_settings">Configuración General</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="auto_save">Guardado Automático</string>
+    <string name="auto_update">Actualización Automática</string>
+    <string name="crash_reporting">Informes de Fallas</string>
+    <string name="analytics">Analíticas</string>
+    <string name="telemetry">Telemetría</string>
+    <string name="performance_monitoring">Monitoreo de Rendimiento</string>
+    
+    <!-- Mensajes del sistema -->
+    <string name="system_startup">Iniciando Enhanced Agar...</string>
+    <string name="system_initializing">Inicializando sistemas...</string>
+    <string name="system_loading">Cargando recursos...</string>
+    <string name="system_saving">Guardando progreso...</string>
+    <string name="system_saved">Progreso guardado</string>
+    <string name="system_error">Error del sistema</string>
+    <string name="system_maintenance">El sistema está en mantenimiento</string>
+    <string name="system_update_available">Actualización disponible</string>
+    <string name="system_restart_required">Se requiere reiniciar</string>
+    
+    <!-- Mensajes de error -->
+    <string name="error_network_connection">Error de conexión a red</string>
+    <string name="error_server_not_found">Servidor no encontrado</string>
+    <string name="error_authentication_failed">Error de autenticación</string>
+    <string name="error_invalid_credentials">Credenciales inválidas</string>
+    <string name="error_permission_denied">Permiso denegado</string>
+    <string name="error_storage_unavailable">Almacenamiento no disponible</string>
+    <string name="error_invalid_operation">Operación inválida</string>
+    <string name="error_timeout">Tiempo de espera agotado</string>
+    <string name="error_unknown">Error desconocido</string>
+    <string name="error_retry">Intentar de nuevo</string>
+    
+    <!-- Mensajes de éxito -->
+    <string name="success_login">Inicio de sesión exitoso</string>
+    <string name="success_save">Guardado exitosamente</string>
+    <string name="success_update">Actualización exitosa</string>
+    <string name="success_settings_applied">Configuración aplicada</string>
+    <string name="success_connection">Conexión exitosa</string>
+    <string name="success_achievement_unlocked">Logro desbloqueado</string>
+    
+    <!-- Mensajes informativos -->
+    <string name="info_welcome">Bienvenido a Enhanced Agar</string>
+    <string name="info_new_version">Nueva versión disponible</string>
+    <string name="info_maintenance_mode">Modo mantenimiento activado</string>
+    <string name="info_server_restart">El servidor se reiniciará en breve</string>
+    <string name="info_data_sync">Sincronizando datos...</string>
+    <string name="info_backup_created">Copia de seguridad creada</string>
+    <string name="info_achievement_progress">Progreso del logro guardado</string>
+    
+    <!-- Textos de perfiles y estadísticas -->
+    <string name="profile_stats">Estadísticas del Perfil</string>
+    <string name="games_played">Partidas Jugadas</string>
+    <string name="games_won">Partidas Ganadas</string>
+    <string name="total_time_played">Tiempo Total Jugado</string>
+    <string name="highest_score">Puntuación Máxima</string>
+    <string name="longest_survival">Supervivencia Máxima</string>
+    <string name="total_mass_consumed">Masa Total Consumida</string>
+    <string name="current_rank">Rango Actual</string>
+    <string name="next_rank">Siguiente Rango</string>
+    <string name="rank_progress">Progreso del Rango</string>
+    
+    <!-- Textos de skins y personalización -->
+    <string name="skins_store">Tienda de Skins</string>
+    <string name="owned_skins">Skins Disponibles</string>
+    <string name="skin_color">Color del Skin</string>
+    <string name="skin_pattern">Patrón del Skin</string>
+    <string name="skin_equipped">Skin Equipada</string>
+    <string name="skin_unlocked">Skin Desbloqueada</string>
+    <string name="customization">Personalización</string>
+    <string name="avatar_settings">Configuración de Avatar</string>
+    <string name="equip_skin">Equipar Skin</string>
+    <string name="preview_skin">Vista Previa</string>
+    
+    <!-- Textos de logros -->
+    <string name="achievement_first_game">Primera partida</string>
+    <string name="achievement_first_win">Primera victoria</string>
+    <string name="achievement_mass_collector">Colector de masa</string>
+    <string name="achievement_survivor">Superviviente</string>
+    <string name="achievement_master">Maestro del Agar</string>
+    <string name="achievement_speed_demon">Demonio de velocidad</string>
+    <string name="achievement_ability_master">Maestro de habilidades</string>
+    <string name="achievement_social_butterfly">Mariposa social</string>
+    <string name="achievement_perfectionist">Perfeccionista</string>
+    
+    <!-- Textos de niveles y experiencia -->
+    <string name="level_up">¡Subiste de Nivel!</string>
+    <string name="experience_gained">Experiencia Ganada</string>
+    <string name="experience_required">Experiencia Requerida</string>
+    <string name="current_level">Nivel Actual</string>
+    <string name="next_level">Siguiente Nivel</string>
+    <string name="xp_multiplier">Multiplicador XP</string>
+    
+    <!-- Textos de compras y monedas -->
+    <string name="currency_coins">Monedas</string>
+    <string name="currency_gems">Gemas</string>
+    <string name="currency_points">Puntos</string>
+    <string name="shop">Tienda</string>
+    <string name="purchase">Comprar</string>
+    <string name="free">Gratis</string>
+    <string name="premium">Premium</string>
+    <string name="limited_time">Tiempo Limitado</string>
+    <string name="deal_offer">Oferta Especial</string>
+    
+    <!-- Textos de modos de juego -->
+    <string name="mode_ffa">Libre Para Todos</string>
+    <string name="mode_survival">Supervivencia</string>
+    <string name="mode_race">Carrera</string>
+    <string name="mode_challenge">Desafío</string>
+    <string name="mode_pvp">Jugador vs Jugador</string>
+    <string name="mode_coop">Cooperativo</string>
+    <string name="mode_campaign">Campaña</string>
+    <string name="mode_arena">Arena</string>
+    
+    <!-- Textos de dificultad -->
+    <string name="difficulty_easy">Fácil</string>
+    <string name="difficulty_medium">Medio</string>
+    <string name="difficulty_hard">Difícil</string>
+    <string name="difficulty_expert">Experto</string>
+    <string name="difficulty_nightmare">Pesadilla</string>
+    
+    <!-- Textos de tiempo -->
+    <string name="time_seconds">segundos</string>
+    <string name="time_minutes">minutos</string>
+    <string name="time_hours">horas</string>
+    <string name="time_days">días</string>
+    
+    <!-- Textos de unidades -->
+    <string name="unit_mass">masa</string>
+    <string name="unit_speed">velocidad</string>
+    <string name="unit_score">puntos</string>
+    <string name="unit_bytes">bytes</string>
+    <string name="unit_mb">MB</string>
+    <string name="unit_gb">GB</string>
+    <string name="unit_ms">ms</string>
+    <string name="unit_fps">FPS</string>
+    
+    <!-- Textos de interfaz -->
+    <string name="hud_mass_display">Masa: %1$s</string>
+    <string name="hud_score_display">Puntuación: %1$s</string>
+    <string name="hud_rank_display">Rango: %1$s</string>
+    <string name="hud_players_display">Jugadores: %1$s</string>
+    <string name="hud_time_display">Tiempo: %1$s</string>
+    <string name="hud_ping_display">Ping: %1$s ms</string>
+    
+    <!-- Textos de menús contextuales -->
+    <string name="context_settings">Configuración</string>
+    <string name="context_stats">Estadísticas</string>
+    <string name="context_share">Compartir</string>
+    <string name="context_report">Reportar</string>
+    <string name="context_block">Bloquear</string>
+    <string name="context_invite">Invitar</string>
+    
+    <!-- Textos de tutorial -->
+    <string name="tutorial_welcome">Bienvenido al Tutorial</string>
+    <string name="tutorial_step_1">Mueve tu célula con el dedo</string>
+    <string name="tutorial_step_2">Consume las células más pequeñas para crecer</string>
+    <string name="tutorial_step_3">Evita las células más grandes</string>
+    <string name="tutorial_step_4">Usa las habilidades especiales</string>
+    <string name="tutorial_step_5">¡Diviértete jugando!</string>
+    <string name="tutorial_skip">Saltar Tutorial</string>
+    <string name="tutorial_next">Siguiente</string>
+    <string name="tutorial_previous">Anterior</string>
+    <string name="tutorial_finish">Finalizar</string>
+    
+    <!-- Textos de notificaciones push -->
+    <string name="notification_new_match">¡Nuevo partido disponible!</string>
+    <string name="notification_achievement">Has desbloqueado un nuevo logro</string>
+    <string name="notification_event">Evento especial en progreso</string>
+    <string name="notification_maintenance">El mantenimiento ha finalizado</string>
+    <string name="notification_update">Nueva actualización disponible</string>
+    <string name="notification_friend_request">Nueva solicitud de amistad</string>
+    <string name="notification_gift">¡Has recibido un regalo!</string>
+    
+    <!-- Textos de descripción de la app -->
+    <string name="app_subtitle">La evolución del clásico juego Agar.io</string>
+    <string name="app_features_title">Características Principales</string>
+    <string name="app_feature_1">Modo multijugador online</string>
+    <string name="app_feature_2">Habilidades especiales únicas</string>
+    <string name="app_feature_3">Sistema de logros y ranking</string>
+    <string name="app_feature_4">Personalización avanzada de skins</string>
+    <string name="app_feature_5">Múltiples modos de juego</string>
+    <string name="app_feature_6">Gráficos mejorados y optimizados</string>
+    <string name="app_feature_7">Sistema de recompensas diarias</string>
+    <string name="app_feature_8">Compatibilidad multiplataforma</string>
+    
+    <!-- Textos de soporte y feedback -->
+    <string name="support_email">support@enhancedagar.com</string>
+    <string name="feedback_email">feedback@enhancedagar.com</string>
+    <string name="bug_report">Reportar Error</string>
+    <string name="feature_request">Solicitar Función</string>
+    <string name="contact_support">Contactar Soporte</string>
+    <string name="community_forum">Foro de la Comunidad</string>
+    <string name="faq">Preguntas Frecuentes</string>
+    <string name="privacy_policy">Política de Privacidad</string>
+    <string name="terms_of_service">Términos de Servicio</string>
+    
+    <!-- Textos de desarrollador -->
+    <string name="developer_name">Enhanced Gaming Studio</string>
+    <string name="developer_website">www.enhancedagar.com</string>
+    <string name="version_name">Nombre de Versión</string>
+    <string name="build_number">Número de Compilación</string>
+    <string name="changelog">Registro de Cambios</string>
+    <string name="development_team">Equipo de Desarrollo</string>
+    <string name="special_thanks">Agradecimientos Especiales</string>
+    
+</resources>
