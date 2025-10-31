@@ -148,8 +148,8 @@
         <item name="android:minHeight">48dp</item>
     </style>
 
-    <!-- Estilo para HUD del juego -->
-    <style name="HUD.Text">
+    <!-- Estilo base para HUD del juego -->
+    <style name="HUD">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
@@ -159,14 +159,18 @@
         <item name="android:shadowRadius">3</item>
     </style>
 
+    <!-- Estilo para HUD del juego -->
+    <style name="HUD.Text" parent="HUD">
+    </style>
+
     <!-- Estilo para puntuación -->
     <style name="Score.Text" parent="HUD.Text">
         <item name="android:textSize">24sp</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <!-- Estilo para información del jugador -->
-    <style name="PlayerInfo.Text">
+    <!-- Estilo base para información del jugador -->
+    <style name="PlayerInfo">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
         <item name="android:background">@color/semi_transparent_black</item>
@@ -174,18 +178,28 @@
         <item name="android:layout_margin">4dp</item>
     </style>
 
+    <!-- Estilo para información del jugador -->
+    <style name="PlayerInfo.Text" parent="PlayerInfo">
+    </style>
+
+    <!-- Estilo base para animaciones -->
+    <style name="Animation">
+        <item name="android:duration">300</item>
+        <item name="android:interpolator">@android:anim/decelerate_interpolator</item>
+    </style>
+
     <!-- Animaciones personalizadas -->
-    <style name="Animation.FadeIn">
+    <style name="Animation.FadeIn" parent="Animation">
         <item name="android:windowEnterAnimation">@anim/fade_in</item>
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
 
-    <style name="Animation.SlideUp">
+    <style name="Animation.SlideUp" parent="Animation">
         <item name="android:windowEnterAnimation">@anim/slide_up</item>
         <item name="android:windowExitAnimation">@anim/slide_down</item>
     </style>
 
-    <style name="Animation.SlideDown">
+    <style name="Animation.SlideDown" parent="Animation">
         <item name="android:windowEnterAnimation">@anim/slide_down</item>
         <item name="android:windowExitAnimation">@anim/slide_up</item>
     </style>
