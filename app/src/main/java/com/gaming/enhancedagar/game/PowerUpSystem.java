@@ -1,10 +1,9 @@
 package com.gaming.enhancedagar.game;
 
-import java.awt.*;
-import java.awt.geom.AffineTransform;
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.*;
 
 /**
  * Sistema completo de power-ups para EnhancedAgar
@@ -126,12 +125,12 @@ public class PowerUpSystem {
     // Clase para power-ups en el mapa
     public static class MapPowerUp {
         public final PowerUpConfig config;
-        public final Point position;
+        public final android.graphics.Point position;
         private boolean collected;
         private long spawnTime;
         private double rotation;
         
-        public MapPowerUp(PowerUpConfig config, Point position) {
+        public MapPowerUp(PowerUpConfig config, android.graphics.Point position) {
             this.config = config;
             this.position = position;
             this.collected = false;
@@ -161,7 +160,7 @@ public class PowerUpSystem {
     private final Map<Player, List<ActivePowerUp>> playerPowerUps;
     private final Map<PowerUpType, Integer> lastSpawnTime;
     private final Random random;
-    private final Rectangle gameBounds;
+    private final Rect gameBounds;
     
     // Configuraciones predefinidas de power-ups
     private static final Map<PowerUpType, PowerUpConfig> BASE_CONFIGS;
@@ -200,7 +199,7 @@ public class PowerUpSystem {
     }
     
     // Constructor
-    public PowerUpSystem(Rectangle gameBounds) {
+    public PowerUpSystem(Rect gameBounds) {
         this.activeMapPowerUps = new ArrayList<>();
         this.playerPowerUps = new HashMap<>();
         this.lastSpawnTime = new HashMap<>();
@@ -298,9 +297,9 @@ public class PowerUpSystem {
         int margin = 50;
         
         for (int i = 0; i < maxAttempts; i++) {
-            int x = random.nextInt(gameBounds.width - 2 * margin) + margin;
-            int y = random.nextInt(gameBounds.height - 2 * margin) + margin;
-            Point pos = new Point(x, y);
+            int x = random.nextInt(gameBounds.width() - 2 * margin) + margin;
+            int y = random.nextInt(gameBounds.height() - 2 * margin) + margin;
+            android.graphics.Point pos = new android.graphics.Point(x, y);
             
             // Verificar que no esté demasiado cerca de otros power-ups
             if (isValidPosition(pos)) {
@@ -313,7 +312,7 @@ public class PowerUpSystem {
     /**
      * Verifica si una posición es válida para spawnear
      */
-    private boolean isValidPosition(Point position) {
+    private boolean isValidPosition(android.graphics.Point position) {
         int minDistance = 100;
         
         for (MapPowerUp powerUp : activeMapPowerUps) {
@@ -351,7 +350,7 @@ public class PowerUpSystem {
     /**
      * Intenta recoger un power-up para un jugador
      */
-    public boolean tryCollectPowerUp(Player player, Point pickupPoint) {
+    public boolean tryCollectPowerUp(Player player, android.graphics.Point pickupPoint) {
         for (MapPowerUp powerUp : activeMapPowerUps) {
             if (!powerUp.isCollected() && isInPickupRange(player, pickupPoint, powerUp)) {
                 powerUp.collect();
@@ -364,7 +363,7 @@ public class PowerUpSystem {
     /**
      * Verifica si un power-up está en rango de recogida
      */
-    private boolean isInPickupRange(Player player, Point pickupPoint, MapPowerUp powerUp) {
+    private boolean isInPickupRange(Player player, android.graphics.Point pickupPoint, MapPowerUp powerUp) {
         double distance = pickupPoint.distance(powerUp.position);
         return distance < 30; // Rango de recogida
     }
@@ -540,7 +539,7 @@ public class PowerUpSystem {
     /**
      * Renderiza todos los power-ups del mapa
      */
-    public void render(Graphics2D g) {
+    public void render(Canvas canvas) {
         for (MapPowerUp powerUp : activeMapPowerUps) {
             if (!powerUp.isCollected()) {
                 renderMapPowerUp(g, powerUp);
@@ -551,146 +550,168 @@ public class PowerUpSystem {
     /**
      * Renderiza un power-up individual en el mapa
      */
-    private void renderMapPowerUp(Graphics2D g, MapPowerUp powerUp) {
-        Point pos = powerUp.position;
+    private void renderMapPowerUp(Canvas canvas, MapPowerUp powerUp) {
+        android.graphics.Point pos = powerUp.position;
         PowerUpConfig config = powerUp.config;
         
         // Guardar transformaciones
-        AffineTransform oldTransform = g.getTransform();
+        canvas.save();
         
         // Mover al centro del power-up
-        g.translate(pos.x, pos.y);
-        g.rotate(powerUp.getRotation());
+        canvas.translate(pos.x, pos.y);
+        canvas.rotate((float) (powerUp.getRotation() * 180 / Math.PI));
         
         // Renderizar según rareza
         switch (config.rarity) {
             case COMMON:
-                renderCommonPowerUp(g, config);
+                renderCommonPowerUp(canvas, config);
                 break;
             case UNCOMMON:
-                renderUncommonPowerUp(g, config);
+                renderUncommonPowerUp(canvas, config);
                 break;
             case RARE:
-                renderRarePowerUp(g, config);
+                renderRarePowerUp(canvas, config);
                 break;
             case LEGENDARY:
-                renderLegendaryPowerUp(g, config);
+                renderLegendaryPowerUp(canvas, config);
                 break;
             case MYTHIC:
-                renderMythicPowerUp(g, config);
+                renderMythicPowerUp(canvas, config);
                 break;
         }
         
         // Restaurar transformaciones
-        g.setTransform(oldTransform);
+        canvas.restore();
     }
     
     /**
      * Renderizado para power-up común
      */
-    private void renderCommonPowerUp(Graphics2D g, PowerUpConfig config) {
-        g.setColor(config.type.getColor());
-        g.fillOval(-15, -15, 30, 30);
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("Arial", Font.BOLD, 12));
-        g.drawString(config.type.name().substring(0, 1), -5, 4);
+    private void renderCommonPowerUp(Canvas canvas, PowerUpConfig config) {
+        Paint paint = new Paint();
+        paint.setColor(config.type.getColor());
+        canvas.drawOval(-15, -15, 30, 30, paint);
+        
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(12);
+        paint.setTypeface(Typeface.DEFAULT_BOLD);
+        canvas.drawText(config.type.name().substring(0, 1), -5, 4, paint);
     }
     
     /**
      * Renderizado para power-up poco común
      */
-    private void renderUncommonPowerUp(Graphics2D g, PowerUpConfig config) {
-        g.setColor(config.type.getColor());
-        g.fillOval(-15, -15, 30, 30);
-        g.setColor(Color.WHITE);
-        g.setStroke(new BasicStroke(2));
-        g.drawOval(-15, -15, 30, 30);
-        g.setFont(new Font("Arial", Font.BOLD, 12));
-        g.drawString(config.type.name().substring(0, 1), -5, 4);
+    private void renderUncommonPowerUp(Canvas canvas, PowerUpConfig config) {
+        Paint paint = new Paint();
+        paint.setColor(config.type.getColor());
+        canvas.drawOval(-15, -15, 30, 30, paint);
+        
+        paint.setColor(Color.WHITE);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(2);
+        canvas.drawOval(-15, -15, 30, 30, paint);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setTextSize(12);
+        paint.setTypeface(Typeface.DEFAULT_BOLD);
+        canvas.drawText(config.type.name().substring(0, 1), -5, 4, paint);
     }
     
     /**
      * Renderizado para power-up raro
      */
-    private void renderRarePowerUp(Graphics2D g, PowerUpConfig config) {
-        g.setColor(config.type.getColor());
-        g.fillOval(-15, -15, 30, 30);
-        g.setColor(Color.WHITE);
-        g.setStroke(new BasicStroke(3));
-        g.drawOval(-15, -15, 30, 30);
+    private void renderRarePowerUp(Canvas canvas, PowerUpConfig config) {
+        Paint paint = new Paint();
+        paint.setColor(config.type.getColor());
+        canvas.drawOval(-15, -15, 30, 30, paint);
+        
+        paint.setColor(Color.WHITE);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(3);
+        canvas.drawOval(-15, -15, 30, 30, paint);
         
         // Efecto de brillo
-        g.setColor(Color.WHITE);
-        g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
-        g.fillOval(-20, -20, 40, 40);
-        g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+        paint.setColor(Color.WHITE);
+        paint.setAlpha(77); // 0.3f alpha
+        canvas.drawOval(-20, -20, 40, 40, paint);
         
-        g.setFont(new Font("Arial", Font.BOLD, 12));
-        g.drawString(config.type.name().substring(0, 1), -5, 4);
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(12);
+        paint.setTypeface(Typeface.DEFAULT_BOLD);
+        canvas.drawText(config.type.name().substring(0, 1), -5, 4, paint);
     }
     
     /**
      * Renderizado para power-up legendario
      */
-    private void renderLegendaryPowerUp(Graphics2D g, PowerUpConfig config) {
+    private void renderLegendaryPowerUp(Canvas canvas, PowerUpConfig config) {
         // Gradiente de rareza
-        GradientPaint gradient = new GradientPaint(-15, -15, config.rarity.getColor(), 
-                                                  15, 15, config.type.getColor());
-        g.setPaint(gradient);
-        g.fillOval(-15, -15, 30, 30);
+        Paint paint = new Paint();
+        Shader shader = new LinearGradient(-15, -15, 15, 15, 
+                new int[]{config.rarity.getColor(), config.type.getColor()}, null);
+        paint.setShader(shader);
+        canvas.drawOval(-15, -15, 30, 30, paint);
         
-        g.setColor(Color.WHITE);
-        g.setStroke(new BasicStroke(4));
-        g.drawOval(-15, -15, 30, 30);
+        paint.setShader(null);
+        paint.setColor(Color.WHITE);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(4);
+        canvas.drawOval(-15, -15, 30, 30, paint);
+        paint.setStyle(Paint.Style.FILL);
         
         // Efectos de partículas (simplificado)
         long time = System.currentTimeMillis();
-        g.setColor(Color.WHITE);
+        paint.setColor(Color.WHITE);
         for (int i = 0; i < 6; i++) {
             double angle = (time * 0.001 + i * Math.PI / 3) % (2 * Math.PI);
             int x = (int) (Math.cos(angle) * 25);
             int y = (int) (Math.sin(angle) * 25);
-            g.fillOval(x - 2, y - 2, 4, 4);
+            canvas.drawOval(x - 2, y - 2, 4, 4, paint);
         }
         
-        g.setFont(new Font("Arial", Font.BOLD, 12));
-        g.drawString(config.type.name().substring(0, 1), -5, 4);
+        paint.setTextSize(12);
+        paint.setTypeface(Typeface.DEFAULT_BOLD);
+        canvas.drawText(config.type.name().substring(0, 1), -5, 4, paint);
     }
     
     /**
      * Renderizado para power-up mítico
      */
-    private void renderMythicPowerUp(Graphics2D g, PowerUpConfig config) {
+    private void renderMythicPowerUp(Canvas canvas, PowerUpConfig config) {
         // Efecto de fuego animado
         long time = System.currentTimeMillis();
         int pulse = (int) (Math.sin(time * 0.01) * 5 + 20);
         
-        GradientPaint gradient = new GradientPaint(-pulse, -pulse, Color.RED, 
-                                                  pulse, pulse, Color.GOLD);
-        g.setPaint(gradient);
-        g.fillOval(-pulse, -pulse, pulse * 2, pulse * 2);
+        Paint paint = new Paint();
+        Shader shader = new LinearGradient(-pulse, -pulse, pulse, pulse,
+                new int[]{Color.RED, Color.GOLD}, null);
+        paint.setShader(shader);
+        canvas.drawOval(-pulse, -pulse, pulse * 2, pulse * 2, paint);
         
-        g.setColor(Color.WHITE);
-        g.setStroke(new BasicStroke(5));
-        g.drawOval(-pulse, -pulse, pulse * 2, pulse * 2);
+        paint.setShader(null);
+        paint.setColor(Color.WHITE);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(5);
+        canvas.drawOval(-pulse, -pulse, pulse * 2, pulse * 2, paint);
+        paint.setStyle(Paint.Style.FILL);
         
         // Partículas mágicas
-        g.setColor(Color.CYAN);
+        paint.setColor(Color.CYAN);
         for (int i = 0; i < 8; i++) {
             double angle = (time * 0.002 + i * Math.PI / 4) % (2 * Math.PI);
             int x = (int) (Math.cos(angle) * 30);
             int y = (int) (Math.sin(angle) * 30);
-            g.fillOval(x - 3, y - 3, 6, 6);
+            canvas.drawOval(x - 3, y - 3, 6, 6, paint);
         }
         
-        g.setFont(new Font("Arial", Font.BOLD, 12));
-        g.drawString(config.type.name().substring(0, 1), -5, 4);
+        paint.setTextSize(12);
+        paint.setTypeface(Typeface.DEFAULT_BOLD);
+        canvas.drawText(config.type.name().substring(0, 1), -5, 4, paint);
     }
     
     /**
      * Renderiza indicadores de power-ups activos para un jugador
      */
-    public void renderPlayerPowerUpIndicators(Graphics2D g, Player player, Point screenPos) {
+    public void renderPlayerPowerUpIndicators(Canvas canvas, Player player, android.graphics.Point screenPos) {
         List<ActivePowerUp> powerUps = getPlayerPowerUps(player);
         
         if (powerUps.isEmpty()) {
@@ -699,7 +720,7 @@ public class PowerUpSystem {
         
         int yOffset = 0;
         for (ActivePowerUp powerUp : powerUps) {
-            renderPowerUpIndicator(g, screenPos.x + 10, screenPos.y + yOffset, powerUp);
+            renderPowerUpIndicator(canvas, screenPos.x + 10, screenPos.y + yOffset, powerUp);
             yOffset += 25;
         }
     }
@@ -707,24 +728,26 @@ public class PowerUpSystem {
     /**
      * Renderiza un indicador individual de power-up
      */
-    private void renderPowerUpIndicator(Graphics2D g, int x, int y, ActivePowerUp powerUp) {
+    private void renderPowerUpIndicator(Canvas canvas, int x, int y, ActivePowerUp powerUp) {
         PowerUpConfig config = powerUp.config;
+        Paint paint = new Paint();
         
         // Fondo del indicador
-        g.setColor(config.rarity.getColor());
-        g.fillRoundRect(x, y, 120, 20, 5, 5);
+        paint.setColor(config.rarity.getColor());
+        canvas.drawRoundRect(x, y, 120, 20, 5, 5, paint);
         
         // Barra de progreso
         float progress = powerUp.getProgress();
         int progressWidth = (int) (progress * 116);
-        g.setColor(Color.GREEN);
-        g.fillRoundRect(x + 2, y + 2, progressWidth, 16, 3, 3);
+        paint.setColor(Color.GREEN);
+        canvas.drawRoundRect(x + 2, y + 2, progressWidth, 16, 3, 3, paint);
         
         // Texto
-        g.setColor(Color.WHITE);
-        g.setFont(new Font("Arial", Font.BOLD, 10));
+        paint.setColor(Color.WHITE);
+        paint.setTextSize(10);
+        paint.setTypeface(Typeface.DEFAULT_BOLD);
         String text = String.format("%s (%.1fs)", config.type.getDisplayName(), powerUp.getTimeRemaining());
-        g.drawString(text, x + 5, y + 14);
+        canvas.drawText(text, x + 5, y + 14, paint);
     }
     
     /**
@@ -781,7 +804,7 @@ public class PowerUpSystem {
     /**
      * Fuerza el spawn de un power-up específico (debug/admin)
      */
-    public void forceSpawnPowerUp(PowerUpType type, Point position) {
+    public void forceSpawnPowerUp(PowerUpType type, android.graphics.Point position) {
         PowerUpConfig config = BASE_CONFIGS.get(type);
         if (config != null) {
             activeMapPowerUps.add(new MapPowerUp(config, position));

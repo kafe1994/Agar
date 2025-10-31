@@ -2,8 +2,8 @@ package com.gaming.enhancedagar.engine;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.awt.*;
-import java.awt.geom.AffineTransform;
+import android.graphics.*;
+import android.graphics.Matrix;
 
 /**
  * Sistema avanzado de partículas con pool, múltiples tipos y optimización
@@ -454,6 +454,10 @@ public class ParticleSystem {
      * Aplica efectos especiales a las partículas
      */
     private void applySpecialEffects(Particle particle, float lifeProgress) {
+        // Esta función se llama desde updateParticle, por lo que necesita el deltaTime
+        // Pero no lo tenemos aquí, lo calcularemos basado en el tiempo de vida
+        float deltaTime = 0.016f; // DeltaTime por defecto
+        
         switch (particle.type) {
             case FIRE:
                 particle.size *= (1f + 0.5f * deltaTime);
@@ -487,30 +491,30 @@ public class ParticleSystem {
     /**
      * Renderiza todas las partículas
      */
-    public void render(Graphics2D g2d) {
+    public void render(Canvas canvas) {
         if (!enabled) return;
         
-        // Configurar blending para efectos
-        Composite originalComposite = g2d.getComposite();
+        // Guardar estado original del canvas
+        canvas.save();
         
         // Agrupar por tipo para renderizado eficiente
-        renderParticlesByType(g2d, ParticleType.TRAIL);
-        renderParticlesByType(g2d, ParticleType.SMOKE);
-        renderParticlesByType(g2d, ParticleType.FIRE);
-        renderParticlesByType(g2d, ParticleType.EXPLOSION);
-        renderParticlesByType(g2d, ParticleType.SPARK);
-        renderParticlesByType(g2d, ParticleType.STAR);
-        renderParticlesByType(g2d, ParticleType.MAGIC);
-        renderParticlesByType(g2d, ParticleType.SPLASH);
-        renderParticlesByType(g2d, ParticleType.SHOCKWAVE);
-        renderParticlesByType(g2d, ParticleType.HEAL);
+        renderParticlesByType(canvas, ParticleType.TRAIL);
+        renderParticlesByType(canvas, ParticleType.SMOKE);
+        renderParticlesByType(canvas, ParticleType.FIRE);
+        renderParticlesByType(canvas, ParticleType.EXPLOSION);
+        renderParticlesByType(canvas, ParticleType.SPARK);
+        renderParticlesByType(canvas, ParticleType.STAR);
+        renderParticlesByType(canvas, ParticleType.MAGIC);
+        renderParticlesByType(canvas, ParticleType.SPLASH);
+        renderParticlesByType(canvas, ParticleType.SHOCKWAVE);
+        renderParticlesByType(canvas, ParticleType.HEAL);
         
-        // Restaurar composite original
-        g2d.setComposite(originalComposite);
+        // Restaurar estado del canvas
+        canvas.restore();
     }
     
-    private void renderParticlesByType(Graphics2D g2d, ParticleType type) {
-        boolean hasAdditive = false;
+    private void renderParticlesByType(Canvas canvas, ParticleType type) {
+        Paint paint = new Paint();
         
         for (Particle particle : particles) {
             if (particle.type != type || !particle.active) continue;
@@ -519,26 +523,18 @@ public class ParticleSystem {
             float finalAlpha = particle.alpha * currentProfile.effectIntensity;
             if (finalAlpha < 0.05f) continue;
             
-            Composite composite = g2d.getComposite();
+            // Configurar el paint con alpha
+            paint.setAlpha((int) (finalAlpha * 255));
+            paint.setColor(particle.color);
             
             // Usar additive blending para efectos luminosos
             if (shouldUseAdditiveBlending(particle.type)) {
-                if (!hasAdditive) {
-                    g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, finalAlpha));
-                    hasAdditive = true;
-                }
+                paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.ADD));
             } else {
-                if (hasAdditive) {
-                    g2d.setComposite(composite);
-                    hasAdditive = false;
-                }
+                paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_OVER));
             }
             
-            renderParticle(g2d, particle);
-        }
-        
-        if (hasAdditive) {
-            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+            renderParticle(canvas, particle, paint);
         }
     }
     
@@ -548,161 +544,205 @@ public class ParticleSystem {
                type == ParticleType.STAR || type == ParticleType.SPARK;
     }
     
-    private void renderParticle(Graphics2D g2d, Particle particle) {
-        g2d.setTransform(AffineTransform.getRotateInstance(particle.rotation, particle.x, particle.y));
+    private void renderParticle(Canvas canvas, Particle particle, Paint paint) {
+        canvas.save();
+        
+        // Aplicar rotación usando Matrix de Android
+        Matrix matrix = new Matrix();
+        matrix.postRotate(particle.rotation, particle.x, particle.y);
+        canvas.setMatrix(matrix);
         
         float size = particle.size;
         float alpha = Math.min(1f, particle.alpha * currentProfile.effectIntensity);
         
-        Color renderColor = blendColors(particle.color, particle.endColor, 
+        android.graphics.Color renderColor = blendColorsAndroid(particle.color, particle.endColor, 
                                       particle.lifetime / particle.maxLifetime);
         
-        renderColor = new Color(renderColor.getRed(), renderColor.getGreen(), 
-                              renderColor.getBlue(), (int)(alpha * 255));
-        
-        g2d.setColor(renderColor);
+        paint.setColor(renderColor);
+        paint.setAlpha((int)(alpha * 255));
         
         switch (particle.type) {
             case TRAIL:
-                renderTrail(g2d, particle.x, particle.y, size);
+                renderTrail(canvas, paint, particle.x, particle.y, size);
                 break;
             case SPARK:
-                renderSpark(g2d, particle.x, particle.y, size, particle.pattern);
+                renderSpark(canvas, paint, particle.x, particle.y, size, particle.pattern);
                 break;
             case SMOKE:
-                renderSmoke(g2d, particle.x, particle.y, size);
+                renderSmoke(canvas, paint, particle.x, particle.y, size);
                 break;
             case FIRE:
-                renderFire(g2d, particle.x, particle.y, size);
+                renderFire(canvas, paint, particle.x, particle.y, size);
                 break;
             case STAR:
-                renderStar(g2d, particle.x, particle.y, size, particle.pattern);
+                renderStar(canvas, paint, particle.x, particle.y, size, particle.pattern);
                 break;
             case MAGIC:
-                renderMagic(g2d, particle.x, particle.y, size, particle.pattern);
+                renderMagic(canvas, paint, particle.x, particle.y, size, particle.pattern);
                 break;
             case SHOCKWAVE:
-                renderShockwave(g2d, particle.x, particle.y, size);
+                renderShockwave(canvas, paint, particle.x, particle.y, size);
                 break;
             default:
-                renderCircle(g2d, particle.x, particle.y, size);
+                renderCircle(canvas, paint, particle.x, particle.y, size);
                 break;
         }
         
-        g2d.setTransform(AffineTransform.getRotateInstance(0, 0, 0));
+        canvas.restore();
     }
     
-    private void renderTrail(Graphics2D g2d, float x, float y, float size) {
-        int s = (int)size;
-        g2d.fillOval((int)(x - s), (int)(y - s), s * 2, s * 2);
+    private void renderTrail(Canvas canvas, Paint paint, float x, float y, float size) {
+        float s = size;
+        canvas.drawCircle(x, y, s, paint);
     }
     
-    private void renderSpark(Graphics2D g2d, float x, float y, float size, int pattern) {
-        int length = (int)(size * 3);
-        int thickness = Math.max(1, (int)(size / 3));
+    private void renderSpark(Canvas canvas, Paint paint, float x, float y, float size, int pattern) {
+        float length = size * 3;
+        float thickness = Math.max(1, size / 3);
         
-        g2d.setStroke(new BasicStroke(thickness));
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(thickness);
+        paint.setStrokeCap(Paint.Cap.ROUND);
         
         switch (pattern % 4) {
             case 0: // Líneas rectas
-                g2d.drawLine((int)(x - length), (int)y, (int)(x + length), (int)y);
+                canvas.drawLine(x - length, y, x + length, y, paint);
                 break;
             case 1: // Líneas verticales
-                g2d.drawLine((int)x, (int)(y - length), (int)x, (int)(y + length));
+                canvas.drawLine(x, y - length, x, y + length, paint);
                 break;
             case 2: // Líneas diagonales /
-                g2d.drawLine((int)(x - length), (int)(y + length), 
-                           (int)(x + length), (int)(y - length));
+                canvas.drawLine(x - length, y + length, x + length, y - length, paint);
                 break;
             case 3: // Líneas diagonales \
-                g2d.drawLine((int)(x - length), (int)(y - length), 
-                           (int)(x + length), (int)(y + length));
+                canvas.drawLine(x - length, y - length, x + length, y + length, paint);
                 break;
         }
     }
     
-    private void renderSmoke(Graphics2D g2d, float x, float y, float size) {
+    private void renderSmoke(Canvas canvas, Paint paint, float x, float y, float size) {
         // Renderizar múltiples círculos para efecto de humo
         int circles = 3;
+        
+        Paint smokePaint = new Paint(paint);
+        smokePaint.setStyle(Paint.Style.FILL);
+        
         for (int i = 0; i < circles; i++) {
             float offset = i * size * 0.3f;
             float alpha = 0.3f / (i + 1);
-            g2d.setColor(new Color(80, 80, 80, (int)(alpha * 255)));
-            g2d.fillOval((int)(x - offset), (int)(y - offset), 
-                        (int)(size * 2 + offset * 2), (int)(size * 2 + offset * 2));
+            
+            smokePaint.setColor(android.graphics.Color.argb((int)(alpha * 255), 80, 80, 80));
+            canvas.drawCircle(x - offset, y - offset, size + offset, smokePaint);
         }
     }
     
-    private void renderFire(Graphics2D g2d, float x, float y, float size) {
+    private void renderFire(Canvas canvas, Paint paint, float x, float y, float size) {
         // Efecto de llama triangular
-        int baseSize = (int)(size * 2);
-        int[] xPoints = {(int)x, (int)(x - baseSize), (int)(x + baseSize)};
-        int[] yPoints = {(int)(y - baseSize), (int)(y + baseSize), (int)(y + baseSize)};
+        float baseSize = size * 2;
         
-        GradientPaint gradient = new GradientPaint(x, y - baseSize, 
-                                                 new Color(255, 255, 100, 200),
-                                                 x, y + baseSize, 
-                                                 new Color(255, 50, 0, 200));
+        Path path = new Path();
+        path.moveTo(x, y - baseSize);
+        path.lineTo(x - baseSize, y + baseSize);
+        path.lineTo(x + baseSize, y + baseSize);
+        path.close();
         
-        g2d.setPaint(gradient);
-        g2d.fillPolygon(xPoints, yPoints, 3);
+        // Crear gradiente
+        Shader gradient = new LinearGradient(
+            x, y - baseSize,
+            x, y + baseSize,
+            new int[]{android.graphics.Color.argb(200, 255, 255, 100), 
+                     android.graphics.Color.argb(200, 255, 50, 0)},
+            new float[]{0f, 1f},
+            Shader.TileMode.CLAMP
+        );
+        
+        Paint firePaint = new Paint(paint);
+        firePaint.setStyle(Paint.Style.FILL);
+        firePaint.setShader(gradient);
+        
+        canvas.drawPath(path, firePaint);
     }
     
-    private void renderStar(Graphics2D g2d, float x, float y, float size, int pattern) {
+    private void renderStar(Canvas canvas, Paint paint, float x, float y, float size, int pattern) {
         int points = 4 + (pattern % 4);
-        double radius = size;
-        double innerRadius = radius * 0.4;
+        float radius = size;
+        float innerRadius = radius * 0.4f;
         
-        int[] xPoints = new int[points * 2];
-        int[] yPoints = new int[points * 2];
+        Path path = new Path();
         
         for (int i = 0; i < points * 2; i++) {
-            double angle = i * Math.PI / points;
-            double r = (i % 2 == 0) ? radius : innerRadius;
+            float angle = (float)(i * Math.PI / points);
+            float r = (i % 2 == 0) ? radius : innerRadius;
             
-            xPoints[i] = (int)(x + r * Math.cos(angle));
-            yPoints[i] = (int)(y + r * Math.sin(angle));
+            float px = (float)(x + r * Math.cos(angle));
+            float py = (float)(y + r * Math.sin(angle));
+            
+            if (i == 0) {
+                path.moveTo(px, py);
+            } else {
+                path.lineTo(px, py);
+            }
         }
         
-        g2d.fillPolygon(xPoints, yPoints, points * 2);
+        path.close();
+        
+        Paint starPaint = new Paint(paint);
+        starPaint.setStyle(Paint.Style.FILL);
+        
+        canvas.drawPath(path, starPaint);
     }
     
-    private void renderMagic(Graphics2D g2d, float x, float y, float size, int pattern) {
+    private void renderMagic(Canvas canvas, Paint paint, float x, float y, float size, int pattern) {
         // Efecto de cristal/magia con formas geométricas
         int sides = 3 + (pattern % 4);
-        int radius = (int)(size * 1.5);
+        float radius = size * 1.5f;
         
-        int[] xPoints = new int[sides];
-        int[] yPoints = new int[sides];
+        Path path = new Path();
         
         for (int i = 0; i < sides; i++) {
-            double angle = i * 2 * Math.PI / sides;
-            xPoints[i] = (int)(x + radius * Math.cos(angle));
-            yPoints[i] = (int)(y + radius * Math.sin(angle));
+            float angle = (float)(i * 2 * Math.PI / sides);
+            float px = (float)(x + radius * Math.cos(angle));
+            float py = (float)(y + radius * Math.sin(angle));
+            
+            if (i == 0) {
+                path.moveTo(px, py);
+            } else {
+                path.lineTo(px, py);
+            }
         }
         
-        g2d.fillPolygon(xPoints, yPoints, sides);
+        path.close();
+        
+        Paint magicPaint = new Paint(paint);
+        magicPaint.setStyle(Paint.Style.FILL);
+        
+        canvas.drawPath(path, magicPaint);
     }
     
-    private void renderShockwave(Graphics2D g2d, float x, float y, float size) {
-        g2d.setStroke(new BasicStroke(2));
-        g2d.drawOval((int)(x - size), (int)(y - size), 
-                    (int)(size * 2), (int)(size * 2));
+    private void renderShockwave(Canvas canvas, Paint paint, float x, float y, float size) {
+        Paint shockPaint = new Paint(paint);
+        shockPaint.setStyle(Paint.Style.STROKE);
+        shockPaint.setStrokeWidth(2);
+        
+        canvas.drawCircle(x, y, size, shockPaint);
     }
     
-    private void renderCircle(Graphics2D g2d, float x, float y, float size) {
-        g2d.fillOval((int)(x - size), (int)(y - size), (int)(size * 2), (int)(size * 2));
+    private void renderCircle(Canvas canvas, Paint paint, float x, float y, float size) {
+        Paint circlePaint = new Paint(paint);
+        circlePaint.setStyle(Paint.Style.FILL);
+        
+        canvas.drawCircle(x, y, size, circlePaint);
     }
     
-    private Color blendColors(Color start, Color end, float factor) {
+    private android.graphics.Color blendColorsAndroid(android.graphics.Color start, android.graphics.Color end, float factor) {
         factor = Math.max(0, Math.min(1, factor));
         
-        int r = (int)(start.getRed() * (1 - factor) + end.getRed() * factor);
-        int g = (int)(start.getGreen() * (1 - factor) + end.getGreen() * factor);
-        int b = (int)(start.getBlue() * (1 - factor) + end.getBlue() * factor);
-        int a = (int)(start.getAlpha() * (1 - factor) + end.getAlpha() * factor);
+        int r = (int)(android.graphics.Color.red(start) * (1 - factor) + android.graphics.Color.red(end) * factor);
+        int g = (int)(android.graphics.Color.green(start) * (1 - factor) + android.graphics.Color.green(end) * factor);
+        int b = (int)(android.graphics.Color.blue(start) * (1 - factor) + android.graphics.Color.blue(end) * factor);
+        int a = (int)(android.graphics.Color.alpha(start) * (1 - factor) + android.graphics.Color.alpha(end) * factor);
         
-        return new Color(r, g, b, a);
+        return android.graphics.Color.argb(a, r, g, b);
     }
     
     /**

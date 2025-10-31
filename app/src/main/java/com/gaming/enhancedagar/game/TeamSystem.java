@@ -2,8 +2,8 @@ package com.gaming.enhancedagar.game;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.awt.*;
-import java.awt.geom.Point2D;
+import android.graphics.*;
+import android.graphics.PointF;
 
 /**
  * Sistema de equipos para el juego Agar mejorado
@@ -13,18 +13,18 @@ public class TeamSystem {
     
     // Roles disponibles en el juego
     public enum TeamRole {
-        SCOUT("Explorador", Color.CYAN, 1.3f, 1.1f),      // Velocidad alta, masa baja
-        TANK("Tanque", Color.GRAY, 0.8f, 1.5f),           // Velocidad baja, masa alta
-        SUPPORT("Soporte", Color.GREEN, 1.0f, 1.2f),      // Velocidad media, masa media
-        ASSASSIN("Asesino", Color.RED, 1.2f, 0.9f),       // Velocidad alta, masa media
-        CONTROLLER("Controlador", Color.MAGENTA, 0.9f, 1.1f); // Velocidad media-baja, masa media
+        SCOUT("Explorador", android.graphics.Color.CYAN, 1.3f, 1.1f),      // Velocidad alta, masa baja
+        TANK("Tanque", android.graphics.Color.GRAY, 0.8f, 1.5f),           // Velocidad baja, masa alta
+        SUPPORT("Soporte", android.graphics.Color.GREEN, 1.0f, 1.2f),      // Velocidad media, masa media
+        ASSASSIN("Asesino", android.graphics.Color.RED, 1.2f, 0.9f),       // Velocidad alta, masa media
+        CONTROLLER("Controlador", android.graphics.Color.MAGENTA, 0.9f, 1.1f); // Velocidad media-baja, masa media
         
         private final String name;
-        private final Color color;
+        private final android.graphics.Color color;
         private final float speedMultiplier;
         private final float massMultiplier;
         
-        TeamRole(String name, Color color, float speedMultiplier, float massMultiplier) {
+        TeamRole(String name, android.graphics.Color color, float speedMultiplier, float massMultiplier) {
             this.name = name;
             this.color = color;
             this.speedMultiplier = speedMultiplier;
@@ -32,7 +32,7 @@ public class TeamSystem {
         }
         
         public String getName() { return name; }
-        public Color getColor() { return color; }
+        public android.graphics.Color getColor() { return color; }
         public float getSpeedMultiplier() { return speedMultiplier; }
         public float getMassMultiplier() { return massMultiplier; }
     }
@@ -105,12 +105,12 @@ public class TeamSystem {
     // Mensajes de comunicación visual
     public static class TeamMessage {
         private final String message;
-        private final Color color;
+        private final android.graphics.Color color;
         private final long timestamp;
-        private final Point2D.Float position;
+        private final PointF position;
         private final int duration;
         
-        public TeamMessage(String message, Color color, Point2D.Float position, int duration) {
+        public TeamMessage(String message, android.graphics.Color color, PointF position, int duration) {
             this.message = message;
             this.color = color;
             this.position = position;
@@ -123,8 +123,8 @@ public class TeamSystem {
         }
         
         public String getMessage() { return message; }
-        public Color getColor() { return color; }
-        public Point2D.Float getPosition() { return position; }
+        public android.graphics.Color getColor() { return color; }
+        public PointF getPosition() { return position; }
         public int getDuration() { return duration; }
         public long getTimestamp() { return timestamp; }
     }
@@ -134,7 +134,7 @@ public class TeamSystem {
         private final int playerId;
         private final String playerName;
         private TeamRole role;
-        private Point2D.Float position;
+        private PointF position;
         private float mass;
         private Team team;
         private boolean isActive;
@@ -146,7 +146,7 @@ public class TeamSystem {
             this.playerId = playerId;
             this.playerName = playerName;
             this.role = TeamRole.SUPPORT; // Rol por defecto
-            this.position = new Point2D.Float(0, 0);
+            this.position = new PointF(0, 0);
             this.mass = 100f;
             this.team = null;
             this.isActive = false;
@@ -156,7 +156,7 @@ public class TeamSystem {
         }
         
         public void setRole(TeamRole role) { this.role = role; }
-        public void setPosition(Point2D.Float position) { this.position = position; }
+        public void setPosition(PointF position) { this.position = position; }
         public void setMass(float mass) { this.mass = mass; }
         public void setTeam(Team team) { this.team = team; }
         public void setActive(boolean active) { isActive = active; }
@@ -164,7 +164,7 @@ public class TeamSystem {
         public void setSpeed(float speed) { this.speed = speed; }
         
         public TeamRole getRole() { return role; }
-        public Point2D.Float getPosition() { return position; }
+        public PointF getPosition() { return position; }
         public float getMass() { return mass; }
         public Team getTeam() { return team; }
         public boolean isActive() { return isActive; }
@@ -219,11 +219,11 @@ public class TeamSystem {
         private int score;
         private int territoryControl;
         private Map<TeamObjective, Integer> objectiveProgress;
-        private Point2D.Float teamCenter;
+        private PointF teamCenter;
         private float teamMass;
         private int teamEnergy;
         private List<TeamMessage> messages;
-        private Map<TeamPlayer, Point2D.Float> lastKnownPositions;
+        private Map<TeamPlayer, PointF> lastKnownPositions;
         
         public Team(int teamId, String teamName, Color teamColor) {
             this.teamId = teamId;
@@ -234,7 +234,7 @@ public class TeamSystem {
             this.score = 0;
             this.territoryControl = 0;
             this.objectiveProgress = new ConcurrentHashMap<>();
-            this.teamCenter = new Point2D.Float(0, 0);
+            this.teamCenter = new PointF(0, 0);
             this.teamMass = 0f;
             this.teamEnergy = 100;
             this.messages = new ArrayList<>();
@@ -266,11 +266,11 @@ public class TeamSystem {
         public int getScore() { return score; }
         public int getTerritoryControl() { return territoryControl; }
         public Map<TeamObjective, Integer> getObjectiveProgress() { return objectiveProgress; }
-        public Point2D.Float getTeamCenter() { return teamCenter; }
+        public PointF getTeamCenter() { return teamCenter; }
         public float getTeamMass() { return teamMass; }
         public int getTeamEnergy() { return teamEnergy; }
         public List<TeamMessage> getMessages() { return messages; }
-        public Map<TeamPlayer, Point2D.Float> getLastKnownPositions() { return lastKnownPositions; }
+        public Map<TeamPlayer, PointF> getLastKnownPositions() { return lastKnownPositions; }
         
         private void calculateTeamStats() {
             // Calcular centro del equipo
@@ -302,7 +302,7 @@ public class TeamSystem {
             messages.removeIf(TeamMessage::isExpired);
         }
         
-        public void updateLastKnownPosition(TeamPlayer player, Point2D.Float position) {
+        public void updateLastKnownPosition(TeamPlayer player, PointF position) {
             lastKnownPositions.put(player, position);
         }
     }
@@ -620,15 +620,15 @@ public class TeamSystem {
             switch (player.getRole()) {
                 case SCOUT:
                     // Los exploradores buscan objetivos
-                    sendTeamMessage(player, "¡Buscando objetivos!", Color.CYAN);
+                    sendTeamMessage(player, "¡Buscando objetivos!", android.graphics.Color.CYAN);
                     break;
                 case ASSASSIN:
                     // Los asesinos se posicionan para ataques
-                    sendTeamMessage(player, "¡Posicionándome!", Color.RED);
+                    sendTeamMessage(player, "¡Posicionándome!", android.graphics.Color.RED);
                     break;
                 case TANK:
                     // Los tanques avanzan como vanguardia
-                    sendTeamMessage(player, "¡Avanzando!", Color.GRAY);
+                    sendTeamMessage(player, "¡Avanzando!", android.graphics.Color.GRAY);
                     break;
             }
         }
@@ -641,15 +641,15 @@ public class TeamSystem {
             switch (player.getRole()) {
                 case SUPPORT:
                     // Los soportes se enfocan en curación y soporte
-                    sendTeamMessage(player, "¡Dando soporte!", Color.GREEN);
+                    sendTeamMessage(player, "¡Dando soporte!", android.graphics.Color.GREEN);
                     break;
                 case CONTROLLER:
                     // Los controladores manejan el área
-                    sendTeamMessage(player, "¡Controlando área!", Color.MAGENTA);
+                    sendTeamMessage(player, "¡Controlando área!", android.graphics.Color.MAGENTA);
                     break;
                 case TANK:
                     // Los tanques protegen al equipo
-                    sendTeamMessage(player, "¡Defendiendo!", Color.GRAY);
+                    sendTeamMessage(player, "¡Defendiendo!", android.graphics.Color.GRAY);
                     break;
             }
         }
@@ -659,7 +659,7 @@ public class TeamSystem {
         for (TeamPlayer player : team.getPlayers()) {
             if (!player.isActive()) continue;
             
-            sendTeamMessage(player, "¡Retirándose!", Color.ORANGE);
+            sendTeamMessage(player, "¡Retirándose!", android.graphics.Color.ORANGE);
         }
     }
     
@@ -729,7 +729,7 @@ public class TeamSystem {
         
         if (activePlayers.size() < 2) return false;
         
-        Point2D.Float center = team.getTeamCenter();
+        PointF center = team.getTeamCenter();
         float maxDistance = 0;
         
         for (TeamPlayer player : activePlayers) {
@@ -740,7 +740,7 @@ public class TeamSystem {
         return maxDistance <= config.getFormationRadius() / 2;
     }
     
-    private int calculateTerritorySize(Point2D.Float center, float radius) {
+    private int calculateTerritorySize(PointF center, float radius) {
         // Lógica simplificada para calcular territorio controlado
         // En un juego real, esto sería más complejo
         return (int)(radius * radius / 100);

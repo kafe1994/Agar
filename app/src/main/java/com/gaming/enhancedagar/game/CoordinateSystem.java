@@ -1,10 +1,9 @@
 package com.gaming.enhancedagar.game;
 
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Dimension;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.PointF;
+import android.graphics.RectF;
 import java.util.List;
 import java.util.ArrayList;
 

@@ -2,9 +2,7 @@ package com.gaming.enhancedagar.game;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.awt.*;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Point2D;
+import android.graphics.*;
 
 /**
  * Sistema estático de física para el juego Enhanced Agar
@@ -25,7 +23,7 @@ public final class Physics {
     private static final Set<String> activeCollisions = ConcurrentHashMap.newKeySet();
     
     // Pool de objetos para optimización
-    private static final Queue<Point2D.Float> pointPool = new ArrayDeque<>();
+    private static final Queue<PointF> pointPool = new ArrayDeque<>();
     private static final Queue<Vector2D> vectorPool = new ArrayDeque<>();
     
     /**
@@ -67,7 +65,7 @@ public final class Physics {
         public Vector2D normal;
         public Vector2D velocity;
         public float impulse;
-        public Point2D.Float contactPoint;
+        public PointF contactPoint;
         
         public CollisionResult() {
             this.collided = false;
@@ -75,7 +73,7 @@ public final class Physics {
             this.normal = new Vector2D();
             this.velocity = new Vector2D();
             this.impulse = 0;
-            this.contactPoint = new Point2D.Float();
+            this.contactPoint = new PointF();
         }
     }
     
@@ -356,7 +354,7 @@ public final class Physics {
     /**
      * Aplica fuerza de resorte
      */
-    public static void applySpringForce(PhysicalEntity entity, Point2D.Float anchor, float stiffness, float restLength) {
+    public static void applySpringForce(PhysicalEntity entity, PointF anchor, float stiffness, float restLength) {
         float dx = entity.x - anchor.x;
         float dy = entity.y - anchor.y;
         float distance = (float) Math.sqrt(dx * dx + dy * dy);
@@ -553,7 +551,7 @@ public final class Physics {
     /**
      * Resuelve colisión con paredes
      */
-    public static void resolveWallCollision(PhysicalEntity entity, Rectangle bounds) {
+    public static void resolveWallCollision(PhysicalEntity entity, Rect bounds) {
         // Colisión con pared izquierda
         if (entity.x - entity.radius < bounds.x) {
             entity.x = bounds.x + entity.radius;
@@ -624,7 +622,7 @@ public final class Physics {
     /**
      * Actualiza el sistema de física
      */
-    public static void updatePhysics(List<PhysicalEntity> entities, float deltaTime, Rectangle bounds) {
+    public static void updatePhysics(List<PhysicalEntity> entities, float deltaTime, Rect bounds) {
         // Aplicar fuerzas y integrar movimiento
         for (PhysicalEntity entity : entities) {
             applyDamping(entity, deltaTime);
