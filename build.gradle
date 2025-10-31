@@ -5,12 +5,13 @@ plugins {
     id 'com.android.application' version '8.1.2' apply false
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+// ELIMINA ESTA SECCIÓN - causa conflicto con settings.gradle
+// allprojects {
+//     repositories {
+//         google()
+//         mavenCentral()
+//     }
+// }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
