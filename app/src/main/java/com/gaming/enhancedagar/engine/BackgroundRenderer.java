@@ -377,6 +377,10 @@ public class BackgroundRenderer {
             return themes.get(currentTheme);
         }
         
+        public String getCurrentThemeName() {
+            return currentTheme;
+        }
+        
         private void updateThemePaints() {
             Theme theme = themes.get(currentTheme);
             if (theme != null) {
@@ -884,7 +888,7 @@ public class BackgroundRenderer {
      * Obtiene el tema actual
      */
     public String getCurrentTheme() {
-        return themeSystem.getCurrentTheme().toString();
+        return themeSystem.getCurrentThemeName();
     }
     
     /**

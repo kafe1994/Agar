@@ -5,6 +5,7 @@ import android.view.SurfaceHolder;
 import android.os.SystemClock;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
+import com.gaming.enhancedagar.engine.GameEngine;
 
 /**
  * GameThread - Maneja el bucle de juego principal con control preciso de FPS

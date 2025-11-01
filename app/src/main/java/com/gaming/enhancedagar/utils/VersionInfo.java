@@ -438,7 +438,6 @@ public class VersionInfo {
     public String getBuildTimestamp() { return buildTimestamp; }
     public String getGitCommit() { return gitCommit; }
     public String getBranchName() { return branchName; }
-    public boolean isDebugBuild() { return isDebugBuild; }
     public String getSessionId() { return sessionId; }
     
     // Getters para información del dispositivo

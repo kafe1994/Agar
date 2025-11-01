@@ -1,5 +1,6 @@
 package com.gaming.enhancedagar.game;
 
+import com.gaming.enhancedagar.entities.Player;
 import android.graphics.*;
 import android.graphics.Paint;
 import android.graphics.Canvas;

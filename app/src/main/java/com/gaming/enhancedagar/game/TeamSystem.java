@@ -302,7 +302,7 @@ public class TeamSystem {
             messages.removeIf(TeamMessage::isExpired);
         }
         
-        public void updateLastKnownPosition(TeamPlayer player, Point2D.Float position) {
+        public void updateLastKnownPosition(TeamPlayer player, PointF position) {
             lastKnownPositions.put(player, position);
         }
     }
@@ -729,7 +729,7 @@ public class TeamSystem {
         
         if (activePlayers.size() < 2) return false;
         
-        Point2D.Float center = team.getTeamCenter();
+        PointF center = team.getTeamCenter();
         float maxDistance = 0;
         
         for (TeamPlayer player : activePlayers) {
@@ -740,7 +740,7 @@ public class TeamSystem {
         return maxDistance <= config.getFormationRadius() / 2;
     }
     
-    private int calculateTerritorySize(Point2D.Float center, float radius) {
+    private int calculateTerritorySize(PointF center, float radius) {
         // Lógica simplificada para calcular territorio controlado
         // En un juego real, esto sería más complejo
         return (int)(radius * radius / 100);
