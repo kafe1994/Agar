@@ -1,10 +1,7 @@
 package com.gaming.enhancedagar.game;
 
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Dimension;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
+import android.graphics.PointF;
+import android.graphics.RectF;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -47,14 +44,14 @@ public class CoordinateSystem {
     private double zoomLerpSpeed = 0.1; // Suavidad del zoom
     
     // === CONFIGURACIÓN DE OPTIMIZACIÓN ===
-    private Rectangle2D.Double viewBounds; // Límites visibles actuales
+    private RectF viewBounds; // Límites visibles actuales
     private double cullingMargin = 100.0; // Margen para culling
     
     /**
      * Constructor del sistema de coordenadas
      */
     public CoordinateSystem() {
-        this.viewBounds = new Rectangle2D.Double();
+        this.viewBounds = new RectF();
         updateViewBounds();
     }
     
@@ -71,19 +68,19 @@ public class CoordinateSystem {
     /**
      * Convierte coordenadas del mundo a coordenadas de pantalla
      */
-    public Point2D.Double worldToScreen(double worldX, double worldY) {
+    public PointF worldToScreen(double worldX, double worldY) {
         double screenX = (worldX - cameraX) * zoom + screenCenterX;
         double screenY = (worldY - cameraY) * zoom + screenCenterY;
-        return new Point2D.Double(screenX, screenY);
+        return new PointF((float)screenX, (float)screenY);
     }
     
     /**
      * Convierte coordenadas de pantalla a coordenadas del mundo
      */
-    public Point2D.Double screenToWorld(double screenX, double screenY) {
+    public PointF screenToWorld(double screenX, double screenY) {
         double worldX = (screenX - screenCenterX) / zoom + cameraX;
         double worldY = (screenY - screenCenterY) / zoom + cameraY;
-        return new Point2D.Double(worldX, worldY);
+        return new PointF((float)worldX, (float)worldY);
     }
     
     /**
@@ -191,18 +188,19 @@ public class CoordinateSystem {
     /**
      * Limita un punto a los límites del mundo
      */
-    public Point2D.Double clampToWorld(double x, double y) {
+    public PointF clampToWorld(double x, double y) {
         double clampedX = Math.max(WORLD_MIN_X, Math.min(WORLD_MAX_X, x));
         double clampedY = Math.max(WORLD_MIN_Y, Math.min(WORLD_MAX_Y, y));
-        return new Point2D.Double(clampedX, clampedY);
+        return new PointF((float)clampedX, (float)clampedY);
     }
     
     /**
      * Obtiene los límites visibles actuales del mundo
      */
-    public Rectangle2D.Double getViewBounds() {
-        return new Rectangle2D.Double(viewBounds.x, viewBounds.y, 
-                                    viewBounds.width, viewBounds.height);
+    public RectF getViewBounds() {
+        return new RectF(viewBounds.left, viewBounds.top, 
+                        viewBounds.left + (viewBounds.right - viewBounds.left), 
+                        viewBounds.top + (viewBounds.bottom - viewBounds.top));
     }
     
     /**
@@ -212,10 +210,10 @@ public class CoordinateSystem {
         double halfWidth = screenWidth / (2.0 * zoom);
         double halfHeight = screenHeight / (2.0 * zoom);
         
-        viewBounds.x = cameraX - halfWidth;
-        viewBounds.y = cameraY - halfHeight;
-        viewBounds.width = halfWidth * 2;
-        viewBounds.height = halfHeight * 2;
+        viewBounds.left = (float)(cameraX - halfWidth);
+        viewBounds.top = (float)(cameraY - halfHeight);
+        viewBounds.right = (float)(cameraX + halfWidth);
+        viewBounds.bottom = (float)(cameraY + halfHeight);
     }
     
     // === DETECCIÓN VISUAL ===
@@ -224,11 +222,12 @@ public class CoordinateSystem {
      * Verifica si un objeto es visible en la pantalla
      */
     public boolean isVisible(double worldX, double worldY, double radius) {
-        Rectangle2D.Double expandedBounds = new Rectangle2D.Double(
-            viewBounds.x - radius, viewBounds.y - radius,
-            viewBounds.width + 2 * radius, viewBounds.height + 2 * radius
+        RectF expandedBounds = new RectF(
+            (float)(viewBounds.left - radius), (float)(viewBounds.top - radius),
+            (float)(viewBounds.left + (viewBounds.right - viewBounds.left) + 2 * radius), 
+            (float)(viewBounds.top + (viewBounds.bottom - viewBounds.top) + 2 * radius)
         );
-        return expandedBounds.contains(worldX, worldY);
+        return expandedBounds.contains((float)worldX, (float)worldY);
     }
     
     /**
@@ -248,8 +247,8 @@ public class CoordinateSystem {
      * Verifica si un rectángulo interseca con la vista visible
      */
     public boolean intersectsView(double x, double y, double width, double height) {
-        Rectangle2D.Double rect = new Rectangle2D.Double(x, y, width, height);
-        return rect.intersects(viewBounds);
+        RectF rect = new RectF((float)x, (float)y, (float)(x + width), (float)(y + height));
+        return RectF.intersects(rect, viewBounds);
     }
     
     /**

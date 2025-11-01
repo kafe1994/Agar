@@ -1,13 +1,22 @@
 package com.gaming.enhancedagar.ui;
 
+import android.content.Context;
+import android.graphics.*;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.AttributeSet;
+import android.view.Gravity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.*;
+import androidx.core.content.ContextCompat;
+
 import com.gaming.enhancedagar.entities.Player;
 import com.gaming.enhancedagar.game.GameState;
 import com.gaming.enhancedagar.game.CameraManager;
 
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
-import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -16,7 +25,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * GameHUD - Interfaz de usuario principal durante el juego
  * Proporciona HUD completo con información del jugador, mini-mapa, estadísticas y controles
  */
-public class GameHUD extends JPanel implements KeyListener, MouseListener {
+public class GameHUD extends LinearLayout {
     
     // Configuración del panel
     private static final int HUD_WIDTH = 300;
@@ -25,57 +34,59 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
     private static final int NOTIFICATION_DURATION = 3000;
     private static final int MAX_NOTIFICATIONS = 5;
     
+    // Colores del tema (formato Android: 0xAARRGGBB)
+    private static final int PRIMARY_COLOR = 0xFF2C3E50;
+    private static final int SECONDARY_COLOR = 0xFF3498DB;
+    private static final int SUCCESS_COLOR = 0xFF2ECC71;
+    private static final int WARNING_COLOR = 0xFFF1C40F;
+    private static final int DANGER_COLOR = 0xFFE74C3C;
+    private static final int TEXT_COLOR = 0xFFECF0F1;
+    private static final int PANEL_COLOR = 0xDD34495E;
+    
     // Información del juego
     private Player currentPlayer;
     private GameState gameState;
     private CameraManager cameraManager;
     
     // Componentes UI
-    private JPanel playerInfoPanel;
-    private JPanel statsPanel;
-    private JPanel minimapPanel;
-    private JPanel playersListPanel;
-    private JPanel abilitiesPanel;
-    private JPanel controlsPanel;
-    private JScrollPane playersScrollPane;
+    private LinearLayout playerInfoPanel;
+    private LinearLayout statsPanel;
+    private LinearLayout minimapPanel;
+    private LinearLayout playersListPanel;
+    private LinearLayout abilitiesPanel;
+    private LinearLayout controlsPanel;
+    private ScrollView playersScrollView;
     
     // Información del jugador
-    private JLabel playerNameLabel;
-    private JLabel playerSizeLabel;
-    private JLabel playerSpeedLabel;
-    private JLabel playerRankLabel;
-    private JProgressBar healthBar;
-    private JProgressBar energyBar;
-    private JProgressBar experienceBar;
+    private TextView playerNameLabel;
+    private TextView playerSizeLabel;
+    private TextView playerSpeedLabel;
+    private TextView playerRankLabel;
+    private ProgressBar healthBar;
+    private ProgressBar energyBar;
+    private ProgressBar experienceBar;
     
     // Controles
-    private JButton pauseButton;
-    private JButton settingsButton;
-    private JButton[] abilityButtons;
-    private JPanel notificationsPanel;
+    private Button pauseButton;
+    private Button settingsButton;
+    private Button[] abilityButtons;
+    private LinearLayout notificationsPanel;
     
     // Sistema de notificaciones
     private final Queue<Notification> notificationQueue = new ConcurrentLinkedQueue<>();
     private final Map<String, Timer> activeTimers = new HashMap<>();
     
     // Estadísticas del juego
-    private JLabel killsLabel;
-    private JLabel deathsLabel;
-    private JLabel timeAliveLabel;
-    private JLabel scoreLabel;
+    private TextView killsLabel;
+    private TextView deathsLabel;
+    private TextView timeAliveLabel;
+    private TextView scoreLabel;
     
     // Lista de jugadores
-    private DefaultListModel<String> playersListModel;
-    private JList<String> playersList;
+    private ListView playersList;
     
-    // Colores del tema
-    private static final Color PRIMARY_COLOR = new Color(44, 62, 80);
-    private static final Color SECONDARY_COLOR = new Color(52, 152, 219);
-    private static final Color SUCCESS_COLOR = new Color(46, 204, 113);
-    private static final Color WARNING_COLOR = new Color(241, 196, 15);
-    private static final Color DANGER_COLOR = new Color(231, 76, 60);
-    private static final Color TEXT_COLOR = new Color(236, 240, 241);
-    private static final Color PANEL_COLOR = new Color(52, 73, 94, 220);
+    // Handler para tareas en UI thread
+    private Handler uiHandler;
     
     // Estado del HUD
     private boolean isPaused = false;
@@ -85,7 +96,29 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
     /**
      * Constructor del GameHUD
      */
-    public GameHUD(Player player, GameState gameState, CameraManager cameraManager) {
+    public GameHUD(Context context) {
+        super(context);
+        init(context);
+    }
+    
+    public GameHUD(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
+    
+    public GameHUD(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context);
+    }
+    
+    private void init(Context context) {
+        uiHandler = new Handler(Looper.getMainLooper());
+    }
+    
+    /**
+     * Inicializa el GameHUD con los parámetros del juego
+     */
+    public void initializeGame(Player player, GameState gameState, CameraManager cameraManager) {
         this.currentPlayer = player;
         this.gameState = gameState;
         this.cameraManager = cameraManager;
@@ -101,10 +134,9 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
      * Inicializa todos los componentes de la UI
      */
     private void initializeComponents() {
-        setLayout(new BorderLayout());
-        setBackground(PANEL_COLOR);
-        setPreferredSize(new Dimension(HUD_WIDTH, PANEL_HEIGHT));
-        setBorder(new EmptyBorder(10, 10, 10, 10));
+        setOrientation(VERTICAL);
+        setPadding(dpToPx(10), dpToPx(10), dpToPx(10), dpToPx(10));
+        setBackgroundColor(PANEL_COLOR);
         
         // Panel de información del jugador
         initializePlayerInfoPanel();
@@ -132,165 +164,130 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
      * Inicializa el panel de información del jugador
      */
     private void initializePlayerInfoPanel() {
-        playerInfoPanel = new JPanel(new GridBagLayout());
-        playerInfoPanel.setBackground(PANEL_COLOR);
-        playerInfoPanel.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(SECONDARY_COLOR, 2), "Jugador"));
+        playerInfoPanel = createPanel("Jugador");
         
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.WEST;
-        gbc.insets = new Insets(5, 5, 5, 5);
-        
-        // Nombre del jugador
-        gbc.gridx = 0; gbc.gridy = 0;
-        playerInfoPanel.add(createLabel("Nombre:"), gbc);
-        gbc.gridx = 1;
+        LinearLayout nameLayout = new LinearLayout(getContext());
+        nameLayout.setOrientation(LinearLayout.HORIZONTAL);
+        TextView nameLabel = createLabel("Nombre:");
         playerNameLabel = createValueLabel(currentPlayer.getName());
-        playerInfoPanel.add(playerNameLabel, gbc);
+        nameLayout.addView(nameLabel);
+        nameLayout.addView(playerNameLabel);
+        playerInfoPanel.addView(nameLayout);
         
-        // Tamaño/Masa
-        gbc.gridx = 0; gbc.gridy = 1;
-        playerInfoPanel.add(createLabel("Masa:"), gbc);
-        gbc.gridx = 1;
+        LinearLayout sizeLayout = new LinearLayout(getContext());
+        sizeLayout.setOrientation(LinearLayout.HORIZONTAL);
+        TextView sizeLabel = createLabel("Masa:");
         playerSizeLabel = createValueLabel("0");
-        playerInfoPanel.add(playerSizeLabel, gbc);
+        sizeLayout.addView(sizeLabel);
+        sizeLayout.addView(playerSizeLabel);
+        playerInfoPanel.addView(sizeLayout);
         
-        // Velocidad
-        gbc.gridx = 0; gbc.gridy = 2;
-        playerInfoPanel.add(createLabel("Velocidad:"), gbc);
-        gbc.gridx = 1;
+        LinearLayout speedLayout = new LinearLayout(getContext());
+        speedLayout.setOrientation(LinearLayout.HORIZONTAL);
+        TextView speedLabel = createLabel("Velocidad:");
         playerSpeedLabel = createValueLabel("0");
-        playerInfoPanel.add(playerSpeedLabel, gbc);
+        speedLayout.addView(speedLabel);
+        speedLayout.addView(playerSpeedLabel);
+        playerInfoPanel.addView(speedLayout);
         
-        // Rango
-        gbc.gridx = 0; gbc.gridy = 3;
-        playerInfoPanel.add(createLabel("Rango:"), gbc);
-        gbc.gridx = 1;
+        LinearLayout rankLayout = new LinearLayout(getContext());
+        rankLayout.setOrientation(LinearLayout.HORIZONTAL);
+        TextView rankLabel = createLabel("Rango:");
         playerRankLabel = createValueLabel("#1");
-        playerInfoPanel.add(playerRankLabel, gbc);
+        rankLayout.addView(rankLabel);
+        rankLayout.addView(playerRankLabel);
+        playerInfoPanel.addView(rankLayout);
         
-        // Barra de vida
-        gbc.gridx = 0; gbc.gridy = 4; gbc.gridwidth = 2;
-        playerInfoPanel.add(createLabel("Vida:"), gbc);
-        gbc.gridy = 5;
+        TextView healthLabel = createLabel("Vida:");
+        playerInfoPanel.addView(healthLabel);
         healthBar = createProgressBar();
-        healthBar.setBackground(DANGER_COLOR);
-        healthBar.setForeground(SUCCESS_COLOR);
-        playerInfoPanel.add(healthBar, gbc);
+        playerInfoPanel.addView(healthBar);
         
-        // Barra de energía
-        gbc.gridy = 6;
-        playerInfoPanel.add(createLabel("Energía:"), gbc);
-        gbc.gridy = 7;
+        TextView energyLabel = createLabel("Energía:");
+        playerInfoPanel.addView(energyLabel);
         energyBar = createProgressBar();
-        energyBar.setBackground(WARNING_COLOR);
-        energyBar.setForeground(SECONDARY_COLOR);
-        playerInfoPanel.add(energyBar, gbc);
+        playerInfoPanel.addView(energyBar);
         
-        // Barra de experiencia
-        gbc.gridy = 8;
-        playerInfoPanel.add(createLabel("Experiencia:"), gbc);
-        gbc.gridy = 9;
+        TextView expLabel = createLabel("Experiencia:");
+        playerInfoPanel.addView(expLabel);
         experienceBar = createProgressBar();
-        experienceBar.setBackground(new Color(155, 89, 182));
-        experienceBar.setForeground(new Color(142, 68, 173));
-        playerInfoPanel.add(experienceBar, gbc);
+        playerInfoPanel.addView(experienceBar);
     }
     
     /**
      * Inicializa el panel de estadísticas del juego
      */
     private void initializeStatsPanel() {
-        statsPanel = new JPanel(new GridBagLayout());
-        statsPanel.setBackground(PANEL_COLOR);
-        statsPanel.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(SECONDARY_COLOR, 2), "Estadísticas"));
+        statsPanel = createPanel("Estadísticas");
         
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.anchor = GridBagConstraints.WEST;
-        gbc.insets = new Insets(5, 5, 5, 5);
-        
-        // Matados
-        gbc.gridx = 0; gbc.gridy = 0;
-        statsPanel.add(createLabel("Matados:"), gbc);
-        gbc.gridx = 1;
+        LinearLayout killsLayout = new LinearLayout(getContext());
+        killsLayout.setOrientation(LinearLayout.HORIZONTAL);
+        killsLayout.addView(createLabel("Matados:"));
         killsLabel = createValueLabel("0");
-        statsPanel.add(killsLabel, gbc);
+        killsLayout.addView(killsLabel);
+        statsPanel.addView(killsLayout);
         
-        // Muertes
-        gbc.gridx = 0; gbc.gridy = 1;
-        statsPanel.add(createLabel("Muertes:"), gbc);
-        gbc.gridx = 1;
+        LinearLayout deathsLayout = new LinearLayout(getContext());
+        deathsLayout.setOrientation(LinearLayout.HORIZONTAL);
+        deathsLayout.addView(createLabel("Muertes:"));
         deathsLabel = createValueLabel("0");
-        statsPanel.add(deathsLabel, gbc);
+        deathsLayout.addView(deathsLabel);
+        statsPanel.addView(deathsLayout);
         
-        // Tiempo vivo
-        gbc.gridx = 0; gbc.gridy = 2;
-        statsPanel.add(createLabel("Tiempo vivo:"), gbc);
-        gbc.gridx = 1;
+        LinearLayout timeLayout = new LinearLayout(getContext());
+        timeLayout.setOrientation(LinearLayout.HORIZONTAL);
+        timeLayout.addView(createLabel("Tiempo vivo:"));
         timeAliveLabel = createValueLabel("00:00");
-        statsPanel.add(timeAliveLabel, gbc);
+        timeLayout.addView(timeAliveLabel);
+        statsPanel.addView(timeLayout);
         
-        // Puntuación
-        gbc.gridx = 0; gbc.gridy = 3;
-        statsPanel.add(createLabel("Puntuación:"), gbc);
-        gbc.gridx = 1;
+        LinearLayout scoreLayout = new LinearLayout(getContext());
+        scoreLayout.setOrientation(LinearLayout.HORIZONTAL);
+        scoreLayout.addView(createLabel("Puntuación:"));
         scoreLabel = createValueLabel("0");
-        statsPanel.add(scoreLabel, gbc);
+        scoreLayout.addView(scoreLabel);
+        statsPanel.addView(scoreLayout);
     }
     
     /**
      * Inicializa el panel del mini-mapa
      */
     private void initializeMinimapPanel() {
-        minimapPanel = new JPanel(new BorderLayout());
-        minimapPanel.setBackground(PANEL_COLOR);
-        minimapPanel.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(SECONDARY_COLOR, 2), "Mini-Mapa"));
+        minimapPanel = createPanel("Mini-Mapa");
         
-        MinimapComponent minimapComponent = new MinimapComponent();
-        minimapComponent.setPreferredSize(new Dimension(MINIMAP_SIZE, MINIMAP_SIZE));
-        minimapPanel.add(minimapComponent, BorderLayout.CENTER);
+        MinimapView minimapView = new MinimapView(getContext());
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+            dpToPx(MINIMAP_SIZE), dpToPx(MINIMAP_SIZE));
+        minimapView.setLayoutParams(params);
+        minimapPanel.addView(minimapView);
     }
     
     /**
      * Inicializa el panel de lista de jugadores
      */
     private void initializePlayersListPanel() {
-        playersListPanel = new JPanel(new BorderLayout());
-        playersListPanel.setBackground(PANEL_COLOR);
-        playersListPanel.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(SECONDARY_COLOR, 2), "Jugadores Vivos"));
+        playersListPanel = createPanel("Jugadores Vivos");
         
-        playersListModel = new DefaultListModel<>();
-        playersList = new JList<>(playersListModel);
-        playersList.setBackground(new Color(44, 62, 80));
-        playersList.setForeground(TEXT_COLOR);
-        playersList.setSelectionBackground(SECONDARY_COLOR);
-        playersList.setSelectionForeground(Color.WHITE);
-        
-        playersScrollPane = new JScrollPane(playersList);
-        playersScrollPane.setBackground(PANEL_COLOR);
-        playersScrollPane.setBorder(null);
-        
-        playersListPanel.add(playersScrollPane, BorderLayout.CENTER);
+        playersList = new ListView(getContext());
+        playersScrollView = new ScrollView(getContext());
+        playersScrollView.addView(playersList);
+        playersListPanel.addView(playersScrollView);
     }
     
     /**
      * Inicializa el panel de habilidades
      */
     private void initializeAbilitiesPanel() {
-        abilitiesPanel = new JPanel(new GridLayout(3, 3, 5, 5));
-        abilitiesPanel.setBackground(PANEL_COLOR);
-        abilitiesPanel.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createLineBorder(SECONDARY_COLOR, 2), "Habilidades"));
+        abilitiesPanel = createPanel("Habilidades");
+        GridLayout gridLayout = new GridLayout(3, 3, dpToPx(5), dpToPx(5));
+        abilitiesPanel.setLayout(gridLayout);
         
         String[] abilityNames = {"Velocidad", "División", "Escudo", "Cámara", "Ralentizar", "Atraer", "Empujar", "Explosión", "Radar"};
-        abilityButtons = new JButton[abilityNames.length];
+        abilityButtons = new Button[abilityNames.length];
         
         for (int i = 0; i < abilityNames.length; i++) {
             abilityButtons[i] = createAbilityButton(abilityNames[i]);
-            abilitiesPanel.add(abilityButtons[i]);
+            abilitiesPanel.addView(abilityButtons[i]);
         }
     }
     
@@ -298,57 +295,55 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
      * Inicializa el panel de controles
      */
     private void initializeControlsPanel() {
-        controlsPanel = new JPanel(new FlowLayout());
-        controlsPanel.setBackground(PANEL_COLOR);
+        controlsPanel = createPanel("");
+        controlsPanel.setOrientation(LinearLayout.HORIZONTAL);
         
         pauseButton = createControlButton("⏸️ Pausa", "Pausar/Reanudar juego");
         settingsButton = createControlButton("⚙️ Opciones", "Configuración del juego");
         
-        controlsPanel.add(pauseButton);
-        controlsPanel.add(settingsButton);
+        controlsPanel.addView(pauseButton);
+        controlsPanel.addView(settingsButton);
     }
     
     /**
      * Inicializa el panel de notificaciones
      */
     private void initializeNotificationsPanel() {
-        notificationsPanel = new JPanel();
-        notificationsPanel.setLayout(new BoxLayout(notificationsPanel, BoxLayout.Y_AXIS));
-        notificationsPanel.setBackground(PANEL_COLOR);
+        notificationsPanel = new LinearLayout(getContext());
+        notificationsPanel.setOrientation(LinearLayout.VERTICAL);
+        notificationsPanel.setBackgroundColor(PANEL_COLOR);
     }
     
     /**
      * Configura el layout principal
      */
     private void setupLayout() {
-        JScrollPane mainScrollPane = new JScrollPane(this);
-        mainScrollPane.setBorder(null);
-        mainScrollPane.getViewport().setBackground(PANEL_COLOR);
-        
         // Panel principal con información y estadísticas
-        JPanel topPanel = new JPanel(new GridLayout(2, 1, 5, 5));
-        topPanel.setBackground(PANEL_COLOR);
-        topPanel.add(playerInfoPanel);
-        topPanel.add(statsPanel);
+        LinearLayout topPanel = new LinearLayout(getContext());
+        topPanel.setOrientation(LinearLayout.VERTICAL);
+        topPanel.setBackgroundColor(PANEL_COLOR);
+        topPanel.addView(playerInfoPanel);
+        topPanel.addView(statsPanel);
         
         // Panel central con mini-mapa y lista de jugadores
-        JPanel centerPanel = new JPanel(new GridLayout(1, 2, 5, 5));
-        centerPanel.setBackground(PANEL_COLOR);
-        centerPanel.add(minimapPanel);
-        centerPanel.add(playersListPanel);
+        LinearLayout centerPanel = new LinearLayout(getContext());
+        centerPanel.setOrientation(LinearLayout.HORIZONTAL);
+        centerPanel.setBackgroundColor(PANEL_COLOR);
+        centerPanel.addView(minimapPanel);
+        centerPanel.addView(playersListPanel);
         
         // Panel inferior con habilidades y controles
-        JPanel bottomPanel = new JPanel(new BorderLayout(5, 5));
-        bottomPanel.setBackground(PANEL_COLOR);
-        bottomPanel.add(abilitiesPanel, BorderLayout.CENTER);
-        bottomPanel.add(controlsPanel, BorderLayout.SOUTH);
+        LinearLayout bottomPanel = new LinearLayout(getContext());
+        bottomPanel.setOrientation(LinearLayout.VERTICAL);
+        bottomPanel.setBackgroundColor(PANEL_COLOR);
+        bottomPanel.addView(abilitiesPanel);
+        bottomPanel.addView(controlsPanel);
         
         // Layout principal
-        setLayout(new BorderLayout(5, 5));
-        add(topPanel, BorderLayout.NORTH);
-        add(centerPanel, BorderLayout.CENTER);
-        add(bottomPanel, BorderLayout.SOUTH);
-        add(notificationsPanel, BorderLayout.EAST);
+        addView(topPanel);
+        addView(centerPanel);
+        addView(bottomPanel);
+        addView(notificationsPanel);
     }
     
     /**
@@ -356,34 +351,40 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
      */
     private void setupEventListeners() {
         // Listener para pausar/reanudar
-        pauseButton.addActionListener(e -> togglePause());
+        pauseButton.setOnClickListener(v -> togglePause());
         
         // Listener para configuraciones
-        settingsButton.addActionListener(e -> showSettingsDialog());
+        settingsButton.setOnClickListener(v -> showSettingsDialog());
         
         // Listeners para habilidades
-        for (JButton button : abilityButtons) {
-            button.addActionListener(e -> handleAbilityClick(button.getText()));
+        for (Button button : abilityButtons) {
+            if (button != null) {
+                button.setOnClickListener(v -> handleAbilityClick(button.getText().toString()));
+            }
         }
-        
-        // Listener global para teclas
-        addKeyListener(this);
-        setFocusable(true);
     }
     
     /**
      * Inicia el timer de actualización del HUD
      */
     private void startUpdateTimer() {
-        Timer updateTimer = new Timer();
-        updateTimer.scheduleAtFixedRate(new TimerTask() {
+        Runnable updateRunnable = new Runnable() {
             @Override
             public void run() {
                 if (isVisible && !isPaused) {
-                    SwingUtilities.invokeLater(() -> updateHUD());
+                    uiHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            updateHUD();
+                        }
+                    });
                 }
+                // Programar la siguiente ejecución en 100ms
+                uiHandler.postDelayed(this, 100);
             }
-        }, 0, 100); // Actualizar cada 100ms
+        };
+        // Iniciar la actualización cada 100ms
+        uiHandler.post(updateRunnable);
     }
     
     /**
@@ -443,7 +444,7 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
     private void updatePlayersList() {
         if (gameState == null || gameState.getActivePlayers() == null) return;
         
-        playersListModel.clear();
+        List<String> playerNames = new ArrayList<>();
         
         // Ordenar jugadores por masa
         List<Player> sortedPlayers = new ArrayList<>(gameState.getActivePlayers());
@@ -456,8 +457,13 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
             if (player.equals(currentPlayer)) {
                 playerInfo += " (Tú)";
             }
-            playersListModel.addElement(playerInfo);
+            playerNames.add(playerInfo);
         }
+        
+        // Usar ArrayAdapter para Android
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), 
+            android.R.layout.simple_list_item_1, playerNames);
+        playersList.setAdapter(adapter);
     }
     
     /**
@@ -469,15 +475,18 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
                 System.currentTimeMillis() > notification.getEndTime());
         
         // Actualizar panel de notificaciones
-        notificationsPanel.removeAll();
+        notificationsPanel.removeAllViews();
         for (Notification notification : notificationQueue) {
-            JLabel notificationLabel = createNotificationLabel(notification);
-            notificationsPanel.add(notificationLabel);
-            notificationsPanel.add(Box.createVerticalStrut(5));
+            TextView notificationLabel = createNotificationLabel(notification);
+            notificationsPanel.addView(notificationLabel);
+            
+            // Agregar espacio entre notificaciones
+            View spacer = new View(getContext());
+            LinearLayout.LayoutParams spacerParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, dpToPx(5));
+            spacer.setLayoutParams(spacerParams);
+            notificationsPanel.addView(spacer);
         }
-        
-        notificationsPanel.revalidate();
-        notificationsPanel.repaint();
     }
     
     /**
@@ -516,13 +525,18 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
                 System.currentTimeMillis() + NOTIFICATION_DURATION);
         notificationQueue.add(notification);
         
-        // Timer para remover notificación automáticamente
+        // Handler para remover notificación automáticamente
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 notificationQueue.remove(notification);
-                SwingUtilities.invokeLater(() -> updateNotifications());
+                uiHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        updateNotifications();
+                    }
+                });
             }
         }, NOTIFICATION_DURATION);
         
@@ -544,22 +558,23 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
      * Muestra el diálogo de configuración
      */
     private void showSettingsDialog() {
-        JDialog settingsDialog = new JDialog((Frame) SwingUtilities.getWindowAncestor(this), "Configuración");
-        settingsDialog.setSize(400, 300);
-        settingsDialog.setLocationRelativeTo(this);
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
+        builder.setTitle("Configuración");
         
-        JPanel settingsPanel = new JPanel(new GridLayout(0, 1));
-        settingsPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
+        String[] settings = {
+            "Configuraciones del Juego",
+            "- Activar/desactivar sonido",
+            "- Ajustar calidad gráfica", 
+            "- Configurar controles",
+            "- Opciones de red"
+        };
         
-        // Configuraciones básicas
-        settingsPanel.add(new JLabel("Configuraciones del Juego"));
-        settingsPanel.add(new JLabel("- Activar/desactivar sonido"));
-        settingsPanel.add(new JLabel("- Ajustar calidad gráfica"));
-        settingsPanel.add(new JLabel("- Configurar controles"));
-        settingsPanel.add(new JLabel("- Opciones de red"));
+        builder.setItems(settings, (dialog, which) -> {
+            // Manejar selección
+        });
         
-        settingsDialog.add(settingsPanel);
-        settingsDialog.setVisible(true);
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+        builder.show();
     }
     
     /**
@@ -593,12 +608,16 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
             addNotification("¡Velocidad activada!", NotificationType.SUCCESS);
             
             // Volver a velocidad normal después de 3 segundos
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
+            uiHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     currentPlayer.setSpeedMultiplier(1.0f);
-                    SwingUtilities.invokeLater(() -> addNotification("Velocidad desactivada", NotificationType.WARNING));
+                    uiHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            addNotification("Velocidad desactivada", NotificationType.WARNING);
+                        }
+                    });
                 }
             }, 3000);
         } else {
@@ -629,12 +648,16 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
             addNotification("¡Escudo activado!", NotificationType.SUCCESS);
             
             // Desactivar escudo después de 5 segundos
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
+            uiHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     currentPlayer.setShielded(false);
-                    SwingUtilities.invokeLater(() -> addNotification("Escudo desactivado", NotificationType.WARNING));
+                    uiHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            addNotification("Escudo desactivado", NotificationType.WARNING);
+                        }
+                    });
                 }
             }, 5000);
         } else {
@@ -643,132 +666,162 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
     }
     
     // Métodos para crear componentes UI
-    private JLabel createLabel(String text) {
-        JLabel label = new JLabel(text);
-        label.setForeground(TEXT_COLOR);
-        label.setFont(new Font("Arial", Font.BOLD, 12));
-        return label;
+    private TextView createLabel(String text) {
+        TextView textView = new TextView(getContext());
+        textView.setText(text);
+        textView.setTextColor(TEXT_COLOR);
+        textView.setTextSize(12);
+        textView.setTypeface(null, Typeface.BOLD);
+        return textView;
     }
     
-    private JLabel createValueLabel(String text) {
-        JLabel label = new JLabel(text);
-        label.setForeground(SECONDARY_COLOR);
-        label.setFont(new Font("Arial", Font.PLAIN, 12));
-        return label;
+    private TextView createValueLabel(String text) {
+        TextView textView = new TextView(getContext());
+        textView.setText(text);
+        textView.setTextColor(SECONDARY_COLOR);
+        textView.setTextSize(12);
+        return textView;
     }
     
-    private JProgressBar createProgressBar() {
-        JProgressBar progressBar = new JProgressBar();
-        progressBar.setBackground(new Color(52, 73, 94));
-        progressBar.setForeground(SECONDARY_COLOR);
-        progressBar.setBorder(BorderFactory.createLineBorder(SECONDARY_COLOR));
+    private ProgressBar createProgressBar() {
+        ProgressBar progressBar = new ProgressBar(getContext(), null, android.R.attr.progressBarStyleHorizontal);
+        progressBar.setMax(100);
+        progressBar.setProgress(0);
         return progressBar;
     }
     
-    private JButton createAbilityButton(String text) {
-        JButton button = new JButton(text);
-        button.setBackground(new Color(44, 62, 80));
-        button.setForeground(TEXT_COLOR);
-        button.setBorder(BorderFactory.createLineBorder(SECONDARY_COLOR));
-        button.setFont(new Font("Arial", Font.PLAIN, 10));
-        button.setFocusPainted(false);
+    private Button createAbilityButton(String text) {
+        Button button = new Button(getContext());
+        button.setText(text);
+        button.setBackgroundColor(PRIMARY_COLOR);
+        button.setTextColor(TEXT_COLOR);
+        button.setTextSize(10);
         
-        button.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                button.setBackground(SECONDARY_COLOR);
+        button.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                button.setBackgroundColor(SECONDARY_COLOR);
+            } else if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_CANCEL) {
+                button.setBackgroundColor(PRIMARY_COLOR);
             }
-            
-            @Override
-            public void mouseExited(MouseEvent e) {
-                button.setBackground(new Color(44, 62, 80));
-            }
+            return false;
         });
         
         return button;
     }
     
-    private JButton createControlButton(String text, String tooltip) {
-        JButton button = new JButton(text);
-        button.setBackground(SECONDARY_COLOR);
-        button.setForeground(Color.WHITE);
-        button.setBorder(BorderFactory.createRaisedBevelBorder());
-        button.setFont(new Font("Arial", Font.BOLD, 12));
-        button.setFocusPainted(false);
-        button.setToolTipText(tooltip);
+    private Button createControlButton(String text, String tooltip) {
+        Button button = new Button(getContext());
+        button.setText(text);
+        button.setBackgroundColor(SECONDARY_COLOR);
+        button.setTextColor(Color.WHITE);
+        button.setTextSize(12);
+        button.setTypeface(null, Typeface.BOLD);
+        button.setContentDescription(tooltip);
         
         return button;
     }
     
-    private JLabel createNotificationLabel(Notification notification) {
-        JLabel label = new JLabel(notification.getMessage());
-        label.setOpaque(true);
-        label.setBorder(new EmptyBorder(5, 10, 5, 10));
+    private TextView createNotificationLabel(Notification notification) {
+        TextView label = new TextView(getContext());
+        label.setText(notification.getMessage());
+        label.setPadding(dpToPx(10), dpToPx(5), dpToPx(10), dpToPx(5));
         
         switch (notification.getType()) {
             case SUCCESS:
-                label.setBackground(new Color(46, 204, 113, 200));
-                label.setForeground(Color.WHITE);
+                label.setBackgroundColor(SUCCESS_COLOR);
+                label.setTextColor(Color.WHITE);
                 break;
             case ERROR:
-                label.setBackground(new Color(231, 76, 60, 200));
-                label.setForeground(Color.WHITE);
+                label.setBackgroundColor(DANGER_COLOR);
+                label.setTextColor(Color.WHITE);
                 break;
             case WARNING:
-                label.setBackground(new Color(241, 196, 15, 200));
-                label.setForeground(Color.BLACK);
+                label.setBackgroundColor(WARNING_COLOR);
+                label.setTextColor(Color.BLACK);
                 break;
             case INFO:
-                label.setBackground(new Color(52, 152, 219, 200));
-                label.setForeground(Color.WHITE);
+                label.setBackgroundColor(SECONDARY_COLOR);
+                label.setTextColor(Color.WHITE);
                 break;
         }
         
         return label;
     }
     
-    // Componente personalizado para el mini-mapa
-    private class MinimapComponent extends JComponent {
+    private LinearLayout createPanel(String title) {
+        LinearLayout panel = new LinearLayout(getContext());
+        panel.setOrientation(LinearLayout.VERTICAL);
+        panel.setBackgroundColor(PANEL_COLOR);
+        panel.setPadding(dpToPx(10), dpToPx(5), dpToPx(10), dpToPx(5));
+        
+        if (!title.isEmpty()) {
+            TextView titleView = createLabel(title);
+            titleView.setTypeface(null, Typeface.BOLD);
+            panel.addView(titleView);
+        }
+        
+        return panel;
+    }
+    
+    // Método para convertir dp a píxeles
+    private int dpToPx(int dp) {
+        return (int) (dp * getContext().getResources().getDisplayMetrics().density);
+    }
+    
+    
+    // Clase personalizada para el mini-mapa
+    private class MinimapView extends View {
+        private Paint paint;
+        private Paint borderPaint;
+        
+        public MinimapView(Context context) {
+            super(context);
+            init();
+        }
+        
+        private void init() {
+            paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            borderPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+            borderPaint.setStyle(Paint.Style.STROKE);
+            borderPaint.setStrokeWidth(2);
+        }
+        
         @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-            
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setRenderingHint(RenderingHints.ANTIALIASING, true);
+        protected void onDraw(Canvas canvas) {
+            super.onDraw(canvas);
             
             // Dibujar fondo del mini-mapa
-            g2d.setColor(new Color(20, 20, 20));
-            g2d.fillRect(0, 0, getWidth(), getHeight());
+            paint.setColor(0xFF141414);
+            canvas.drawRect(0, 0, getWidth(), getHeight(), paint);
             
             // Dibujar bordes
-            g2d.setColor(SECONDARY_COLOR);
-            g2d.setStroke(new BasicStroke(2));
-            g2d.drawRect(0, 0, getWidth() - 1, getHeight() - 1);
+            borderPaint.setColor(SECONDARY_COLOR);
+            canvas.drawRect(0, 0, getWidth() - 1, getHeight() - 1, borderPaint);
             
             if (gameState != null && cameraManager != null) {
-                drawMiniMapContent(g2d);
+                drawMiniMapContent(canvas);
             }
         }
         
-        private void drawMiniMapContent(Graphics2D g2d) {
+        private void drawMiniMapContent(Canvas canvas) {
             // Dibujar jugadores en el mini-mapa
             if (gameState.getActivePlayers() != null) {
                 for (Player player : gameState.getActivePlayers()) {
-                    Point playerPos = worldToMinimap(player.getX(), player.getY());
+                    PointF playerPos = worldToMinimap(player.getX(), player.getY());
                     
                     if (player.equals(currentPlayer)) {
-                        g2d.setColor(SUCCESS_COLOR);
-                        g2d.fillRect(playerPos.x - 3, playerPos.y - 3, 6, 6);
+                        paint.setColor(SUCCESS_COLOR);
+                        canvas.drawRect(playerPos.x - 3, playerPos.y - 3, 6, 6, paint);
                     } else {
-                        g2d.setColor(DANGER_COLOR);
-                        g2d.fillRect(playerPos.x - 2, playerPos.y - 2, 4, 4);
+                        paint.setColor(DANGER_COLOR);
+                        canvas.drawRect(playerPos.x - 2, playerPos.y - 2, 4, 4, paint);
                     }
                 }
             }
             
             // Dibujar comida en el mini-mapa (solo algunos puntos)
             if (gameState.getFood() != null && gameState.getFood().size() > 0) {
-                g2d.setColor(WARNING_COLOR);
+                paint.setColor(WARNING_COLOR);
                 for (int i = 0; i < Math.min(50, gameState.getFood().size()); i += 10) {
                     // Dibujar algunos puntos de comida representativos
                 }
@@ -776,28 +829,31 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
             
             // Dibujar viewport del jugador
             if (cameraManager != null) {
-                g2d.setColor(SECONDARY_COLOR);
-                g2d.setStroke(new BasicStroke(1));
-                Rectangle viewport = cameraManager.getViewportBounds();
-                Point topLeft = worldToMinimap(viewport.getX(), viewport.getY());
-                Point bottomRight = worldToMinimap(viewport.getX() + viewport.getWidth(), 
-                        viewport.getY() + viewport.getHeight());
+                paint.setColor(SECONDARY_COLOR);
+                Paint viewportPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+                viewportPaint.setStyle(Paint.Style.STROKE);
+                viewportPaint.setStrokeWidth(1);
+                viewportPaint.setColor(SECONDARY_COLOR);
                 
-                g2d.drawRect(topLeft.x, topLeft.y, 
-                        bottomRight.x - topLeft.x, bottomRight.y - topLeft.y);
+                RectF viewport = cameraManager.getViewportBounds();
+                PointF topLeft = worldToMinimap(viewport.left, viewport.top);
+                PointF bottomRight = worldToMinimap(viewport.right, viewport.bottom);
+                
+                canvas.drawRect(topLeft.x, topLeft.y, 
+                        bottomRight.x, bottomRight.y, viewportPaint);
             }
         }
         
-        private Point worldToMinimap(double worldX, double worldY) {
+        private PointF worldToMinimap(double worldX, double worldY) {
             if (gameState == null || cameraManager == null) {
-                return new Point(0, 0);
+                return new PointF(0, 0);
             }
             
             // Convertir coordenadas del mundo a coordenadas del mini-mapa
-            int mapX = (int) ((worldX / gameState.getWorldWidth()) * (MINIMAP_SIZE - 20)) + 10;
-            int mapY = (int) ((worldY / gameState.getWorldHeight()) * (MINIMAP_SIZE - 20)) + 10;
+            float mapX = (float) ((worldX / gameState.getWorldWidth()) * (MINIMAP_SIZE - 20)) + 10;
+            float mapY = (float) ((worldY / gameState.getWorldHeight()) * (MINIMAP_SIZE - 20)) + 10;
             
-            return new Point(mapX, mapY);
+            return new PointF(mapX, mapY);
         }
     }
     
@@ -823,46 +879,6 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
         SUCCESS, ERROR, WARNING, INFO
     }
     
-    // Métodos de interfaz KeyListener
-    @Override
-    public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_P:
-                togglePause();
-                break;
-            case KeyEvent.VK_ESCAPE:
-                showSettingsDialog();
-                break;
-            case KeyEvent.VK_F1:
-                isVisible = !isVisible;
-                setVisible(isVisible);
-                break;
-        }
-    }
-    
-    @Override
-    public void keyReleased(KeyEvent e) {}
-    
-    @Override
-    public void keyTyped(KeyEvent e) {}
-    
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        requestFocus();
-    }
-    
-    @Override
-    public void mousePressed(MouseEvent e) {}
-    
-    @Override
-    public void mouseReleased(MouseEvent e) {}
-    
-    @Override
-    public void mouseEntered(MouseEvent e) {}
-    
-    @Override
-    public void mouseExited(MouseEvent e) {}
-    
     // Getters para acceso desde otras clases
     public boolean isPaused() { return isPaused; }
     public void setPaused(boolean paused) { isPaused = paused; }
@@ -876,5 +892,10 @@ public class GameHUD extends JPanel implements KeyListener, MouseListener {
         }
         activeTimers.clear();
         notificationQueue.clear();
+        
+        // Limpiar handler
+        if (uiHandler != null) {
+            uiHandler.removeCallbacksAndMessages(null);
+        }
     }
 }

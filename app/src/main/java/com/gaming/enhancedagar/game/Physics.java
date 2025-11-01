@@ -2,9 +2,9 @@ package com.gaming.enhancedagar.game;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.awt.*;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Point2D;
+import android.graphics.PointF;
+import android.graphics.RectF;
+import com.gaming.enhancedagar.utils.Vector2D;
 
 /**
  * Sistema estático de física para el juego Enhanced Agar
@@ -25,38 +25,7 @@ public final class Physics {
     private static final Set<String> activeCollisions = ConcurrentHashMap.newKeySet();
     
     // Pool de objetos para optimización
-    private static final Queue<Point2D.Float> pointPool = new ArrayDeque<>();
     private static final Queue<Vector2D> vectorPool = new ArrayDeque<>();
-    
-    /**
-     * Clase interna para vectores 2D optimizados
-     */
-    public static class Vector2D {
-        public float x, y;
-        
-        public Vector2D() { this(0, 0); }
-        public Vector2D(float x, float y) { this.x = x; this.y = y; }
-        
-        public Vector2D set(float x, float y) { this.x = x; this.y = y; return this; }
-        public Vector2D add(Vector2D v) { x += v.x; y += v.y; return this; }
-        public Vector2D sub(Vector2D v) { x -= v.x; y -= v.y; return this; }
-        public Vector2D mul(float scalar) { x *= scalar; y *= scalar; return this; }
-        public Vector2D div(float scalar) { x /= scalar; y /= scalar; return this; }
-        
-        public float magnitude() { return (float) Math.sqrt(x * x + y * y); }
-        public Vector2D normalize() { 
-            float mag = magnitude(); 
-            if (mag > 0) { x /= mag; y /= mag; } 
-            return this; 
-        }
-        
-        public float dot(Vector2D v) { return x * v.x + y * v.y; }
-        public Vector2D clone() { return new Vector2D(x, y); }
-        
-        public void release() {
-            vectorPool.offer(this);
-        }
-    }
     
     /**
      * Clase interna para resultados de colisión
@@ -67,7 +36,7 @@ public final class Physics {
         public Vector2D normal;
         public Vector2D velocity;
         public float impulse;
-        public Point2D.Float contactPoint;
+        public PointF contactPoint;
         
         public CollisionResult() {
             this.collided = false;
@@ -75,7 +44,18 @@ public final class Physics {
             this.normal = new Vector2D();
             this.velocity = new Vector2D();
             this.impulse = 0;
-            this.contactPoint = new Point2D.Float();
+            this.contactPoint = new PointF(0f, 0f);
+        }
+        
+        public CollisionResult clone() {
+            CollisionResult copy = new CollisionResult();
+            copy.collided = this.collided;
+            copy.overlap = this.overlap;
+            copy.normal = new Vector2D(this.normal.x, this.normal.y);
+            copy.velocity = new Vector2D(this.velocity.x, this.velocity.y);
+            copy.impulse = this.impulse;
+            copy.contactPoint = new PointF(this.contactPoint.x, this.contactPoint.y);
+            return copy;
         }
     }
     
@@ -92,7 +72,7 @@ public final class Physics {
         public boolean isStatic;
         public float friction;
         public float restitution;
-        public Color color;
+        public int color;
         
         public PhysicalEntity(float x, float y, float radius, float mass) {
             this.x = x; this.y = y;
@@ -103,7 +83,7 @@ public final class Physics {
             this.friction = 0.1f;
             this.restitution = 0.8f;
             this.isStatic = false;
-            this.color = Color.WHITE;
+            this.color = 0xFFFFFFFF;
         }
         
         public void applyForce(Vector2D force) {
@@ -356,7 +336,7 @@ public final class Physics {
     /**
      * Aplica fuerza de resorte
      */
-    public static void applySpringForce(PhysicalEntity entity, Point2D.Float anchor, float stiffness, float restLength) {
+    public static void applySpringForce(PhysicalEntity entity, PointF anchor, float stiffness, float restLength) {
         float dx = entity.x - anchor.x;
         float dy = entity.y - anchor.y;
         float distance = (float) Math.sqrt(dx * dx + dy * dy);
@@ -553,28 +533,28 @@ public final class Physics {
     /**
      * Resuelve colisión con paredes
      */
-    public static void resolveWallCollision(PhysicalEntity entity, Rectangle bounds) {
+    public static void resolveWallCollision(PhysicalEntity entity, RectF bounds) {
         // Colisión con pared izquierda
-        if (entity.x - entity.radius < bounds.x) {
-            entity.x = bounds.x + entity.radius;
+        if (entity.x - entity.radius < bounds.left) {
+            entity.x = bounds.left + entity.radius;
             entity.velocity.x = Math.abs(entity.velocity.x) * entity.restitution;
         }
         
         // Colisión con pared derecha
-        if (entity.x + entity.radius > bounds.x + bounds.width) {
-            entity.x = bounds.x + bounds.width - entity.radius;
+        if (entity.x + entity.radius > bounds.right) {
+            entity.x = bounds.right - entity.radius;
             entity.velocity.x = -Math.abs(entity.velocity.x) * entity.restitution;
         }
         
         // Colisión con pared superior
-        if (entity.y - entity.radius < bounds.y) {
-            entity.y = bounds.y + entity.radius;
+        if (entity.y - entity.radius < bounds.top) {
+            entity.y = bounds.top + entity.radius;
             entity.velocity.y = Math.abs(entity.velocity.y) * entity.restitution;
         }
         
         // Colisión con pared inferior
-        if (entity.y + entity.radius > bounds.y + bounds.height) {
-            entity.y = bounds.y + bounds.height - entity.radius;
+        if (entity.y + entity.radius > bounds.bottom) {
+            entity.y = bounds.bottom - entity.radius;
             entity.velocity.y = -Math.abs(entity.velocity.y) * entity.restitution;
         }
     }
@@ -624,7 +604,7 @@ public final class Physics {
     /**
      * Actualiza el sistema de física
      */
-    public static void updatePhysics(List<PhysicalEntity> entities, float deltaTime, Rectangle bounds) {
+    public static void updatePhysics(List<PhysicalEntity> entities, float deltaTime, RectF bounds) {
         // Aplicar fuerzas y integrar movimiento
         for (PhysicalEntity entity : entities) {
             applyDamping(entity, deltaTime);

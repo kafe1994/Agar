@@ -2,8 +2,8 @@ package com.gaming.enhancedagar.game;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.awt.*;
-import java.awt.geom.Point2D;
+import android.graphics.Color;
+import android.graphics.PointF;
 
 /**
  * Sistema de equipos para el juego Agar mejorado
@@ -14,17 +14,17 @@ public class TeamSystem {
     // Roles disponibles en el juego
     public enum TeamRole {
         SCOUT("Explorador", Color.CYAN, 1.3f, 1.1f),      // Velocidad alta, masa baja
-        TANK("Tanque", Color.GRAY, 0.8f, 1.5f),           // Velocidad baja, masa alta
+        TANK("Tanque", 0xFF808080, 0.8f, 1.5f),           // Velocidad baja, masa alta (GRAY)
         SUPPORT("Soporte", Color.GREEN, 1.0f, 1.2f),      // Velocidad media, masa media
         ASSASSIN("Asesino", Color.RED, 1.2f, 0.9f),       // Velocidad alta, masa media
         CONTROLLER("Controlador", Color.MAGENTA, 0.9f, 1.1f); // Velocidad media-baja, masa media
         
         private final String name;
-        private final Color color;
+        private final int color;
         private final float speedMultiplier;
         private final float massMultiplier;
         
-        TeamRole(String name, Color color, float speedMultiplier, float massMultiplier) {
+        TeamRole(String name, int color, float speedMultiplier, float massMultiplier) {
             this.name = name;
             this.color = color;
             this.speedMultiplier = speedMultiplier;
@@ -32,7 +32,7 @@ public class TeamSystem {
         }
         
         public String getName() { return name; }
-        public Color getColor() { return color; }
+        public int getColor() { return color; }
         public float getSpeedMultiplier() { return speedMultiplier; }
         public float getMassMultiplier() { return massMultiplier; }
     }
@@ -105,12 +105,12 @@ public class TeamSystem {
     // Mensajes de comunicación visual
     public static class TeamMessage {
         private final String message;
-        private final Color color;
+        private final int color;
         private final long timestamp;
-        private final Point2D.Float position;
+        private final PointF position;
         private final int duration;
         
-        public TeamMessage(String message, Color color, Point2D.Float position, int duration) {
+        public TeamMessage(String message, int color, PointF position, int duration) {
             this.message = message;
             this.color = color;
             this.position = position;
@@ -123,8 +123,8 @@ public class TeamSystem {
         }
         
         public String getMessage() { return message; }
-        public Color getColor() { return color; }
-        public Point2D.Float getPosition() { return position; }
+        public int getColor() { return color; }
+        public PointF getPosition() { return position; }
         public int getDuration() { return duration; }
         public long getTimestamp() { return timestamp; }
     }
@@ -134,7 +134,7 @@ public class TeamSystem {
         private final int playerId;
         private final String playerName;
         private TeamRole role;
-        private Point2D.Float position;
+        private PointF position;
         private float mass;
         private Team team;
         private boolean isActive;
@@ -146,7 +146,7 @@ public class TeamSystem {
             this.playerId = playerId;
             this.playerName = playerName;
             this.role = TeamRole.SUPPORT; // Rol por defecto
-            this.position = new Point2D.Float(0, 0);
+            this.position = new PointF(0, 0);
             this.mass = 100f;
             this.team = null;
             this.isActive = false;
@@ -156,7 +156,7 @@ public class TeamSystem {
         }
         
         public void setRole(TeamRole role) { this.role = role; }
-        public void setPosition(Point2D.Float position) { this.position = position; }
+        public void setPosition(PointF position) { this.position = position; }
         public void setMass(float mass) { this.mass = mass; }
         public void setTeam(Team team) { this.team = team; }
         public void setActive(boolean active) { isActive = active; }
@@ -164,7 +164,7 @@ public class TeamSystem {
         public void setSpeed(float speed) { this.speed = speed; }
         
         public TeamRole getRole() { return role; }
-        public Point2D.Float getPosition() { return position; }
+        public PointF getPosition() { return position; }
         public float getMass() { return mass; }
         public Team getTeam() { return team; }
         public boolean isActive() { return isActive; }
@@ -213,19 +213,19 @@ public class TeamSystem {
     public static class Team {
         private final int teamId;
         private final String teamName;
-        private final Color teamColor;
+        private final int teamColor;
         private final List<TeamPlayer> players;
         private TeamState state;
         private int score;
         private int territoryControl;
         private Map<TeamObjective, Integer> objectiveProgress;
-        private Point2D.Float teamCenter;
+        private PointF teamCenter;
         private float teamMass;
         private int teamEnergy;
         private List<TeamMessage> messages;
-        private Map<TeamPlayer, Point2D.Float> lastKnownPositions;
+        private Map<TeamPlayer, PointF> lastKnownPositions;
         
-        public Team(int teamId, String teamName, Color teamColor) {
+        public Team(int teamId, String teamName, int teamColor) {
             this.teamId = teamId;
             this.teamName = teamName;
             this.teamColor = teamColor;
@@ -234,7 +234,7 @@ public class TeamSystem {
             this.score = 0;
             this.territoryControl = 0;
             this.objectiveProgress = new ConcurrentHashMap<>();
-            this.teamCenter = new Point2D.Float(0, 0);
+            this.teamCenter = new PointF(0, 0);
             this.teamMass = 0f;
             this.teamEnergy = 100;
             this.messages = new ArrayList<>();
@@ -260,22 +260,22 @@ public class TeamSystem {
         
         public int getTeamId() { return teamId; }
         public String getTeamName() { return teamName; }
-        public Color getTeamColor() { return teamColor; }
+        public int getTeamColor() { return teamColor; }
         public List<TeamPlayer> getPlayers() { return players; }
         public TeamState getState() { return state; }
         public int getScore() { return score; }
         public int getTerritoryControl() { return territoryControl; }
         public Map<TeamObjective, Integer> getObjectiveProgress() { return objectiveProgress; }
-        public Point2D.Float getTeamCenter() { return teamCenter; }
+        public PointF getTeamCenter() { return teamCenter; }
         public float getTeamMass() { return teamMass; }
         public int getTeamEnergy() { return teamEnergy; }
         public List<TeamMessage> getMessages() { return messages; }
-        public Map<TeamPlayer, Point2D.Float> getLastKnownPositions() { return lastKnownPositions; }
+        public Map<TeamPlayer, PointF> getLastKnownPositions() { return lastKnownPositions; }
         
         private void calculateTeamStats() {
             // Calcular centro del equipo
             if (players.isEmpty()) {
-                teamCenter.setLocation(0, 0);
+                teamCenter.set(0, 0);
                 teamMass = 0;
                 return;
             }
@@ -288,7 +288,7 @@ public class TeamSystem {
                 totalMass += player.getMass();
             }
             
-            teamCenter.setLocation(totalX / totalMass, totalY / totalMass);
+            teamCenter.set((float)(totalX / totalMass), (float)(totalY / totalMass));
             teamMass = (float) totalMass;
         }
         
@@ -370,7 +370,7 @@ public class TeamSystem {
     /**
      * Crear un nuevo equipo
      */
-    public Team createTeam(String teamName, Color teamColor) {
+    public Team createTeam(String teamName, int teamColor) {
         if (teams.size() >= config.getMaxTeams()) {
             return null;
         }
@@ -541,7 +541,7 @@ public class TeamSystem {
     /**
      * Enviar mensaje de comunicación visual
      */
-    public void sendTeamMessage(TeamPlayer sender, String message, Color color) {
+    public void sendTeamMessage(TeamPlayer sender, String message, int color) {
         if (sender.getTeam() == null) return;
         
         TeamMessage teamMessage = new TeamMessage(
