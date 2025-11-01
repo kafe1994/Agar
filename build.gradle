@@ -5,12 +5,13 @@ plugins {
     id 'com.android.application' version '8.1.2' apply false
 }
 
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-    }
-}
+// ELIMINAR o COMENTAR esta sección completa
+// allprojects {
+//     repositories {
+//         google()
+//         mavenCentral()
+//     }
+// }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
