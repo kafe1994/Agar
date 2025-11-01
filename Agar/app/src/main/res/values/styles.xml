@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Estilo base para texto general -->
+    <style name="Text">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Tema principal para Enhanced Agar Game -->
+    <style name="Theme.EnhancedAgarGame" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Colores principales -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent_color</item>
+        
+        <!-- Colores de fondo -->
+        <item name="android:windowBackground">@color/background_color</item>
+        <item name="android:colorBackground">@color/background_color</item>
+        
+        <!-- Colores de texto -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        
+        <!-- Configuración de la barra de estado -->
+        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+        
+        <!-- Configuración de navegación -->
+        <item name="android:navigationBarColor">@color/background_color</item>
+        
+        <!-- Configuración de ventana completa -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        
+        <!-- Configuración de animations -->
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowDisablePreview">false</item>
+        
+        <!-- Configuración de renderizado -->
+        <item name="android:hardwareAccelerated">true</item>
+        
+        <!-- Configuración de soporte legacy -->
+        <item name="android:requestLegacyExternalStorage">true</item>
+    </style>
+
+    <!-- Tema para actividades de juego -->
+    <style name="Theme.EnhancedAgarGame.GameActivity" parent="Theme.EnhancedAgarGame">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@color/game_background</item>
+        <item name="android:windowShowWallpaper">false</item>
+    </style>
+
+    <!-- Tema para menú principal -->
+    <style name="Theme.EnhancedAgarGame.MenuActivity" parent="Theme.EnhancedAgarGame">
+        <item name="android:windowBackground">@drawable/menu_background</item>
+    </style>
+
+    <!-- Tema para configuraciones -->
+    <style name="Theme.EnhancedAgarGame.SettingsActivity" parent="Theme.EnhancedAgarGame">
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorAccent">@color/accent_color</item>
+    </style>
+
+    <!-- Estilo para botones principales -->
+    <style name="Button.Primary" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_play</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:minHeight">56dp</item>
+    </style>
+
+    <!-- Estilo para botones secundarios -->
+    <style name="Button.Secondary" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_secondary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <!-- Estilo para botones menores -->
+    <style name="Button.Minor" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/button_minor</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_margin">4dp</item>
+        <item name="android:minHeight">40dp</item>
+    </style>
+
+    <!-- Estilo para texto de título -->
+    <style name="Text.Title">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+
+    <!-- Estilo para texto de subtítulo -->
+    <style name="Text.Subtitle">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <!-- Estilo para texto de cuerpo -->
+    <style name="Text.Body">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Estilo para texto de etiquetas -->
+    <style name="Text.Label">
+        <item name="android:textColor">@color/text_hint</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Estilo para tarjetas -->
+    <style name="Card">
+        <item name="android:background">@drawable/card_background</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:radius">8dp</item>
+    </style>
+
+    <!-- Estilo para campos de entrada -->
+    <style name="EditText">
+        <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <!-- Estilo base para HUD del juego -->
+    <style name="HUD">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">@color/black</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">3</item>
+    </style>
+
+    <!-- Estilo para HUD del juego -->
+    <style name="HUD.Text" parent="HUD">
+    </style>
+
+    <!-- Estilo para puntuación -->
+    <style name="Score.Text" parent="HUD.Text">
+        <item name="android:textSize">24sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Estilo base para información del jugador -->
+    <style name="PlayerInfo">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@color/semi_transparent_black</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+
+    <!-- Estilo para información del jugador -->
+    <style name="PlayerInfo.Text" parent="PlayerInfo">
+    </style>
+
+    <!-- Estilo base para animaciones -->
+    <style name="Animation">
+        <item name="android:duration">300</item>
+        <item name="android:interpolator">@android:anim/decelerate_interpolator</item>
+    </style>
+
+    <!-- Animaciones personalizadas -->
+    <style name="Animation.FadeIn" parent="Animation">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
+    <style name="Animation.SlideUp" parent="Animation">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
+    </style>
+
+    <style name="Animation.SlideDown" parent="Animation">
+        <item name="android:windowEnterAnimation">@anim/slide_down</item>
+        <item name="android:windowExitAnimation">@anim/slide_up</item>
+    </style>
+
+</resources>

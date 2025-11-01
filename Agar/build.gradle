@@ -1,0 +1,10 @@
+// Top-level build file para Enhanced Agar Game
+// Configurado para compilación en Termux
+
+plugins {
+    id 'com.android.application' version '8.1.2' apply false
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

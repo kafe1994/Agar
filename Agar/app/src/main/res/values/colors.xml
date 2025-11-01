@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ============================ -->
+    <!-- COLORES PRINCIPALES POR ROL -->
+    <!-- ============================ -->
+    
+    <!-- Tank - Colores defensivos y robustos -->
+    <color name="tank_primary">#2E8B57</color>           <!-- Verde bosque oscuro -->
+    <color name="tank_secondary">#90EE90</color>         <!-- Verde claro -->
+    <color name="tank_accent">#006400</color>           <!-- Verde oscuro -->
+    <color name="tank_light">#98FB98</color>            <!-- Verde palido -->
+    
+    <!-- Assassin - Colores oscuros y rápidos -->
+    <color name="assassin_primary">#800080</color>       <!-- Púrpura oscuro -->
+    <color name="assassin_secondary">#DDA0DD</color>     <!-- Ciruela -->
+    <color name="assassin_accent">#4B0082</color>        <!-- Índigo -->
+    <color name="assassin_light">#E6E6FA</color>         <!-- Lavanda -->
+    
+    <!-- Mage - Colores mágicos y místicos -->
+    <color name="mage_primary">#4169E1</color>           <!-- Azul real -->
+    <color name="mage_secondary">#87CEEB</color>         <!-- Azul cielo -->
+    <color name="mage_accent">#0000CD</color>            <!-- Azul medio -->
+    <color name="mage_light">#B0E0E6</color>             <!-- Azul polvo -->
+    
+    <!-- Support - Colores curativos y esperanzadores -->
+    <color name="support_primary">#FFD700</color>         <!-- Oro -->
+    <color name="support_secondary">#FFFF99</color>       <!-- Amarillo claro -->
+    <color name="support_accent">#FFA500</color>          <!-- Naranja -->
+    <color name="support_light">#FFFACD</color>           <!-- Lima-limón -->
+    
+    <!-- ============================ -->
+    <!-- COLORES DE UI - INTERFAZ -->
+    <!-- ============================ -->
+    
+    <!-- Fondos -->
+    <color name="background_primary">#1A1A1A</color>      <!-- Fondo principal oscuro -->
+    <color name="background_secondary">#2D2D2D</color>    <!-- Fondo secundario -->
+    <color name="background_card">#333333</color>         <!-- Fondo de tarjetas -->
+    <color name="background_overlay">#80000000</color>    <!-- Overlay semi-transparente -->
+    <color name="background_dialog">#424242</color>       <!-- Fondo de diálogos -->
+    
+    <!-- Textos -->
+    <color name="text_primary">#FFFFFF</color>           <!-- Texto principal -->
+    <color name="text_secondary">#B3B3B3</color>         <!-- Texto secundario -->
+    <color name="text_disabled">#666666</color>          <!-- Texto deshabilitado -->
+    <color name="text_hint">#808080</color>              <!-- Texto de sugerencia -->
+    <color name="text_accent">#4FC3F7</color>            <!-- Texto de acento -->
+    
+    <!-- Botones -->
+    <color name="button_primary">#4FC3F7</color>         <!-- Botón principal -->
+    <color name="button_primary_pressed">#29B6F6</color> <!-- Botón presionado -->
+    <color name="button_secondary">#757575</color>       <!-- Botón secundario -->
+    <color name="button_secondary_pressed">#616161</color><!-- Botón secundario presionado -->
+    <color name="button_success">#4CAF50</color>         <!-- Botón de éxito -->
+    <color name="button_warning">#FF9800</color>         <!-- Botón de advertencia -->
+    <color name="button_danger">#F44336</color>          <!-- Botón de peligro -->
+    
+    <!-- Bordes y divisores -->
+    <color name="border_light">#E0E0E0</color>           <!-- Borde claro -->
+    <color name="border_dark">#424242</color>            <!-- Borde oscuro -->
+    <color name="divider">#BDBDBD</color>                <!-- Divisor -->
+    
+    <!-- ============================ -->
+    <!-- COMIDA Y OBJETOS -->
+    <!-- ============================ -->
+    
+    <!-- Comida básica -->
+    <color name="food_basic">#4CAF50</color>             <!-- Verde para comida básica -->
+    <color name="food_premium">#FF9800</color>           <!-- Naranja para comida premium -->
+    <color name="food_special">#E91E63</color>           <!-- Rosa para comida especial -->
+    <color name="food_rare">#9C27B0</color>              <!-- Púrpura para comida rara -->
+    <color name="food_legendary">#FFD700</color>         <!-- Dorado para comida legendaria -->
+    
+    <!-- Objetos del juego -->
+    <color name="powerup_speed">#2196F3</color>          <!-- Azul para velocidad -->
+    <color name="powerup_shield">#607D8B</color>         <!-- Gris-azul para escudo -->
+    <color name="powerup_health">#F44336</color>         <!-- Rojo para vida -->
+    <color name="powerup_multiplier">#9C27B0</color>     <!-- Púrpura para multiplicador -->
+    
+    <!-- Oro y recursos -->
+    <color name="gold">#FFD700</color>                   <!-- Oro -->
+    <color name="silver">#C0C0C0</color>                 <!-- Plata -->
+    <color name="bronze">#CD7F32</color>                 <!-- Bronce -->
+    
+    <!-- ============================ -->
+    <!-- EFECTOS Y ANIMACIONES -->
+    <!-- ============================ -->
+    
+    <!-- Efectos de partículas -->
+    <color name="particle_explosion">#FF5722</color>     <!-- Naranja-rojo para explosiones -->
+    <color name="particle_steam">#B3E5FC</color>         <!-- Azul claro para vapor -->
+    <color name="particle_spark">#FFC107</color>         <!-- Ámbar para chispas -->
+    <color name="particle_magic">#E1BEE7</color>         <!-- Lavanda para magia -->
+    
+    <!-- Efectos de aura -->
+    <color name="aura_healing">#4CAF50</color>           <!-- Verde para curación -->
+    <color name="aura_speed">#2196F3</color>             <!-- Azul para velocidad -->
+    <color name="aura_power">#FF5722</color>             <!-- Naranja-rojo para poder -->
+    <color name="aura_protection">#607D8B</color>        <!-- Gris-azul para protección -->
+    
+    <!-- Gradientes para efectos -->
+    <color name="gradient_start">#667eea</color>          <!-- Inicio de gradiente -->
+    <color name="gradient_end">#764ba2</color>            <!-- Fin de gradiente -->
+    <color name="gradient_success_start">#4CAF50</color>  <!-- Inicio gradiente éxito -->
+    <color name="gradient_success_end">#81C784</color>    <!-- Fin gradiente éxito -->
+    
+    <!-- Efectos de selección y hover -->
+    <color name="selection_highlight">#64B5F6</color>     <!-- Azul para selección -->
+    <color name="hover_effect">#81C784</color>           <!-- Verde para hover -->
+    <color name="focus_ring">#FF9800</color>             <!-- Anillo de foco -->
+    
+    <!-- ============================ -->
+    <!-- ESTADOS DEL JUEGO -->
+    <!-- ============================ -->
+    
+    <!-- Estados de vida -->
+    <color name="health_full">#4CAF50</color>            <!-- Vida completa -->
+    <color name="health_good">#8BC34A</color>            <!-- Vida buena -->
+    <color name="health_medium">#FFC107</color>           <!-- Vida media -->
+    <color name="health_low">#FF5722</color>             <!-- Vida baja -->
+    <color name="health_critical">#F44336</color>         <!-- Vida crítica -->
+    
+    <!-- Estados de energía -->
+    <color name="energy_full">#2196F3</color>            <!-- Energía completa -->
+    <color name="energy_medium">#03A9F4</color>           <!-- Energía media -->
+    <color name="energy_low">#00BCD4</color>              <!-- Energía baja -->
+    
+    <!-- Estados del servidor/juego -->
+    <color name="status_online">#4CAF50</color>           <!-- Estado online -->
+    <color name="status_offline">#757575</color>          <!-- Estado offline -->
+    <color name="status_loading">#FF9800</color>          <!-- Estado cargando -->
+    <color name="status_error">#F44336</color>            <!-- Estado de error -->
+    
+    <!-- Estados de victoria/derrota -->
+    <color name="victory">#FFD700</color>                 <!-- Victoria -->
+    <color name="defeat">#757575</color>                  <!-- Derrota -->
+    <color name="draw">#9E9E9E</color>                    <!-- Empate -->
+    
+    <!-- Progreso y barras -->
+    <color name="progress_primary">#4FC3F7</color>        <!-- Progreso principal -->
+    <color name="progress_secondary">#81C784</color>      <!-- Progreso secundario -->
+    <color name="progress_background">#424242</color>     <!-- Fondo de progreso -->
+    
+    <!-- ============================ -->
+    <!-- COLORES ESPECIALES -->
+    <!-- ============================ -->
+    
+    <!-- Transparencias -->
+    <color name="transparent">#00000000</color>           <!-- Transparente -->
+    <color name="semi_transparent">#80000000</color>      <!-- Semi-transparente -->
+    <color name="almost_transparent">#40000000</color>    <!-- Casi transparente -->
+    
+    <!-- Colores de sistema -->
+    <color name="system_blue">#2196F3</color>             <!-- Azul del sistema -->
+    <color name="system_green">#4CAF50</color>            <!-- Verde del sistema -->
+    <color name="system_red">#F44336</color>              <!-- Rojo del sistema -->
+    <color name="system_orange">#FF9800</color>           <!-- Naranja del sistema -->
+    <color name="system_purple">#9C27B0</color>           <!-- Púrpura del sistema -->
+    
+    <!-- Colores de degradado para backgrounds -->
+    <color name="bg_gradient_start">#1e3c72</color>       <!-- Inicio gradiente fondo -->
+    <color name="bg_gradient_middle">#2a5298</color>      <!-- Medio gradiente fondo -->
+    <color name="bg_gradient_end">#1e3c72</color>         <!-- Fin gradiente fondo -->
+    
+    <!-- ============================ -->
+    <!-- COLORES DE MENÚS Y NAVEGACIÓN -->
+    <!-- ============================ -->
+    
+    <!-- Menú principal -->
+    <color name="menu_background">#303030</color>         <!-- Fondo del menú -->
+    <color name="menu_item">#424242</color>               <!-- Elemento del menú -->
+    <color name="menu_item_hover">#525252</color>         <!-- Elemento hover del menú -->
+    <color name="menu_item_selected">#4FC3F7</color>      <!-- Elemento seleccionado -->
+    
+    <!-- Barra de navegación -->
+    <color name="nav_bar">#212121</color>                 <!-- Barra de navegación -->
+    <color name="nav_bar_item">#757575</color>            <!-- Elemento de navegación -->
+    <color name="nav_bar_active">#4FC3F7</color>          <!-- Elemento activo -->
+    
+    <!-- Bottom Navigation -->
+    <color name="bottom_nav_bg">#424242</color>           <!-- Fondo navegación inferior -->
+    <color name="bottom_nav_inactive">#9E9E9E</color>     <!-- Inactivo -->
+    <color name="bottom_nav_active">#4FC3F7</color>       <!-- Activo -->
+    
+    <!-- ============================ -->
+    <!-- EFECTOS DE ILUMINACIÓN -->
+    <!-- ============================ -->
+    
+    <!-- Iluminación ambiental -->
+    <color name="ambient_light">#FFF9C4</color>           <!-- Luz ambiental -->
+    <color name="sunlight">#FFEB3B</color>                <!-- Luz solar -->
+    <color name="moonlight">#B3E5FC</color>               <!-- Luz de luna -->
+    
+    <!-- Efectos de sombra -->
+    <color name="shadow_light">#66000000</color>          <!-- Sombra clara -->
+    <color name="shadow_medium">#99000000</color>         <!-- Sombra media -->
+    <color name="shadow_dark">#CC000000</color>           <!-- Sombra oscura -->
+    
+    <!-- Efectos de brillo -->
+    <color name="glow_white">#FFFFFF</color>              <!-- Brillo blanco -->
+    <color name="glow_blue">#2196F3</color>               <!-- Brillo azul -->
+    <color name="glow_green">#4CAF50</color>              <!-- Brillo verde -->
+    <color name="glow_red">#F44336</color>                <!-- Brillo rojo -->
+    
+    <!-- ============================ -->
+    <!-- COLORES PARA TEMAS - CRÍTICOS PARA COMPILACIÓN -->
+    <!-- ============================ -->
+    
+    <!-- Tema principal (alias para compatibilidad) -->
+    <color name="primary_color">#4FC3F7</color>            <!-- Azul claro para tema principal -->
+    <color name="primary_dark">#29B6F6</color>            <!-- Azul oscuro para tema principal -->
+    <color name="accent_color">#FF9800</color>            <!-- Naranja para acento -->
+    <color name="background_color">#303030</color>         <!-- Fondo principal -->
+    <color name="game_background">#1A1A1A</color>          <!-- Fondo del juego -->
+    <color name="white">#FFFFFF</color>                   <!-- Blanco -->
+    <color name="black">#000000</color>                   <!-- Negro -->
+    <color name="semi_transparent_black">#80000000</color> <!-- Negro semi-transparente -->
+    
+    <!-- ============================ -->
+    <!-- COLORES FALTANTES PARA COMPILACIÓN -->
+    <!-- ============================ -->
+    
+    <!-- Colores alias para compatibilidad -->
+    <color name="primary">#4FC3F7</color>                  <!-- Alias de primary_color -->
+    <color name="accent">#FF9800</color>                   <!-- Alias de accent_color -->
+    <color name="success">#4CAF50</color>                  <!-- Verde para éxito -->
+    
+    <!-- Colores de HUD y controles -->
+    <color name="hud_background">#80000000</color>         <!-- Fondo HUD semi-transparente -->
+    <color name="hud_text_primary">#FFFFFF</color>          <!-- Texto principal HUD -->
+    <color name="hud_text_secondary">#B3B3B3</color>       <!-- Texto secundario HUD -->
+    
+    <!-- Colores de botones de control -->
+    <color name="control_button_tint">#FFFFFF</color>       <!-- Tinte botones de control -->
+    <color name="control_button_background">#4FC3F7</color> <!-- Fondo botones de control -->
+    <color name="split_button_tint">#FFFFFF</color>         <!-- Tinte botón dividir -->
+    <color name="split_button_background">#FF9800</color>   <!-- Fondo botón dividir -->
+    <color name="boost_button_tint">#FFFFFF</color>         <!-- Tinte botón impulso -->
+    <color name="boost_button_background">#F44336</color>   <!-- Fondo botón impulso -->
+    
+    <!-- Colores de conexión y estado -->
+    <color name="connection_connected">#4CAF50</color>      <!-- Conexión establecida -->
+    
+    <!-- Colores de overlays y diálogos -->
+    <color name="game_overlay_background">#80000000</color> <!-- Overlay del juego -->
+    <color name="dialog_background">#424242</color>         <!-- Fondo de diálogo -->
+    <color name="dialog_title_color">#FFFFFF</color>        <!-- Título de diálogo -->
+    <color name="dialog_content_color">#B3B3B3</color>      <!-- Contenido de diálogo -->
+    <color name="button_background">#4FC3F7</color>         <!-- Fondo de botón -->
+    <color name="button_text_color">#FFFFFF</color>         <!-- Texto de botón -->
+    <color name="button_secondary_background">#757575</color> <!-- Fondo botón secundario -->
+    <color name="button_secondary_text_color">#FFFFFF</color> <!-- Texto botón secundario -->
+    <color name="pause_overlay_background">#80000000</color> <!-- Overlay de pausa -->
+    <color name="pause_text_color">#FFFFFF</color>          <!-- Texto de pausa -->
+    
+    <!-- Colores adicionales -->
+    <color name="fab_elevation">#1976D2</color>             <!-- Elevación FAB -->
+    
+</resources>

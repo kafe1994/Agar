@@ -3,780 +3,395 @@ package com.gaming.enhancedagar.ui;
 import com.gaming.enhancedagar.entities.Player;
 import com.gaming.enhancedagar.game.GameState;
 import com.gaming.enhancedagar.game.CameraManager;
+import com.gaming.enhancedagar.utils.StatisticsManager;
+import com.gaming.enhancedagar.utils.VersionInfo;
 
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Typeface;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.*;
-import android.graphics.*;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.ListView;
+import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
+import android.util.AttributeSet;
+import android.util.Log;
+
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.ArrayList;
 
 /**
  * GameHUD - Interfaz de usuario principal durante el juego
  * Proporciona HUD completo con información del jugador, mini-mapa, estadísticas y controles
+ * Versión Android - Reemplaza Swing por Android Views
  */
-public class GameHUD extends LinearLayout {
+public class GameHUD extends RelativeLayout implements View.OnTouchListener {
     
-    // Configuración del panel
-    private static final int HUD_WIDTH = 300;
-    private static final int PANEL_HEIGHT = 600;
-    private static final int MINIMAP_SIZE = 150;
-    private static final int NOTIFICATION_DURATION = 3000;
-    private static final int MAX_NOTIFICATIONS = 5;
+    private static final String TAG = "GameHUD";
     
-    // Información del juego
-    private Player currentPlayer;
+    // Referencias del juego
+    private Player player;
     private GameState gameState;
     private CameraManager cameraManager;
+    private StatisticsManager statisticsManager;
+    private VersionInfo versionInfo;
     
-    // Componentes UI (versión Android)
-    private LinearLayout playerInfoPanel;
-    private LinearLayout statsPanel;
-    private LinearLayout minimapPanel;
-    private LinearLayout playersListPanel;
-    private LinearLayout abilitiesPanel;
-    private LinearLayout controlsPanel;
-    private ScrollView playersScrollPane;
+    // Componentes de la interfaz
+    private LinearLayout topPanel;
+    private LinearLayout bottomPanel;
+    private LinearLayout leftPanel;
+    private LinearLayout rightPanel;
+    private TextView scoreText;
+    private TextView sizeText;
+    private TextView positionText;
+    private TextView fpsText;
+    private TextView timeText;
+    private TextView powerUpsText;
+    private TextView statusText;
+    private ListView leaderboardList;
+    private ArrayAdapter<String> leaderboardAdapter;
+    private MinimapView minimapView;
     
-    // Información del jugador
-    private TextView playerNameLabel;
-    private TextView playerSizeLabel;
-    private TextView playerSpeedLabel;
-    private TextView playerRankLabel;
-    private ProgressBar healthBar;
-    private ProgressBar energyBar;
-    private ProgressBar experienceBar;
+    // Datos para UI
+    private List<String> leaderboardData = new ArrayList<>();
+    private Map<String, Integer> playerStats = new HashMap<>();
     
-    // Controles
-    private Button pauseButton;
-    private Button settingsButton;
-    private Button[] abilityButtons;
-    private LinearLayout notificationsPanel;
+    // Configuración visual
+    private Paint textPaint;
+    private Paint backgroundPaint;
+    private Paint borderPaint;
+    private int uiColor = 0xFF00FF00; // Verde
+    private int backgroundColor = 0x80000000; // Negro semi-transparente
+    private float uiPadding = 16f;
+    private float textSize = 18f;
     
-    // Sistema de notificaciones
-    private final Queue<Notification> notificationQueue = new ConcurrentLinkedQueue<>();
-    private final Map<String, Timer> activeTimers = new HashMap<>();
+    // Estado de interacción
+    private boolean isDragging = false;
+    private float lastTouchX, lastTouchY;
     
-    // Estadísticas del juego
-    private TextView killsLabel;
-    private TextView deathsLabel;
-    private TextView timeAliveLabel;
-    private TextView scoreLabel;
-    
-    // Lista de jugadores
-    private ListView<String> playersList;
-    private ArrayList<String> playersListData;
-    
-    // Colores del tema
-    private static final int PRIMARY_COLOR = android.graphics.Color.rgb(44, 62, 80);
-    private static final int SECONDARY_COLOR = android.graphics.Color.rgb(52, 152, 219);
-    private static final int SUCCESS_COLOR = android.graphics.Color.rgb(46, 204, 113);
-    private static final int WARNING_COLOR = android.graphics.Color.rgb(241, 196, 15);
-    private static final int DANGER_COLOR = android.graphics.Color.rgb(231, 76, 60);
-    private static final int TEXT_COLOR = android.graphics.Color.rgb(236, 240, 241);
-    private static final int PANEL_COLOR = android.graphics.Color.argb(220, 52, 73, 94);
-    
-    // Estado del HUD
-    private boolean isPaused = false;
-    private boolean isVisible = true;
-    private long gameStartTime;
-    
-    /**
-     * Constructor del GameHUD
-     */
-    public GameHUD(Context context, Player player, GameState gameState, CameraManager cameraManager) {
+    // Constructor para Android
+    public GameHUD(Context context) {
         super(context);
-        this.currentPlayer = player;
-        this.gameState = gameState;
-        this.cameraManager = cameraManager;
-        this.gameStartTime = System.currentTimeMillis();
-        this.playersListData = new ArrayList<>();
-        
-        setOrientation(VERTICAL);
-        setPadding(16, 16, 16, 16);
-        setBackgroundColor(PANEL_COLOR);
-        initializeComponents();
-        setupEventListeners();
-        startUpdateTimer();
+        init(context);
     }
     
-    /**
-     * Constructor XML para Android
-     */
     public GameHUD(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setOrientation(VERTICAL);
-        setPadding(16, 16, 16, 16);
-        setBackgroundColor(PANEL_COLOR);
-        initializeComponents();
-        setupEventListeners();
+        init(context);
+    }
+    
+    public GameHUD(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init(context);
     }
     
     /**
-     * Inicializa todos los componentes de la UI
+     * Inicialización de componentes
      */
-    private void initializeComponents() {
-        // Panel de información del jugador
-        initializePlayerInfoPanel();
+    private void init(Context context) {
+        // Configurar paints para dibujo
+        textPaint = new Paint();
+        textPaint.setColor(uiColor);
+        textPaint.setTextSize(textSize);
+        textPaint.setTypeface(Typeface.MONOSPACE);
+        textPaint.setAntiAlias(true);
         
-        // Panel de estadísticas
-        initializeStatsPanel();
+        backgroundPaint = new Paint();
+        backgroundPaint.setColor(backgroundColor);
+        backgroundPaint.setStyle(Paint.Style.FILL);
         
-        // Panel de mini-mapa
-        initializeMinimapPanel();
+        borderPaint = new Paint();
+        borderPaint.setColor(uiColor);
+        borderPaint.setStyle(Paint.Style.STROKE);
+        borderPaint.setStrokeWidth(2f);
         
-        // Panel de lista de jugadores
-        initializePlayersListPanel();
+        // Configurar layout
+        setOnTouchListener(this);
+        setClickable(true);
         
-        // Panel de habilidades
-        initializeAbilitiesPanel();
+        // Crear paneles de UI
+        createUIPanels(context);
         
-        // Panel de controles
-        initializeControlsPanel();
-        
-        // Panel de notificaciones
-        initializeNotificationsPanel();
+        // Configurar actualización periódica
+        setupPeriodicUpdate();
     }
     
     /**
-     * Inicializa el panel de información del jugador
+     * Crear paneles de la interfaz
      */
-    private void initializePlayerInfoPanel() {
-        playerInfoPanel = new LinearLayout(getContext());
-        playerInfoPanel.setOrientation(LinearLayout.VERTICAL);
-        playerInfoPanel.setPadding(16, 16, 16, 16);
-        playerInfoPanel.setBackgroundColor(PANEL_COLOR);
+    private void createUIPanels(Context context) {
+        // Panel superior
+        topPanel = new LinearLayout(context);
+        topPanel.setOrientation(LinearLayout.HORIZONTAL);
+        topPanel.setPadding((int)uiPadding, (int)uiPadding, (int)uiPadding, (int)uiPadding);
         
-        // Título del panel
-        TextView titleLabel = new TextView(getContext());
-        titleLabel.setText("Jugador");
-        titleLabel.setTextColor(SECONDARY_COLOR);
-        titleLabel.setTextSize(18);
-        titleLabel.setTypeface(null, android.graphics.Typeface.BOLD);
-        playerInfoPanel.addView(titleLabel);
+        scoreText = new TextView(context);
+        sizeText = new TextView(context);
+        positionText = new TextView(context);
+        fpsText = new TextView(context);
         
-        // Nombre del jugador
-        addLabelValuePair(playerInfoPanel, "Nombre:", currentPlayer.getName());
+        topPanel.addView(scoreText);
+        topPanel.addView(sizeText);
+        topPanel.addView(positionText);
+        topPanel.addView(fpsText);
         
-        // Tamaño/Masa
-        addLabelValuePair(playerInfoPanel, "Masa:", "0");
+        // Panel inferior
+        bottomPanel = new LinearLayout(context);
+        bottomPanel.setOrientation(LinearLayout.HORIZONTAL);
+        bottomPanel.setPadding((int)uiPadding, (int)uiPadding, (int)uiPadding, (int)uiPadding);
         
-        // Velocidad
-        addLabelValuePair(playerInfoPanel, "Velocidad:", "0");
+        timeText = new TextView(context);
+        powerUpsText = new TextView(context);
+        statusText = new TextView(context);
         
-        // Rango
-        addLabelValuePair(playerInfoPanel, "Rango:", "#1");
+        bottomPanel.addView(timeText);
+        bottomPanel.addView(powerUpsText);
+        bottomPanel.addView(statusText);
         
-        // Barra de vida
-        TextView healthLabel = new TextView(getContext());
-        healthLabel.setText("Vida:");
-        healthLabel.setTextColor(TEXT_COLOR);
-        healthLabel.setTextSize(14);
-        playerInfoPanel.addView(healthLabel);
+        // Panel izquierdo - Leaderboard
+        leftPanel = new LinearLayout(context);
+        leftPanel.setOrientation(LinearLayout.VERTICAL);
+        leftPanel.setPadding((int)uiPadding, (int)uiPadding, (int)uiPadding, (int)uiPadding);
         
-        healthBar = new ProgressBar(getContext(), null, android.R.attr.progressBarStyleHorizontal);
-        healthBar.setMax(100);
-        healthBar.setProgress(100);
-        playerInfoPanel.addView(healthBar);
+        leaderboardAdapter = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, leaderboardData);
+        leaderboardList = new ListView(context);
+        leaderboardList.setAdapter(leaderboardAdapter);
         
-        // Barra de energía
-        TextView energyLabel = new TextView(getContext());
-        energyLabel.setText("Energía:");
-        energyLabel.setTextColor(TEXT_COLOR);
-        energyLabel.setTextSize(14);
-        playerInfoPanel.addView(energyLabel);
+        leftPanel.addView(leaderboardList);
         
-        energyBar = new ProgressBar(getContext(), null, android.R.attr.progressBarStyleHorizontal);
-        energyBar.setMax(100);
-        energyBar.setProgress(100);
-        playerInfoPanel.addView(energyBar);
+        // Mini-mapa
+        minimapView = new MinimapView(context);
         
-        // Barra de experiencia
-        TextView expLabel = new TextView(getContext());
-        expLabel.setText("Experiencia:");
-        expLabel.setTextColor(TEXT_COLOR);
-        expLabel.setTextSize(14);
-        playerInfoPanel.addView(expLabel);
-        
-        experienceBar = new ProgressBar(getContext(), null, android.R.attr.progressBarStyleHorizontal);
-        experienceBar.setMax(100);
-        experienceBar.setProgress(0);
-        playerInfoPanel.addView(experienceBar);
+        addView(topPanel);
+        addView(bottomPanel);
+        addView(leftPanel);
+        addView(minimapView);
     }
     
     /**
-     * Inicializa el panel de estadísticas del juego
+     * Establecer referencias del juego
      */
-    private void initializeStatsPanel() {
-        statsPanel = new LinearLayout(getContext());
-        statsPanel.setOrientation(LinearLayout.VERTICAL);
-        statsPanel.setPadding(16, 16, 16, 16);
-        statsPanel.setBackgroundColor(PANEL_COLOR);
+    public void setGameReferences(Player player, GameState gameState, CameraManager cameraManager,
+                                  StatisticsManager statisticsManager, VersionInfo versionInfo) {
+        this.player = player;
+        this.gameState = gameState;
+        this.cameraManager = cameraManager;
+        this.statisticsManager = statisticsManager;
+        this.versionInfo = versionInfo;
         
-        // Título del panel
-        TextView titleLabel = new TextView(getContext());
-        titleLabel.setText("Estadísticas");
-        titleLabel.setTextColor(SECONDARY_COLOR);
-        titleLabel.setTextSize(18);
-        titleLabel.setTypeface(null, android.graphics.Typeface.BOLD);
-        statsPanel.addView(titleLabel);
-        
-        // Matados
-        addLabelValuePair(statsPanel, "Matados:", "0");
-        
-        // Muertes
-        addLabelValuePair(statsPanel, "Muertes:", "0");
-        
-        // Tiempo vivo
-        addLabelValuePair(statsPanel, "Tiempo vivo:", "00:00");
-        
-        // Puntuación
-        addLabelValuePair(statsPanel, "Puntuación:", "0");
+        minimapView.setReferences(player, gameState, cameraManager);
     }
     
     /**
-     * Inicializa el panel del mini-mapa
+     * Actualizar información mostrada
      */
-    private void initializeMinimapPanel() {
-        minimapPanel = new LinearLayout(getContext());
-        minimapPanel.setOrientation(LinearLayout.VERTICAL);
-        minimapPanel.setPadding(16, 16, 16, 16);
-        minimapPanel.setBackgroundColor(PANEL_COLOR);
+    public void updateHUD() {
+        if (player == null || gameState == null) return;
         
-        // Título del panel
-        TextView titleLabel = new TextView(getContext());
-        titleLabel.setText("Mini-Mapa");
-        titleLabel.setTextColor(SECONDARY_COLOR);
-        titleLabel.setTextSize(18);
-        titleLabel.setTypeface(null, android.graphics.Typeface.BOLD);
-        minimapPanel.addView(titleLabel);
-        
-        // Mini-mapa simplificado usando ImageView
-        ImageView minimapView = new ImageView(getContext());
-        minimapView.setLayoutParams(new LinearLayout.LayoutParams(MINIMAP_SIZE, MINIMAP_SIZE));
-        minimapView.setBackgroundColor(android.graphics.Color.rgb(20, 20, 20));
-        minimapView.setScaleType(ImageView.ScaleType.CENTER);
-        minimapPanel.addView(minimapView);
-    }
-    
-    /**
-     * Inicializa el panel de lista de jugadores
-     */
-    private void initializePlayersListPanel() {
-        playersListPanel = new LinearLayout(getContext());
-        playersListPanel.setOrientation(LinearLayout.VERTICAL);
-        playersListPanel.setPadding(16, 16, 16, 16);
-        playersListPanel.setBackgroundColor(PANEL_COLOR);
-        
-        // Título del panel
-        TextView titleLabel = new TextView(getContext());
-        titleLabel.setText("Jugadores Vivos");
-        titleLabel.setTextColor(SECONDARY_COLOR);
-        titleLabel.setTextSize(18);
-        titleLabel.setTypeface(null, android.graphics.Typeface.BOLD);
-        playersListPanel.addView(titleLabel);
-        
-        // Lista de jugadores
-        playersListData = new ArrayList<>();
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), 
-                android.R.layout.simple_list_item_1, playersListData);
-        playersList = new ListView<>(getContext());
-        playersList.setAdapter(adapter);
-        playersList.setBackgroundColor(android.graphics.Color.rgb(44, 62, 80));
-        playersListPanel.addView(playersList);
-    }
-    
-    /**
-     * Inicializa el panel de habilidades
-     */
-    private void initializeAbilitiesPanel() {
-        abilitiesPanel = new LinearLayout(getContext());
-        abilitiesPanel.setOrientation(LinearLayout.VERTICAL);
-        abilitiesPanel.setPadding(16, 16, 16, 16);
-        abilitiesPanel.setBackgroundColor(PANEL_COLOR);
-        
-        // Título del panel
-        TextView titleLabel = new TextView(getContext());
-        titleLabel.setText("Habilidades");
-        titleLabel.setTextColor(SECONDARY_COLOR);
-        titleLabel.setTextSize(18);
-        titleLabel.setTypeface(null, android.graphics.Typeface.BOLD);
-        abilitiesPanel.addView(titleLabel);
-        
-        // Grid de habilidades
-        GridLayout abilitiesGrid = new GridLayout(getContext());
-        abilitiesGrid.setRowCount(3);
-        abilitiesGrid.setColumnCount(3);
-        abilitiesGrid.setPadding(8, 8, 8, 8);
-        
-        String[] abilityNames = {"Velocidad", "División", "Escudo", "Cámara", "Ralentizar", "Atraer", "Empujar", "Explosión", "Radar"};
-        abilityButtons = new Button[abilityNames.length];
-        
-        for (int i = 0; i < abilityNames.length; i++) {
-            abilityButtons[i] = new Button(getContext());
-            abilityButtons[i].setText(abilityNames[i]);
-            abilityButtons[i].setBackgroundColor(android.graphics.Color.rgb(44, 62, 80));
-            abilityButtons[i].setTextColor(TEXT_COLOR);
-            abilityButtons[i].setTextSize(12);
+        try {
+            // Actualizar texto de puntuación
+            float score = player.getScore();
+            scoreText.setText("Puntuación: " + Math.round(score));
             
-            GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-            params.width = 0;
-            params.height = GridLayout.LayoutParams.WRAP_CONTENT;
-            params.columnSpec = GridLayout.spec(i % 3, 1f);
-            params.rowSpec = GridLayout.spec(i / 3, 1f);
-            params.setMargins(2, 2, 2, 2);
-            abilityButtons[i].setLayoutParams(params);
+            // Actualizar tamaño
+            float size = player.getRadius();
+            sizeText.setText("Tamaño: " + Math.round(size));
             
-            abilitiesGrid.addView(abilityButtons[i]);
-        }
-        
-        abilitiesPanel.addView(abilitiesGrid);
-    }
-    
-    /**
-     * Inicializa el panel de controles
-     */
-    private void initializeControlsPanel() {
-        controlsPanel = new LinearLayout(getContext());
-        controlsPanel.setOrientation(LinearLayout.HORIZONTAL);
-        controlsPanel.setPadding(16, 16, 16, 16);
-        controlsPanel.setBackgroundColor(PANEL_COLOR);
-        controlsPanel.setGravity(android.view.Gravity.CENTER);
-        
-        pauseButton = new Button(getContext());
-        pauseButton.setText("⏸️ Pausa");
-        pauseButton.setBackgroundColor(SECONDARY_COLOR);
-        pauseButton.setTextColor(android.graphics.Color.WHITE);
-        pauseButton.setPadding(16, 8, 16, 8);
-        pauseButton.setTextSize(14);
-        
-        settingsButton = new Button(getContext());
-        settingsButton.setText("⚙️ Opciones");
-        settingsButton.setBackgroundColor(SECONDARY_COLOR);
-        settingsButton.setTextColor(android.graphics.Color.WHITE);
-        settingsButton.setPadding(16, 8, 16, 8);
-        settingsButton.setTextSize(14);
-        
-        controlsPanel.addView(pauseButton);
-        controlsPanel.addView(settingsButton);
-    }
-    
-    /**
-     * Inicializa el panel de notificaciones
-     */
-    private void initializeNotificationsPanel() {
-        notificationsPanel = new LinearLayout(getContext());
-        notificationsPanel.setOrientation(LinearLayout.VERTICAL);
-        notificationsPanel.setPadding(16, 16, 16, 16);
-        notificationsPanel.setBackgroundColor(PANEL_COLOR);
-    }
-    
-
-    
-    /**
-     * Configura los event listeners
-     */
-    private void setupEventListeners() {
-        // Listener para pausar/reanudar
-        pauseButton.setOnClickListener(v -> togglePause());
-        
-        // Listener para configuraciones
-        settingsButton.setOnClickListener(v -> showSettingsDialog());
-        
-        // Listeners para habilidades
-        for (Button button : abilityButtons) {
-            button.setOnClickListener(v -> handleAbilityClick(button.getText().toString()));
-        }
-    }
-    
-    /**
-     * Inicia el timer de actualización del HUD
-     */
-    private void startUpdateTimer() {
-        Timer updateTimer = new Timer();
-        updateTimer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                if (isVisible && !isPaused) {
-                    // En Android, usamos post() para ejecutar en el thread UI
-                    post(() -> updateHUD());
-                }
-            }
-        }, 0, 100); // Actualizar cada 100ms
-    }
-    
-    /**
-     * Actualiza toda la información del HUD
-     */
-    private void updateHUD() {
-        if (currentPlayer == null) return;
-        
-        updatePlayerInfo();
-        updateStats();
-        updatePlayersList();
-        updateNotifications();
-    }
-    
-    /**
-     * Actualiza la información del jugador
-     */
-    private void updatePlayerInfo() {
-        // Actualizar valores básicos
-        playerNameLabel.setText(currentPlayer.getName());
-        playerSizeLabel.setText(String.format("%.1f", currentPlayer.getMass()));
-        playerSpeedLabel.setText(String.format("%.1f", currentPlayer.getSpeed()));
-        
-        // Actualizar barras de progreso
-        healthBar.setValue((int) currentPlayer.getHealth());
-        healthBar.setMaximum((int) currentPlayer.getMaxHealth());
-        
-        energyBar.setValue((int) currentPlayer.getEnergy());
-        energyBar.setMaximum((int) currentPlayer.getMaxEnergy());
-        
-        experienceBar.setValue((int) currentPlayer.getExperience());
-        experienceBar.setMaximum((int) currentPlayer.getMaxExperience());
-        
-        // Actualizar rango
-        int rank = calculatePlayerRank();
-        playerRankLabel.setText("#" + rank);
-    }
-    
-    /**
-     * Actualiza las estadísticas del juego
-     */
-    private void updateStats() {
-        if (gameState == null) return;
-        
-        killsLabel.setText(String.valueOf(gameState.getKillCount()));
-        deathsLabel.setText(String.valueOf(gameState.getDeathCount()));
-        scoreLabel.setText(String.valueOf(gameState.getScore()));
-        
-        // Actualizar tiempo vivo
-        long timeAlive = (System.currentTimeMillis() - gameStartTime) / 1000;
-        timeAliveLabel.setText(formatTime(timeAlive));
-    }
-    
-    /**
-     * Actualiza la lista de jugadores
-     */
-    private void updatePlayersList() {
-        if (gameState == null || gameState.getActivePlayers() == null) return;
-        
-        playersListData.clear();
-        
-        // Ordenar jugadores por masa
-        List<Player> sortedPlayers = new ArrayList<>(gameState.getActivePlayers());
-        sortedPlayers.sort((p1, p2) -> Double.compare(p2.getMass(), p1.getMass()));
-        
-        // Agregar a la lista
-        for (Player player : sortedPlayers) {
-            String playerInfo = String.format("%s - %.1f", 
-                    player.getName(), player.getMass());
-            if (player.equals(currentPlayer)) {
-                playerInfo += " (Tú)";
-            }
-            playersListData.add(playerInfo);
-        }
-        
-        // Notificar al adapter que los datos cambiaron
-        if (playersList.getAdapter() != null) {
-            ((ArrayAdapter<String>) playersList.getAdapter()).notifyDataSetChanged();
-        }
-    }
-    
-    /**
-     * Actualiza las notificaciones
-     */
-    private void updateNotifications() {
-        // Remover notificaciones expiradas
-        notificationQueue.removeIf(notification -> 
-                System.currentTimeMillis() > notification.getEndTime());
-        
-        // Actualizar panel de notificaciones
-        notificationsPanel.removeAllViews();
-        for (Notification notification : notificationQueue) {
-            TextView notificationText = createNotificationTextView(notification);
-            notificationsPanel.addView(notificationText);
+            // Actualizar posición
+            float x = (float)player.getX();
+            float y = (float)player.getY();
+            positionText.setText("Pos: (" + Math.round(x) + ", " + Math.round(y) + ")");
             
-            // Agregar espacio entre notificaciones
-            TextView spacer = new TextView(getContext());
-            spacer.setText(" ");
-            spacer.setTextSize(4);
-            notificationsPanel.addView(spacer);
-        }
-    }
-    
-    /**
-     * Calcula el rango del jugador actual
-     */
-    private int calculatePlayerRank() {
-        if (gameState == null || gameState.getActivePlayers() == null) return 1;
-        
-        int rank = 1;
-        for (Player player : gameState.getActivePlayers()) {
-            if (player.getMass() > currentPlayer.getMass()) {
-                rank++;
+            // Actualizar FPS estimado
+            long currentTime = System.currentTimeMillis();
+            staticFPSUpdate(currentTime);
+            
+            // Actualizar tiempo de juego
+            if (gameState.getStartTime() > 0) {
+                long gameTime = (currentTime - gameState.getStartTime()) / 1000;
+                timeText.setText("Tiempo: " + gameTime + "s");
             }
+            
+            // Actualizar power-ups activos
+            int activePowerUps = player.getActivePowerUps().size();
+            powerUpsText.setText("Power-ups: " + activePowerUps);
+            
+            // Actualizar estado del juego
+            String status = getGameStatus();
+            statusText.setText(status);
+            
+            // Actualizar leaderboard
+            updateLeaderboard();
+            
+        } catch (Exception e) {
+            Log.e(TAG, "Error actualizando HUD", e);
         }
-        return rank;
     }
     
     /**
-     * Formatea el tiempo en formato MM:SS
+     * Obtener estado actual del juego
      */
-    private String formatTime(long seconds) {
-        long minutes = seconds / 60;
-        long secs = seconds % 60;
-        return String.format("%02d:%02d", minutes, secs);
-    }
-    
-    /**
-     * Agrega una nueva notificación
-     */
-    public void addNotification(String message, NotificationType type) {
-        if (notificationQueue.size() >= MAX_NOTIFICATIONS) {
-            notificationQueue.poll(); // Remover la más antigua
-        }
+    private String getGameStatus() {
+        if (gameState == null) return "Inicializando...";
         
-        Notification notification = new Notification(message, type, 
-                System.currentTimeMillis() + NOTIFICATION_DURATION);
-        notificationQueue.add(notification);
-        
-        // Timer para remover notificación automáticamente
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                notificationQueue.remove(notification);
-                // En Android, usamos post() para ejecutar en el thread UI
-                post(() -> updateNotifications());
-            }
-        }, NOTIFICATION_DURATION);
-        
-        activeTimers.put(message, timer);
-    }
-    
-    /**
-     * Pausa o reanuda el juego
-     */
-    private void togglePause() {
-        isPaused = !isPaused;
-        pauseButton.setText(isPaused ? "▶️ Reanudar" : "⏸️ Pausa");
-        
-        addNotification(isPaused ? "Juego pausado" : "Juego reanudado", 
-                isPaused ? NotificationType.WARNING : NotificationType.SUCCESS);
-    }
-    
-    /**
-     * Muestra el diálogo de configuración
-     */
-    private void showSettingsDialog() {
-        // Crear diálogo simple para Android
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Configuración");
-        
-        String[] options = {
-            "Configuraciones del Juego",
-            "- Activar/desactivar sonido",
-            "- Ajustar calidad gráfica", 
-            "- Configurar controles",
-            "- Opciones de red"
-        };
-        
-        builder.setItems(options, (dialog, which) -> {
-            // Manejar selección de opciones
-            addNotification("Configuración: " + options[which], NotificationType.INFO);
-        });
-        
-        builder.setPositiveButton("Cerrar", null);
-        builder.show();
-    }
-    
-    /**
-     * Maneja el click en una habilidad
-     */
-    private void handleAbilityClick(String abilityName) {
-        if (currentPlayer == null) return;
-        
-        switch (abilityName) {
-            case "Velocidad":
-                useSpeedAbility();
-                break;
-            case "División":
-                useDivisionAbility();
-                break;
-            case "Escudo":
-                useShieldAbility();
-                break;
+        switch (gameState.getCurrentState()) {
+            case RUNNING:
+                return "Jugando";
+            case PAUSED:
+                return "Pausado";
+            case GAME_OVER:
+                return "Game Over";
+            case MENU:
+                return "Menú";
             default:
-                addNotification("Habilidad " + abilityName + " activada", NotificationType.INFO);
+                return "Desconocido";
         }
     }
     
     /**
-     * Usa la habilidad de velocidad
+     * Actualizar leaderboard
      */
-    private void useSpeedAbility() {
-        if (currentPlayer.getEnergy() >= 20) {
-            currentPlayer.consumeEnergy(20);
-            currentPlayer.setSpeedMultiplier(2.0f);
-            addNotification("¡Velocidad activada!", NotificationType.SUCCESS);
-            
-            // Volver a velocidad normal después de 3 segundos
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    currentPlayer.setSpeedMultiplier(1.0f);
-                    // En Android, usamos post() para ejecutar en el thread UI
-                    post(() -> addNotification("Velocidad desactivada", NotificationType.WARNING));
+    private void updateLeaderboard() {
+        // Implementación básica del leaderboard
+        leaderboardData.clear();
+        leaderboardData.add("Jugador: " + Math.round(player.getScore()));
+        leaderboardData.add("Tamaño: " + Math.round(player.getRadius()));
+        
+        if (leaderboardAdapter != null) {
+            leaderboardAdapter.notifyDataSetChanged();
+        }
+    }
+    
+    /**
+     * Actualización estática de FPS
+     */
+    private void long lastFPSUpdate = 0;
+    private int frameCount = 0;
+    private float currentFPS = 0;
+    
+    private void staticFPSUpdate(long currentTime) {
+        frameCount++;
+        if (currentTime - lastFPSUpdate >= 1000) {
+            currentFPS = (frameCount * 1000.0f) / (currentTime - lastFPSUpdate);
+            fpsText.setText("FPS: " + Math.round(currentFPS));
+            frameCount = 0;
+            lastFPSUpdate = currentTime;
+        }
+    }
+    
+    /**
+     * Configurar actualización periódica
+     */
+    private void setupPeriodicUpdate() {
+        // En una implementación real, esto se haría con un Handler o Timer
+        // Por ahora, la actualización se maneja desde el hilo principal del juego
+    }
+    
+    // === MANEJO DE TOUCH ===
+    
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                isDragging = true;
+                lastTouchX = event.getX();
+                lastTouchY = event.getY();
+                return true;
+                
+            case MotionEvent.ACTION_MOVE:
+                if (isDragging) {
+                    float deltaX = event.getX() - lastTouchX;
+                    float deltaY = event.getY() - lastTouchY;
+                    
+                    // Procesar gestos de cámara o zoom
+                    if (cameraManager != null) {
+                        cameraManager.handleDrag(deltaX, deltaY);
+                    }
+                    
+                    lastTouchX = event.getX();
+                    lastTouchY = event.getY();
                 }
-            }, 3000);
-        } else {
-            addNotification("¡No tienes suficiente energía!", NotificationType.ERROR);
+                return true;
+                
+            case MotionEvent.ACTION_UP:
+                isDragging = false;
+                return true;
         }
+        return false;
     }
     
-    /**
-     * Usa la habilidad de división
-     */
-    private void useDivisionAbility() {
-        if (currentPlayer.getMass() >= 50 && currentPlayer.getEnergy() >= 30) {
-            currentPlayer.consumeEnergy(30);
-            addNotification("¡División activada!", NotificationType.SUCCESS);
-            // Lógica de división se maneja en el game engine
-        } else {
-            addNotification("¡No puedes dividirte!", NotificationType.ERROR);
-        }
-    }
+    // === CLASE INTERNA: MINIMAP ===
     
     /**
-     * Usa la habilidad de escudo
+     * Vista del mini-mapa
      */
-    private void useShieldAbility() {
-        if (currentPlayer.getEnergy() >= 25) {
-            currentPlayer.consumeEnergy(25);
-            currentPlayer.setShielded(true);
-            addNotification("¡Escudo activado!", NotificationType.SUCCESS);
+    private static class MinimapView extends View {
+        private Player player;
+        private GameState gameState;
+        private CameraManager cameraManager;
+        private Paint minimapPaint;
+        private Paint playerPaint;
+        private Paint borderPaint;
+        private RectF minimapRect;
+        
+        public MinimapView(Context context) {
+            super(context);
+            init();
+        }
+        
+        public MinimapView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+            init();
+        }
+        
+        private void init() {
+            minimapPaint = new Paint();
+            minimapPaint.setColor(0x4000FF00);
+            minimapPaint.setStyle(Paint.Style.FILL);
             
-            // Desactivar escudo después de 5 segundos
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    currentPlayer.setShielded(false);
-                    // En Android, usamos post() para ejecutar en el thread UI
-                    post(() -> addNotification("Escudo desactivado", NotificationType.WARNING));
-                }
-            }, 5000);
-        } else {
-            addNotification("¡No tienes suficiente energía!", NotificationType.ERROR);
-        }
-    }
-    
-    /**
-     * Crea un TextView para una notificación
-     */
-    private TextView createNotificationTextView(Notification notification) {
-        TextView textView = new TextView(getContext());
-        textView.setText(notification.getMessage());
-        textView.setPadding(8, 4, 8, 4);
-        textView.setTextSize(12);
-        
-        switch (notification.getType()) {
-            case SUCCESS:
-                textView.setBackgroundColor(android.graphics.Color.argb(200, 46, 204, 113));
-                textView.setTextColor(android.graphics.Color.WHITE);
-                break;
-            case ERROR:
-                textView.setBackgroundColor(android.graphics.Color.argb(200, 231, 76, 60));
-                textView.setTextColor(android.graphics.Color.WHITE);
-                break;
-            case WARNING:
-                textView.setBackgroundColor(android.graphics.Color.argb(200, 241, 196, 15));
-                textView.setTextColor(android.graphics.Color.BLACK);
-                break;
-            case INFO:
-                textView.setBackgroundColor(android.graphics.Color.argb(200, 52, 152, 219));
-                textView.setTextColor(android.graphics.Color.WHITE);
-                break;
+            playerPaint = new Paint();
+            playerPaint.setColor(0xFF00FF00);
+            playerPaint.setStyle(Paint.Style.FILL);
+            
+            borderPaint = new Paint();
+            borderPaint.setColor(0xFF00FF00);
+            borderPaint.setStyle(Paint.Style.STROKE);
+            borderPaint.setStrokeWidth(2f);
+            
+            minimapRect = new RectF(10, 10, 110, 110); // 100x100 minimapa
         }
         
-        return textView;
-    }
-    
-    /**
-     * Método helper para agregar un par label-valor a un panel
-     */
-    private void addLabelValuePair(LinearLayout panel, String label, String value) {
-        LinearLayout rowLayout = new LinearLayout(getContext());
-        rowLayout.setOrientation(LinearLayout.HORIZONTAL);
-        
-        TextView labelView = new TextView(getContext());
-        labelView.setText(label);
-        labelView.setTextColor(TEXT_COLOR);
-        labelView.setTextSize(14);
-        labelView.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, 
-                LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
-        
-        TextView valueView = new TextView(getContext());
-        valueView.setText(value);
-        valueView.setTextColor(SECONDARY_COLOR);
-        valueView.setTextSize(14);
-        valueView.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, 
-                LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
-        
-        rowLayout.addView(labelView);
-        rowLayout.addView(valueView);
-        panel.addView(rowLayout);
-    }
-    
-
-    
-
-    
-
-    
-    // Clase para representar notificaciones
-    private static class Notification {
-        private final String message;
-        private final NotificationType type;
-        private final long endTime;
-        
-        public Notification(String message, NotificationType type, long endTime) {
-            this.message = message;
-            this.type = type;
-            this.endTime = endTime;
+        public void setReferences(Player player, GameState gameState, CameraManager cameraManager) {
+            this.player = player;
+            this.gameState = gameState;
+            this.cameraManager = cameraManager;
         }
         
-        public String getMessage() { return message; }
-        public NotificationType getType() { return type; }
-        public long getEndTime() { return endTime; }
-    }
-    
-    // Enum para tipos de notificaciones
-    public enum NotificationType {
-        SUCCESS, ERROR, WARNING, INFO
-    }
-    
-
-    
-    // Getters para acceso desde otras clases
-    public boolean isPaused() { return isPaused; }
-    public void setPaused(boolean paused) { isPaused = paused; }
-    public boolean isVisible() { return isVisible; }
-    public void setVisible(boolean visible) { isVisible = visible; }
-    
-    // Método para limpiar recursos
-    public void cleanup() {
-        for (Timer timer : activeTimers.values()) {
-            timer.cancel();
+        @Override
+        protected void onDraw(Canvas canvas) {
+            super.onDraw(canvas);
+            
+            if (player == null || gameState == null) return;
+            
+            // Dibujar fondo del minimapa
+            canvas.drawRect(minimapRect, minimapPaint);
+            canvas.drawRect(minimapRect, borderPaint);
+            
+            // Dibujar jugador en el minimapa
+            float playerX = minimapRect.left + 50 + (float)(player.getX() / 100.0);
+            float playerY = minimapRect.top + 50 + (float)(player.getY() / 100.0);
+            
+            canvas.drawCircle(playerX, playerY, 3f, playerPaint);
         }
-        activeTimers.clear();
-        notificationQueue.clear();
+        
+        @Override
+        protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+            setMeasuredDimension(120, 120); // Tamaño fijo para el minimapa
+        }
     }
 }

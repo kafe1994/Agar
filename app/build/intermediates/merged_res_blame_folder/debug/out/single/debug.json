@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/layout_activity_main_menu.xml.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/layout/activity_main_menu.xml"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/drawable_button_circle.xml.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/drawable/button_circle.xml"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/drawable_card_background.xml.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/drawable/card_background.xml"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/animator_button_press_animator.xml.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/animator/button_press_animator.xml"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/layout_activity_main.xml.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/drawable_button_danger.xml.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/drawable/button_danger.xml"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/drawable_button_minor.xml.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/drawable/button_minor.xml"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/drawable_edit_text_background.xml.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/drawable/edit_text_background.xml"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/layout_activity_settings.xml.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/drawable_gradient_background.xml.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/drawable/gradient_background.xml"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/drawable_button_secondary.xml.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/drawable/button_secondary.xml"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/drawable_button_play.xml.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/drawable/button_play.xml"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.gaming.enhancedagar.app-merged_res-34:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.gaming.enhancedagar.app-main-36:/mipmap-xxxhdpi/ic_launcher.png"
+    }
+]

@@ -213,7 +213,7 @@
                 android:layout_marginEnd="@dimen/margin_small" />
 
             <Button
-                android:id="@+id/gameOverMainMenuButton"
+                android:id="@+id/mainMenuButton"
                 style="@style/Button.Secondary"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

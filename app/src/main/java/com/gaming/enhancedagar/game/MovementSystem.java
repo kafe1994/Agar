@@ -5,7 +5,7 @@ import com.gaming.enhancedagar.entities.Player;
 import com.gaming.enhancedagar.utils.Vector2D;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.PriorityQueue;
+import java.util.PriorityQueue;
 
 /**
  * Sistema avanzado de movimiento para entidades con pathfinding, steering behaviors
