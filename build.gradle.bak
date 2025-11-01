@@ -1,17 +1,13 @@
-// Top-level build file para Enhanced Agar Game
-// Configurado para compilación en Termux
-
-plugins {
-    id 'com.android.application' version '8.1.2' apply false
+// Top-level build file for Enhanced Agar Game
+buildscript {
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.2'
+    }
 }
 
-// ELIMINAR o COMENTAR esta sección completa
-// allprojects {
-//     repositories {
-//         google()
-//         mavenCentral()
-//     }
-// }
+allprojects {
+    // Los repositorios ahora están configurados en settings.gradle
+}
 
 task clean(type: Delete) {
     delete rootProject.buildDir

@@ -224,9 +224,8 @@
     <dimen name="connection_margin">12dp</dimen>
     <dimen name="connection_indicator_size">12sp</dimen>
     
-    <!-- Dimensiones de diálogos -->
+    <!-- Dimensiones de diálogos adicionales -->
     <dimen name="dialog_elevation">8dp</dimen>
-    <dimen name="dialog_padding">16dp</dimen>
     <dimen name="dialog_title_size">18sp</dimen>
     <dimen name="dialog_content_size">14sp</dimen>
     <dimen name="dialog_content_margin">8dp</dimen>
