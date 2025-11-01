@@ -333,7 +333,7 @@ public class MovementSystem {
                 }
             }
         }
-        return position.clone(); // Fallback
+        return new Vector2D(position.x, position.y); // Fallback
     }
     
     /**

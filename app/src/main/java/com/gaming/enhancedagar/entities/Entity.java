@@ -5,6 +5,8 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.Log;
 
+import com.gaming.enhancedagar.utils.Vector2D;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -212,6 +214,32 @@ public abstract class Entity {
             this.velocityX = (dx / distance) * speed;
             this.velocityY = (dy / distance) * speed;
         }
+    }
+    
+    // MÉTODOS DE SISTEMA DE OBJETIVOS (REQUERIDOS POR MOVEMENT SYSTEM)
+    
+    /**
+     * Obtiene la posición actual de la entidad como Vector2D
+     * @return nuevo Vector2D con las coordenadas actuales
+     */
+    public Vector2D getPosition() {
+        return new Vector2D(x, y);
+    }
+    
+    /**
+     * Verifica si la entidad tiene un objetivo activo
+     * @return true si tiene objetivo, false por defecto
+     */
+    public boolean hasTarget() {
+        return false;
+    }
+    
+    /**
+     * Obtiene la posición del objetivo actual
+     * @return Vector2D con la posición del objetivo, null por defecto
+     */
+    public Vector2D getTargetPosition() {
+        return null;
     }
     
     /**

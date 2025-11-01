@@ -40,6 +40,10 @@ public class Vector2D {
         return this;
     }
     
+    public Vector2D multiply(float scalar) {
+        return mul(scalar);
+    }
+    
     public Vector2D div(float scalar) {
         if (scalar != 0) {
             x /= scalar;
@@ -92,6 +96,10 @@ public class Vector2D {
             mul(max);
         }
         return this;
+    }
+    
+    public static Vector2D subtract(Vector2D v1, Vector2D v2) {
+        return new Vector2D(v1.x - v2.x, v1.y - v2.y);
     }
     
     public static Vector2D fromAngle(float angle) {
