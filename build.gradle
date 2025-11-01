@@ -1,9 +1,15 @@
 // Top-level build file para Enhanced Agar Game
-// Configurado para GitHub Actions
+// Configurado para compilación en Termux
 
 plugins {
     id 'com.android.application' version '8.1.2' apply false
-    id 'org.jetbrains.kotlin.android' version '1.8.22' apply false
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
 }
 
 task clean(type: Delete) {
