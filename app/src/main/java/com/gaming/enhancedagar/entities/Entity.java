@@ -189,6 +189,17 @@ public abstract class Entity {
     // MÉTODOS DE UTILIDAD
     
     /**
+     * Calcula la distancia euclidiana a otra entidad
+     * @param other otra entidad
+     * @return distancia
+     */
+    public float getDistanceTo(Entity other) {
+        float dx = other.x - this.x;
+        float dy = other.y - this.y;
+        return (float) Math.sqrt(dx * dx + dy * dy);
+    }
+    
+    /**
      * Calcula el ángulo hacia otra entidad
      * @param other otra entidad
      * @return ángulo en radianes

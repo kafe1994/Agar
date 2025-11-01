@@ -2,7 +2,8 @@ package com.gaming.enhancedagar.game;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import android.graphics.*;
+import java.awt.*;
+import java.awt.geom.Point2D;
 
 /**
  * Sistema de equipos para el juego Agar mejorado

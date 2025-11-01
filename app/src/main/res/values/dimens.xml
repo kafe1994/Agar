@@ -149,6 +149,7 @@
     <!-- Ventana de configuración -->
     <dimen name="dialog_width">320dp</dimen>
     <dimen name="dialog_width_large">400dp</dimen>
+    <dimen name="dialog_padding">20dp</dimen>
     <dimen name="dialog_margin">16dp</dimen>
     
     <!-- Barra de herramientas -->

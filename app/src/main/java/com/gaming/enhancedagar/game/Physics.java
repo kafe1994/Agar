@@ -2,7 +2,9 @@ package com.gaming.enhancedagar.game;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import android.graphics.*;
+import java.awt.*;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Point2D;
 
 /**
  * Sistema estático de física para el juego Enhanced Agar

@@ -2,8 +2,8 @@ package com.gaming.enhancedagar.engine;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import android.graphics.*;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 /**
  * Sistema avanzado de partículas con pool, múltiples tipos y optimización

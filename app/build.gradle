@@ -23,22 +23,27 @@ android {
     }
     
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     
     packagingOptions {
         pickFirst '**/libc++_shared.so'
         pickFirst '**/libjsc.so'
     }
+    
+    // CONFIGURACIÓN CRÍTICA PARA TERMUX - EVITAR AAPT2
+    useLegacyResources = true
 }
 
 dependencies {
+    // DEPENDENCIAS DOWNGRADEADAS PARA TERMUX
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'androidx.core:core:1.8.0'
     
+    // Dependencias de test compatibles
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'

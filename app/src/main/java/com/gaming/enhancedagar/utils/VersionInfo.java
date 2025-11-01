@@ -101,7 +101,7 @@ public class VersionInfo {
             branchName = getGitBranchName();
             
             // Determinar tipo de build
-            isDebugBuild = checkDebugBuild();
+            isDebugBuild = isDebugBuild();
             
         } catch (Exception e) {
             Log.e(TAG, "Error inicializando información de versión", e);
@@ -182,7 +182,7 @@ public class VersionInfo {
     /**
      * Determina si es build de debug
      */
-    private boolean checkDebugBuild() {
+    private boolean isDebugBuild() {
         return (context.getApplicationInfo().flags & android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) != 0;
     }
     
